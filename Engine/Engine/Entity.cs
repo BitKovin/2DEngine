@@ -17,6 +17,7 @@ namespace Engine
 
         public List<Entity> child = new List<Entity>();
         public Entity parrent;
+        Sprite sprite;
 
         public virtual void Start()
         {
@@ -34,9 +35,14 @@ namespace Engine
 
         }
 
+        public virtual void SetTexture(Texture tex)
+        {
+            texture = tex;
+            sprite = new Sprite(texture);
+        }
+
         public void Draw(RenderTarget target, RenderStates states)
         {
-            Sprite sprite = new Sprite(texture);
             sprite.Position = new Vector2f(position.X, position.Y * -1);
             sprite.Rotation = rotation;
             sprite.Origin = new Vector2f(sprite.TextureRect.Width/2f, sprite.TextureRect.Height/2f);

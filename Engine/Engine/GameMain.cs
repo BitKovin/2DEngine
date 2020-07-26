@@ -15,10 +15,12 @@ namespace Engine
 
             Renderer.Init();
             Renderer.window.SetFramerateLimit(500);
-            //Renderer.window.SetVerticalSyncEnabled(true);
+            Renderer.window.SetVerticalSyncEnabled(true);
             Time.Init();
 
             Renderer.window.Closed += Window_Closed;
+
+            TexturesData.LoadTextures();
 
             Level.Start();
             foreach (Entity ent in Level.entities)

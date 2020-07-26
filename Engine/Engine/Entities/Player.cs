@@ -20,7 +20,7 @@ namespace Engine.Entities
         public override void Start()
         {
             base.Start();
-            texture = new Texture("Assets//Player//Animations//stay.png");
+            SetTexture(TexturesData.GetTexture("playerIdle"));
             Camera.target = this;
             collision = new Collision();
             collision.size = new Vector2i(20,40);
