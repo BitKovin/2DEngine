@@ -20,6 +20,7 @@ namespace Engine.Entities
         public override void Start()
         {
             base.Start();
+
             SetTexture(TexturesData.GetTexture("playerIdle"));
             Camera.target = this;
             collision = new Collision();
