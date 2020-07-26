@@ -25,12 +25,6 @@ namespace Engine
 
             TexturesData.LoadTextures();
 
-            /////////////////////////////////////////////////
-
-
-
-            ////////////////////////////////////////////////
-
             Level.Start();
             foreach (Entity ent in Level.entities)
             {

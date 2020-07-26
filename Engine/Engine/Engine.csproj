@@ -54,6 +54,7 @@
     <Compile Include="Level.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Renderer.cs" />
+    <Compile Include="Saved.cs" />
     <Compile Include="TexturesData.cs" />
     <Compile Include="Time.cs" />
     <Compile Include="UI\UiManager.cs" />

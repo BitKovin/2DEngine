@@ -22,7 +22,7 @@ namespace Engine
 
         public static void Render()
         {
-            window.Clear();
+            window.Clear(Color.Blue);
             view.Center = Functions.Vector2ToVector2f(Camera.position);
             window.SetView(view);
 

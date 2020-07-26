@@ -18,10 +18,12 @@ namespace Engine
         public List<Entity> child = new List<Entity>();
         public Entity parrent;
         Sprite sprite;
+        bool flipH;
+        bool flipV;
 
         public virtual void Start()
         {
-
+         
             foreach (Entity ent in child)
                 ent.Start();
 
@@ -37,8 +39,12 @@ namespace Engine
 
         public virtual void SetTexture(Texture tex)
         {
+            if (sprite == null) {
+                sprite = new Sprite(tex);
+                return;
+            }
             texture = tex;
-            sprite = new Sprite(texture);
+            sprite.Texture = tex;
         }
 
         public void Draw(RenderTarget target, RenderStates states)

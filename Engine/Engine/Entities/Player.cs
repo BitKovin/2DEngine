@@ -24,7 +24,7 @@ namespace Engine.Entities
             SetTexture(TexturesData.GetTexture("playerIdle"));
             Camera.target = this;
             collision = new Collision();
-            collision.size = new Vector2i(20,40);
+            collision.size = new Vector2i(20,38);
         }
         public override void Update()
         {
