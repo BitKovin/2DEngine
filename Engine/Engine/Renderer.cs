@@ -16,9 +16,8 @@ namespace Engine
 
         public static void Init()
         {
-            window = new RenderWindow(new VideoMode(1280,720), Constants.GameName);
+            window = new RenderWindow(new VideoMode(1600,900), Constants.GameName);
             view = new View(new FloatRect(0, 0, 1280, 720));
-            
         }
 
         public static void Render()

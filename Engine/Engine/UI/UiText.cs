@@ -22,7 +22,7 @@ namespace Engine.UI
         public void Draw(RenderTarget target, RenderStates states)
         {
             r_text.DisplayedString = text;
-            r_text.Position = position + Renderer.view.Center;
+            r_text.Position = position*0.5f + Renderer.view.Center;
             target.Draw(r_text);
         }
     }

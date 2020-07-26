@@ -14,8 +14,8 @@ namespace Engine
         {
 
             Renderer.Init();
-            Renderer.window.SetFramerateLimit(50);
-            Renderer.window.SetVerticalSyncEnabled(true);
+            Renderer.window.SetFramerateLimit(500);
+            //Renderer.window.SetVerticalSyncEnabled(true);
             Time.Init();
 
             Renderer.window.Closed += Window_Closed;

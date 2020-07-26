@@ -43,11 +43,7 @@ namespace Engine
         public static void Update()
         {
             foreach (Entity ent in entities)
-            {
-
                 ent.Update();
-
-            }
         }
 
     }

@@ -16,7 +16,6 @@ namespace Engine
 
         public static void Update()
         {
-
             position = new Vector2(target.position.X, -target.position.Y);
         }
 
