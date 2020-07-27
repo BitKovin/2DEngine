@@ -12,6 +12,8 @@ namespace Engine
     {
 
         public static float Forward, Right;
+        public static Vector2f MousePos;
+        public static Vector2f MousePosWindow;
 
         public static void Update()
         {
@@ -56,6 +58,11 @@ namespace Engine
                 Forward = 1;
             if (Forward < -1)
                 Forward = -1;
+            #endregion
+
+            #region MousePos
+            MousePos = new Vector2f(Mouse.GetPosition(Renderer.window).X - (Renderer.window.Size.X / 2) + Renderer.view.Center.X, -Mouse.GetPosition(Renderer.window).Y + (Renderer.window.Size.Y / 2) - Renderer.view.Center.Y)/ (1.28571428571f*2f);
+            MousePosWindow = new Vector2f(Mouse.GetPosition(Renderer.window).X - (Renderer.window.Size.X / 2), -Mouse.GetPosition(Renderer.window).Y + (Renderer.window.Size.Y / 2));
             #endregion
 
         }

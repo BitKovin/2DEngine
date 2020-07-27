@@ -43,5 +43,20 @@ namespace Engine
             lvl.brushes.Add(brush2);
         }
 
+        public static Entity EntityFromString(string name)
+        {
+            switch (name)
+            {
+                case("Player"):
+                    Console.WriteLine("playerSpawned");
+                    return new Player();
+
+                case (null):
+                    Console.WriteLine("null");
+                    break;
+            }
+            return null;
+        }
+
     }
 }

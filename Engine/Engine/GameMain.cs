@@ -23,7 +23,7 @@ namespace Engine
             Time.Init();
 
             Level lvl = new Level();
-            Functions.MakeBase(lvl);
+            //Functions.MakeBase(lvl);
             curentLevel = lvl;
 
             Renderer.window.Closed += Window_Closed;

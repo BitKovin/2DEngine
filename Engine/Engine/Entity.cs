@@ -8,7 +8,7 @@ using SFML.Graphics;
 
 namespace Engine
 {
-    class Entity: Drawable
+    class Entity: Drawable,ICloneable
     {
 
         public Texture texture;
@@ -20,6 +20,11 @@ namespace Engine
         Sprite sprite;
         bool flipH;
         bool flipV;
+        Level lvl;
+
+        public Entity()
+        {
+        }
 
         public virtual void Start()
         {
@@ -60,6 +65,11 @@ namespace Engine
             ent.parrent = this;
             child.Add(ent);
 
+        }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
         }
     }
 }

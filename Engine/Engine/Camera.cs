@@ -10,13 +10,15 @@ namespace Engine
 {
     class Camera
     {
-        public static Vector2 position;
+        public static Vector2 position = new Vector2(0,0);
         public static Entity target;
         public static float speed = 500f;
+        public static float zoom = 1;
 
         public static void Update()
         {
-            position = new Vector2(target.position.X, -target.position.Y);
+            if(target!=null)
+                position = new Vector2(target.position.X, -target.position.Y);
         }
 
     }

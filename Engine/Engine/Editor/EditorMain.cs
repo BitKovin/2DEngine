@@ -14,8 +14,10 @@ namespace Engine.Editor
         static Vector2i startPoint;
         static Vector2i endPoint;
         public static string brush;
+        public static string entity;
+        public static Entity curentEntity;
         public static EditorWindow form;
-
+        static Level baselevel;
         public static bool GamePaused;
 
         public static void Start()
@@ -23,6 +25,14 @@ namespace Engine.Editor
             Renderer.window.MouseButtonPressed += Window_MouseButtonPressed;
             Renderer.window.MouseButtonReleased += Window_MouseButtonReleased;
             GamePaused = true;
+            baselevel = new Level();
+        }
+
+        public static void StartLevel()
+        {
+            GameMain.curentLevel = (Level)baselevel.Clone();
+            GameMain.curentLevel.Start();
+            GamePaused = false;
         }
 
         public static void Update()
@@ -30,16 +40,27 @@ namespace Engine.Editor
             Vector2i winPos = Renderer.window.Position;
             Action action = () => { form.SetPos(winPos.X, winPos.Y); };
             form.Invoke(action);
+
+            if(curentEntity!=null)
+            {
+                curentEntity.position = Input.MousePos;
+                Console.WriteLine(Input.MousePos);
+            }
+
         }
 
         private static void Window_MouseButtonReleased(object sender, MouseButtonEventArgs e)
         {
-            
+            if (curentEntity == null) return;
+            baselevel.entities.Add((Entity)curentEntity.Clone());
+            curentEntity = null;
         }
 
         private static void Window_MouseButtonPressed(object sender, MouseButtonEventArgs e)
         {
-
+            if (entity == null) return;
+            curentEntity = Functions.EntityFromString(entity);
+            GameMain.curentLevel.entities.Add(curentEntity);
         }
 
         public static void Test()

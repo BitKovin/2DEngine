@@ -17,11 +17,18 @@ namespace Engine.Entities
         float gravity;
         Collision collision;
         bool OnGround;
+
+        public Player()
+        {
+            SetTexture(TexturesData.GetTexture("playerIdle"));
+            if (!Editor.EditorMain.GamePaused)
+                Start();
+
+        }
         public override void Start()
         {
             base.Start();
 
-            SetTexture(TexturesData.GetTexture("playerIdle"));
             Camera.target = this;
             collision = new Collision();
             collision.size = new Vector2i(20,38);

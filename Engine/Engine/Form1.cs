@@ -39,17 +39,18 @@ namespace Engine
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listView1.FocusedItem.Name == oldBrush)
-            {
-                Editor.EditorMain.brush = null;
-                return;
-            }
-            oldBrush = listView1.FocusedItem.Name;
+
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Editor.EditorMain.GamePaused = checkBox1.Checked;
+            Editor.EditorMain.entity = comboBox1.Text;
+            Console.WriteLine(comboBox1.Text);
+        }
+
+        private void Play_Click(object sender, EventArgs e)
+        {
+            Editor.EditorMain.StartLevel();
         }
     }
 }
