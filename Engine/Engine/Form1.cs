@@ -44,13 +44,27 @@ namespace Engine
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Editor.EditorMain.entity = comboBox1.Text;
+            Editor.EditorMain.entityType = comboBox1.Text;
             Console.WriteLine(comboBox1.Text);
         }
 
         private void Play_Click(object sender, EventArgs e)
         {
             Editor.EditorMain.StartLevel();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Editor.EditorMain.tool = Editor.Tool.enity;
+            button3.Enabled = false;
+            button4.Enabled = true;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Editor.EditorMain.tool = Editor.Tool.brush;
+            button4.Enabled = false;
+            button3.Enabled = true;
         }
     }
 }

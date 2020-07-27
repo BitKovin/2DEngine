@@ -50,7 +50,7 @@ namespace Engine
         {
 
             Sprite spr = new Sprite(texture);
-            spr.TextureRect = new IntRect(position, size);
+            spr.TextureRect = new IntRect(new Vector2i(position.X-(size.X/2), -position.Y - (size.Y / 2)), size);
             spr.Position = new Vector2f(position.X,-position.Y);
             spr.Origin = new Vector2f(spr.TextureRect.Width / 2f, spr.TextureRect.Height / 2f);
 

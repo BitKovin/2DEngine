@@ -8,17 +8,25 @@ using SFML.Graphics;
 using SFML.System;
 namespace Engine.Editor
 {
+    enum Tool
+    {
+        enity,
+        brush
+    };
     class EditorMain
     {
-
+        public static Tool tool;
         static Vector2i startPoint;
         static Vector2i endPoint;
-        public static string brush;
-        public static string entity;
+        public static string brushType;
+        public static string entityType;
         public static Entity curentEntity;
         public static EditorWindow form;
         static Level baselevel;
         public static bool GamePaused;
+
+        public static Vector2f BrushStart;
+        public static Vector2f BrushEnd;
 
         public static void Start()
         {
@@ -53,20 +61,44 @@ namespace Engine.Editor
         {
             if (e.Button == Mouse.Button.Left)
             {
-                if (curentEntity == null) return;
-                baselevel.entities.Add((Entity)curentEntity.Clone());
-                curentEntity = null;
+                switch (tool)
+                {
+                    case Tool.enity:
+                        if (curentEntity == null) return;
+                        baselevel.entities.Add((Entity)curentEntity.Clone());
+                        curentEntity = null;
+                        break;
+                    case Tool.brush:
+                        BrushEnd = Input.MousePos;
+                        BuildBrush();
+                        break;
+                    default:
+                        break;
+                }
+
             }
         }
 
         private static void Window_MouseButtonPressed(object sender, MouseButtonEventArgs e)
         {
+            
             if (e.Button == Mouse.Button.Left)
             {
-                if (entity == null) return;
-                curentEntity = Functions.EntityFromString(entity);
-                curentEntity.position = Input.MousePos;
-                GameMain.curentLevel.entities.Add(curentEntity);
+                switch (tool)
+                {
+                    case Tool.enity:
+                        if (entityType == null) return;
+                        curentEntity = Functions.EntityFromString(entityType);
+                        curentEntity.position = Input.MousePos;
+                        GameMain.curentLevel.entities.Add(curentEntity);
+                        break;
+                    case Tool.brush:
+                        BrushStart = Input.MousePos;
+                        break;
+                    default:
+                        break;
+                }
+
             }
         }
 
@@ -77,6 +109,34 @@ namespace Engine.Editor
             brush.SetSize(new Vector2i(100, 1000));
             brush.SetPosition(new Vector2i(200, -500));
             GameMain.curentLevel.brushes.Add(brush);
+        }
+
+        public static void BuildBrush()
+        {
+            
+            Console.WriteLine("brush");
+            float SizeX = BrushEnd.X - BrushStart.X;
+            if(SizeX<0)
+                SizeX = SizeX * -1;
+            float SizeY = BrushEnd.Y- BrushStart.Y;
+            float posX = (BrushStart.X + BrushEnd.X) / 2f;
+            float posY = (BrushStart.Y + BrushEnd.Y) / 2f;
+
+            Vector2i pos = new Vector2i((int)posX, (int)posY);
+            Vector2i size = new Vector2i((int)SizeX, -(int)SizeY);
+            Console.WriteLine(size);
+            
+            Brush brush = new Brush(GameMain.curentLevel);
+            brush.SetTexture(new Texture("brush.png"));
+            brush.SetSize(size);
+            brush.SetPosition(pos);
+            baselevel.brushes.Add(brush);
+            Brush brush2 = new Brush(baselevel);
+            brush2.SetTexture(new Texture("brush.png"));
+            brush2.SetSize(size);
+            brush2.SetPosition(pos);
+            GameMain.curentLevel.brushes.Add(brush2);
+
         }
 
     }
