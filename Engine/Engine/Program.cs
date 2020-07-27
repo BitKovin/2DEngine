@@ -19,7 +19,8 @@ namespace Engine
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            EditorMain.form = new EditorWindow();
+            Application.Run(EditorMain.form);
 
         }
 
@@ -32,6 +33,7 @@ namespace Engine
                 GameMain.Update();
                 EditorMain.Update();
             }
+            Application.Exit();
         }
     }
 }

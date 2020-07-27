@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using SFML.Window;
 using SFML.Graphics;
 using SFML.System;
-
 namespace Engine.Editor
 {
     class EditorMain
@@ -14,6 +13,7 @@ namespace Engine.Editor
 
         static Vector2i startPoint;
         static Vector2i endPoint;
+        public static EditorWindow form;
 
         public static void Start()
         {
@@ -23,7 +23,9 @@ namespace Engine.Editor
 
         public static void Update()
         {
-            
+            Vector2i winPos = Renderer.window.Position;
+            Action action = () => { form.SetPos(winPos.X, winPos.Y); };
+            form.Invoke(action);
         }
 
         private static void Window_MouseButtonReleased(object sender, MouseButtonEventArgs e)

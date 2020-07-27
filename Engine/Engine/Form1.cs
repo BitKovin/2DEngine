@@ -10,13 +10,22 @@ using System.Windows.Forms;
 
 namespace Engine
 {
-    public partial class Form1 : Form
+    public partial class EditorWindow : Form
     {
-        public Form1()
+        public int x;
+        public int y;
+        public EditorWindow()
         {
             InitializeComponent();
+            //setPos += SetPos;
         }
 
+        //public Action<int, int> setPos;
+
+        public void SetPos(int x, int y)
+        {
+            this.SetDesktopLocation(x+8, y+31);
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             Editor.EditorMain.Test();

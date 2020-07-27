@@ -1,7 +1,7 @@
 ﻿using System.Windows.Forms;
 namespace Engine
 {
-    partial class Form1:Form
+    partial class EditorWindow:Form
     {
         /// <summary>
         /// Required designer variable.
@@ -30,6 +30,7 @@ namespace Engine
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
+            this.domainUpDown1 = new System.Windows.Forms.DomainUpDown();
             this.SuspendLayout();
             // 
             // button1
@@ -42,15 +43,27 @@ namespace Engine
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // Form1
+            // domainUpDown1
+            // 
+            this.domainUpDown1.Location = new System.Drawing.Point(156, 65);
+            this.domainUpDown1.Name = "domainUpDown1";
+            this.domainUpDown1.Size = new System.Drawing.Size(196, 20);
+            this.domainUpDown1.TabIndex = 1;
+            this.domainUpDown1.Text = "domainUpDown1";
+            // 
+            // EditorWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 532);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.ClientSize = new System.Drawing.Size(351, 560);
+            this.Controls.Add(this.domainUpDown1);
             this.Controls.Add(this.button1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.HelpButton = true;
-            this.Name = "Form1";
+            this.Name = "EditorWindow";
             this.Text = "Form1";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
@@ -59,5 +72,6 @@ namespace Engine
         #endregion
 
         private Button button1;
+        private DomainUpDown domainUpDown1;
     }
 }
