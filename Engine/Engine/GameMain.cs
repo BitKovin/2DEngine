@@ -18,8 +18,8 @@ namespace Engine
         {
 
             Renderer.Init();
-            Renderer.window.SetFramerateLimit(500);
-            Renderer.window.SetVerticalSyncEnabled(true);
+            Renderer.window.SetFramerateLimit(150);
+            //Renderer.window.SetVerticalSyncEnabled(true);
             Time.Init();
 
             Level lvl = new Level();
@@ -39,7 +39,7 @@ namespace Engine
 
             text = new UiText();
             text.position = new Vector2f(-1280 / 2, -720 / 2);
-            text.r_text.Color = Color.Blue;
+            text.r_text.Color = Color.White;
             UI.UiManager.objects.Add(text);
             curentLevel.Start();
         }
@@ -50,7 +50,7 @@ namespace Engine
         {
             Renderer.window.DispatchEvents();
             Time.FrameStart();
-            text.text = "FPS: " + (1f/Time.DeltaTime).ToString();
+            //text.text = "FPS: " + (1f/Time.DeltaTime).ToString();
             Input.Update();
             if (!Editor.EditorMain.GamePaused)
                 curentLevel.Update();

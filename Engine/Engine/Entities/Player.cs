@@ -17,6 +17,7 @@ namespace Engine.Entities
         float gravity;
         Collision collision;
         bool OnGround;
+        bool OldOnGround;
 
         public Player()
         {
@@ -31,7 +32,7 @@ namespace Engine.Entities
 
             Camera.target = this;
             collision = new Collision();
-            collision.size = new Vector2i(20,38);
+            collision.size = new Vector2i(20,35);
         }
         public override void Update()
         {
@@ -40,10 +41,12 @@ namespace Engine.Entities
             if (Keyboard.IsKeyPressed(Keyboard.Key.Space) && OnGround)
                 gravity = 300;
 
-            gravity -= Time.DeltaTime * 1100f;
+            gravity -= Time.DeltaTime * 1500f;
+            if (Math.Abs(gravity) < 1)
+                gravity *= 3f;
 
             Vector2f movement = new Vector2f(Input.Right, 0);
-
+            GameMain.text.text = position.ToString();
             Vector2f move = (new Vector2f(movement.X, 0) * speed) * Time.DeltaTime;
             position += move;
             UpdateCollision();
@@ -54,7 +57,9 @@ namespace Engine.Entities
             position += move;
             UpdateCollision();
             Collide(move);
-
+            if(gravity<3f)
+            position = new Vector2f((int)position.X, (int)position.Y);
+            OldOnGround = OnGround;
         }
 
         void Collide(Vector2f move)
