@@ -51,16 +51,23 @@ namespace Engine.Editor
 
         private static void Window_MouseButtonReleased(object sender, MouseButtonEventArgs e)
         {
-            if (curentEntity == null) return;
-            baselevel.entities.Add((Entity)curentEntity.Clone());
-            curentEntity = null;
+            if (e.Button == Mouse.Button.Left)
+            {
+                if (curentEntity == null) return;
+                baselevel.entities.Add((Entity)curentEntity.Clone());
+                curentEntity = null;
+            }
         }
 
         private static void Window_MouseButtonPressed(object sender, MouseButtonEventArgs e)
         {
-            if (entity == null) return;
-            curentEntity = Functions.EntityFromString(entity);
-            GameMain.curentLevel.entities.Add(curentEntity);
+            if (e.Button == Mouse.Button.Left)
+            {
+                if (entity == null) return;
+                curentEntity = Functions.EntityFromString(entity);
+                curentEntity.position = Input.MousePos;
+                GameMain.curentLevel.entities.Add(curentEntity);
+            }
         }
 
         public static void Test()

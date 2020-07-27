@@ -35,7 +35,7 @@ namespace Engine
                 ent.Start();
             }
 
-            Renderer.view.Zoom(0.5f);
+            //Renderer.view.Zoom(0.5f);
 
             text = new UiText();
             text.position = new Vector2f(-1280 / 2, -720 / 2);
