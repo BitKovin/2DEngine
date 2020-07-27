@@ -13,12 +13,16 @@ namespace Engine.Editor
 
         static Vector2i startPoint;
         static Vector2i endPoint;
+        public static string brush;
         public static EditorWindow form;
+
+        public static bool GamePaused;
 
         public static void Start()
         {
             Renderer.window.MouseButtonPressed += Window_MouseButtonPressed;
             Renderer.window.MouseButtonReleased += Window_MouseButtonReleased;
+            GamePaused = true;
         }
 
         public static void Update()
@@ -40,11 +44,11 @@ namespace Engine.Editor
 
         public static void Test()
         {
-            Brush brush = new Brush();
+            Brush brush = new Brush(GameMain.curentLevel);
             brush.SetTexture(new Texture("brush.png"));
             brush.SetSize(new Vector2i(100, 1000));
             brush.SetPosition(new Vector2i(200, -500));
-            Level.brushes.Add(brush);
+            GameMain.curentLevel.brushes.Add(brush);
         }
 
     }

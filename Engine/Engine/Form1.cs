@@ -14,6 +14,7 @@ namespace Engine
     {
         public int x;
         public int y;
+        string oldBrush;
         public EditorWindow()
         {
             InitializeComponent();
@@ -34,6 +35,21 @@ namespace Engine
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listView1.FocusedItem.Name == oldBrush)
+            {
+                Editor.EditorMain.brush = null;
+                return;
+            }
+            oldBrush = listView1.FocusedItem.Name;
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            Editor.EditorMain.GamePaused = checkBox1.Checked;
         }
     }
 }

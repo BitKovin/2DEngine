@@ -53,7 +53,7 @@ namespace Engine.Entities
         void Collide(Vector2f move)
         {
 
-            foreach (Collision col in Level.collisions)
+            foreach (Collision col in GameMain.curentLevel.collisions)
             {
                 if (Collision.MakeCollionTest(collision, col))
                 {
@@ -72,6 +72,7 @@ namespace Engine.Entities
                     }
 
                     position -= move;
+                    return;
                 }
             }
 

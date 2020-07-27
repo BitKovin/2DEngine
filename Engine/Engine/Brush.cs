@@ -16,11 +16,11 @@ namespace Engine
         public Texture texture;
         Collision collision;
 
-        public Brush()
+        public Brush(Level lvl)
         {
 
             collision = new Collision();
-            Level.collisions.Add(collision);
+            lvl.collisions.Add(collision);
 
         }
 

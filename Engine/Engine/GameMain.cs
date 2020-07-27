@@ -13,6 +13,7 @@ namespace Engine
     class GameMain
     {
         public static UiText text;
+        public static Level curentLevel;
         public static void Start()
         {
 
@@ -21,12 +22,15 @@ namespace Engine
             Renderer.window.SetVerticalSyncEnabled(true);
             Time.Init();
 
+            Level lvl = new Level();
+            Functions.MakeBase(lvl);
+            curentLevel = lvl;
+
             Renderer.window.Closed += Window_Closed;
 
             TexturesData.LoadTextures();
 
-            Level.Start();
-            foreach (Entity ent in Level.entities)
+            foreach (Entity ent in curentLevel.entities)
             {
                 ent.Start();
             }
@@ -37,6 +41,7 @@ namespace Engine
             text.position = new Vector2f(-1280 / 2, -720 / 2);
             text.r_text.Color = Color.Blue;
             UI.UiManager.objects.Add(text);
+            curentLevel.Start();
         }
 
 
@@ -47,10 +52,8 @@ namespace Engine
             Time.FrameStart();
             text.text = "FPS: " + (1f/Time.DeltaTime).ToString();
             Input.Update();
-            foreach (Entity ent in Level.entities)
-            {
-                ent.Update();
-            }
+            if (!Editor.EditorMain.GamePaused)
+                curentLevel.Update();
             Camera.Update();
 
             Renderer.Render();

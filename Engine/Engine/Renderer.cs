@@ -26,12 +26,12 @@ namespace Engine
             view.Center = Functions.Vector2ToVector2f(Camera.position);
             window.SetView(view);
 
-            foreach (Brush brush in Level.brushes)
+            foreach (Brush brush in GameMain.curentLevel.brushes)
             {
                 window.Draw(brush);
             }
 
-            foreach (Entity ent in Level.entities)
+            foreach (Entity ent in GameMain.curentLevel.entities)
             {
                 window.Draw(ent);
                 foreach (Entity ent2 in ent.child)
