@@ -67,6 +67,11 @@ namespace Engine
 
         }
 
+        public virtual Entity GetCopy()
+        {
+            return (Entity)this.MemberwiseClone();
+        }
+
         public object Clone()
         {
             return this.MemberwiseClone();

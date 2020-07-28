@@ -8,16 +8,33 @@ using SFML.System;
 using Engine.Entities;
 namespace Engine
 {
-    class Level:ICloneable
+    class Level
     {
 
         public List<Entity> entities = new List<Entity>();
         public List<Brush> brushes = new List<Brush>();
         public List<Collision> collisions = new List<Collision>();
 
-        public object Clone()
+        public Level Clone()
         {
-            return this.MemberwiseClone();
+            Level clone = new Level();
+
+            foreach(Brush brush in brushes)
+            {
+                Brush brushClone = new Brush(clone);
+                clone.brushes.Add(brushClone);
+                brushClone.SetPosition(brush.position);
+                brushClone.SetSize(brush.size);
+                brushClone.SetTexture(brush.texture);
+            }
+
+            foreach(Entity entity in entities)
+            {
+                Entity ent = entity.GetCopy();
+                clone.entities.Add(ent);
+            }
+
+            return clone;
         }
 
         public void Start()

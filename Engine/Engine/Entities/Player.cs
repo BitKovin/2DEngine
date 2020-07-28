@@ -95,5 +95,10 @@ namespace Engine.Entities
             collision.position = new Vector2i((int)position.X, (int)position.Y);
         }
 
+        public override Entity GetCopy()
+        {
+            return (Player)this.MemberwiseClone();
+        }
+
     }
 }

@@ -34,11 +34,12 @@ namespace Engine.Editor
             Renderer.window.MouseButtonReleased += Window_MouseButtonReleased;
             GamePaused = true;
             baselevel = new Level();
+            GameMain.curentLevel = baselevel;
         }
 
         public static void StartLevel()
         {
-            GameMain.curentLevel = (Level)baselevel.Clone();
+            GameMain.curentLevel = baselevel.Clone();
             GameMain.curentLevel.Start();
             GamePaused = false;
         }
@@ -131,11 +132,6 @@ namespace Engine.Editor
             brush.SetSize(size);
             brush.SetPosition(pos);
             baselevel.brushes.Add(brush);
-            Brush brush2 = new Brush(baselevel);
-            brush2.SetTexture(new Texture("brush.png"));
-            brush2.SetSize(size);
-            brush2.SetPosition(pos);
-            GameMain.curentLevel.brushes.Add(brush2);
 
         }
 
