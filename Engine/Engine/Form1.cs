@@ -29,7 +29,6 @@ namespace Engine
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            Editor.EditorMain.Test();
         }
 
         private void Form1_Load(object sender, EventArgs e)

@@ -57,7 +57,7 @@ namespace Engine.Entities
             position += move;
             UpdateCollision();
             Collide(move);
-            if(gravity<3f)
+            if(gravity<2f)
             position = new Vector2f((int)position.X, (int)position.Y);
             OldOnGround = OnGround;
         }

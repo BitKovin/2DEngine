@@ -16,12 +16,16 @@ namespace Engine
         public Texture texture;
         Collision collision;
 
-        public Brush(Level lvl)
+        public Brush()
         {
+        }
 
+        public void Init()
+        {
             collision = new Collision();
-            lvl.collisions.Add(collision);
-
+            GameMain.curentLevel.collisions.Add(collision);
+            collision.size = size;
+            collision.position = position;
         }
 
         public void SetTexture(Texture tex)
@@ -35,14 +39,12 @@ namespace Engine
         public void SetSize(Vector2i Size)
         {
             size = Size;
-            collision.size = Size;
         }
 
         public void SetPosition(Vector2i pos)
         {
 
             position = pos;
-            collision.position = pos;
 
         }
 

@@ -21,7 +21,7 @@ namespace Engine
 
             foreach(Brush brush in brushes)
             {
-                Brush brushClone = new Brush(clone);
+                Brush brushClone = new Brush();
                 clone.brushes.Add(brushClone);
                 brushClone.SetPosition(brush.position);
                 brushClone.SetSize(brush.size);
@@ -44,6 +44,12 @@ namespace Engine
             {
                 ent.Start();
             }
+
+            foreach (Brush bruh in brushes)
+            {
+                bruh.Init();
+            }
+
         }
         public void Update()
         {

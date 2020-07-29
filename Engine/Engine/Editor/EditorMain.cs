@@ -103,15 +103,6 @@ namespace Engine.Editor
             }
         }
 
-        public static void Test()
-        {
-            Brush brush = new Brush(GameMain.curentLevel);
-            brush.SetTexture(new Texture("brush.png"));
-            brush.SetSize(new Vector2i(100, 1000));
-            brush.SetPosition(new Vector2i(200, -500));
-            GameMain.curentLevel.brushes.Add(brush);
-        }
-
         public static void BuildBrush()
         {
             
@@ -127,7 +118,7 @@ namespace Engine.Editor
             Vector2i size = new Vector2i((int)SizeX, -(int)SizeY);
             Console.WriteLine(size);
             
-            Brush brush = new Brush(GameMain.curentLevel);
+            Brush brush = new Brush();
             brush.SetTexture(new Texture("brush.png"));
             brush.SetSize(size);
             brush.SetPosition(pos);
