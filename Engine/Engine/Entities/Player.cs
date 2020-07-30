@@ -32,7 +32,7 @@ namespace Engine.Entities
 
             Camera.target = this;
             collision = new Collision();
-            collision.size = new Vector2i(20,35);
+            collision.size = new Vector2f(20,35);
         }
         public override void Update()
         {
@@ -58,7 +58,6 @@ namespace Engine.Entities
             UpdateCollision();
             Collide(move);
             if(gravity<2f)
-            position = new Vector2f((int)position.X, (int)position.Y);
             OldOnGround = OnGround;
         }
 
@@ -92,7 +91,7 @@ namespace Engine.Entities
 
         void UpdateCollision()
         {
-            collision.position = new Vector2i((int)position.X, (int)position.Y);
+            collision.position = position;
         }
 
         public override Entity GetCopy()

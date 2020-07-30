@@ -24,8 +24,8 @@ namespace Engine
         {
             collision = new Collision();
             GameMain.curentLevel.collisions.Add(collision);
-            collision.size = size;
-            collision.position = position;
+            collision.size = new Vector2f(size.X,size.Y);
+            collision.position = new Vector2f(position.X, position.Y);
         }
 
         public void SetTexture(Texture tex)

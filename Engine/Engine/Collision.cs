@@ -11,14 +11,14 @@ namespace Engine
     class Collision
     {
 
-        public Vector2i position;
-        public Vector2i size;
+        public Vector2f position;
+        public Vector2f size;
 
         public static bool MakeCollionTest(Collision col1,Collision col2)
         {
 
-            IntRect Col1 = new IntRect(col1.position-(col1.size/2), col1.size);
-            IntRect Col2 = new IntRect(col2.position-(col2.size/2), col2.size);
+            FloatRect Col1 = new FloatRect(col1.position-(col1.size/2), col1.size);
+            FloatRect Col2 = new FloatRect(col2.position-(col2.size/2), col2.size);
 
             return Col1.Intersects(Col2);
 
