@@ -50,6 +50,7 @@
     <Compile Include="Editor\EditorMain.cs" />
     <Compile Include="Entities\Player.cs" />
     <Compile Include="Entity.cs" />
+    <Compile Include="EntityData.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

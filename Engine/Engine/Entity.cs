@@ -12,16 +12,21 @@ namespace Engine
     {
 
         public Texture texture;
+        public string textureName;
         public Vector2f position;
         public float rotation;
 
         public List<Entity> child = new List<Entity>();
         public Entity parrent;
         Sprite sprite;
-        bool flipH;
-        bool flipV;
-        Level lvl;
+        public bool flipH;
+        public bool flipV;
         public string type;
+
+        public int[] intCustomSaveData;
+        public float[] floatCustomSaveData;
+        public string[] stringCustomSaveData;
+        public bool[] boolCustomSaveData;
 
         public Entity()
         {
@@ -43,14 +48,18 @@ namespace Engine
 
         }
 
-        public virtual void SetTexture(Texture tex)
+        public virtual void SetTexture(string tex)
         {
+            textureName = tex;
+            Texture Texture = TexturesData.GetTexture(tex);
             if (sprite == null) {
-                sprite = new Sprite(tex);
+                sprite = new Sprite(Texture);
                 return;
             }
-            texture = tex;
-            sprite.Texture = tex;
+
+            texture = Texture;
+            sprite.Texture = Texture;
+            textureName = tex;
         }
 
         public void Draw(RenderTarget target, RenderStates states)

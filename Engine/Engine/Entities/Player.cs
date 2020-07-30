@@ -17,14 +17,16 @@ namespace Engine.Entities
         float gravity;
         Collision collision;
         bool OnGround;
-        bool OldOnGround;
 
         public Player()
         {
-            SetTexture(TexturesData.GetTexture("playerIdle"));
+            SetTexture("playerIdle");
             if (!Editor.EditorMain.GamePaused)
                 Start();
             type = "Player";
+            floatCustomSaveData = new float[2];
+            floatCustomSaveData[0] = speed;
+            floatCustomSaveData[1] = gravity;
         }
         public override void Start()
         {
@@ -57,8 +59,6 @@ namespace Engine.Entities
             position += move;
             UpdateCollision();
             Collide(move);
-            if(gravity<2f)
-            OldOnGround = OnGround;
         }
 
         void Collide(Vector2f move)

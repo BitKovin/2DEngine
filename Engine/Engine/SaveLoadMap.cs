@@ -19,11 +19,19 @@ namespace Engine
             {
                 mapData = new MapData();
                 mapData.brushes = new byte[level.brushes.Count][];
+                mapData.entities = new byte[level.entities.Count][];
                 int i = 0;
                 foreach (Brush brush in level.brushes)
                 {
                     BrushData brushData = new BrushData(brush);
                     mapData.brushes[i] = Functions.ObjectToByteArray(brushData);
+                    i++;
+                }
+                i = 0;
+                foreach (Entity entity in level.entities)
+                {
+                    EntityData data = new EntityData(entity);
+                    mapData.entities[i] = Functions.ObjectToByteArray(data);
                     i++;
                 }
 
@@ -45,6 +53,7 @@ namespace Engine
                 FileStream file = new FileStream($"Assets//maps//{EditorMain.FileName}.map", FileMode.Open);
                 MapData mapData = (MapData)formatter.Deserialize(file);
                 level.brushes = mapData.GetBrushes();
+                level.entities = mapData.GetEntities();
 
                 file.Close();
             }

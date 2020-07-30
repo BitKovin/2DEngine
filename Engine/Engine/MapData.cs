@@ -11,6 +11,7 @@ namespace Engine
     class MapData
     {
         public byte[][] brushes;
+        public byte[][] entities;
 
         public List<Brush>GetBrushes()
         {
@@ -26,6 +27,31 @@ namespace Engine
             }
             return brushList;
         }
+        
+        public List<Entity>GetEntities()
+        {
+            List<Entity> entityList = new List<Entity>();
 
+            foreach(byte[] Byte in entities)
+            {
+                EntityData data = Functions.FromByteArray<EntityData>(Byte);
+                Entity entity = Functions.EntityFromString(data.type);
+
+                entity.position = new Vector2f(data.posX, data.posY);
+                entity.rotation = data.rot;
+                entity.SetTexture(data.tex);
+                entity.type = data.type;
+                entity.flipH = data.flipH;
+                entity.flipV = data.flipV;
+
+                entity.intCustomSaveData = data.intCustomSaveData;
+                entity.floatCustomSaveData = data.floatCustomSaveData;
+                entity.stringCustomSaveData = data.stringCustomSaveData;
+                entity.boolCustomSaveData = data.boolCustomSaveData;
+                entityList.Add(entity);
+            }
+
+            return entityList;
+        }
     }
 }
