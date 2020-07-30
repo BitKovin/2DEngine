@@ -42,6 +42,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BrushData.cs" />
     <Compile Include="Collision.cs" />
     <Compile Include="Brush.cs" />
     <Compile Include="Camera.cs" />
@@ -59,9 +60,11 @@
     <Compile Include="GameMain.cs" />
     <Compile Include="Input.cs" />
     <Compile Include="Level.cs" />
+    <Compile Include="MapData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Renderer.cs" />
     <Compile Include="Saved.cs" />
+    <Compile Include="SaveLoadMap.cs" />
     <Compile Include="TexturesData.cs" />
     <Compile Include="Time.cs" />
     <Compile Include="UI\UiManager.cs" />

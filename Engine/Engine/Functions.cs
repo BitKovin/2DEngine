@@ -7,6 +7,8 @@ using System.Numerics;
 using SFML.System;
 using SFML.Graphics;
 using Engine.Entities;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 namespace Engine
 {
@@ -23,25 +25,6 @@ namespace Engine
             return new Vector2(vec2f.X, vec2f.Y);
         }
 
-        public static void MakeBase(Level lvl)
-        {
-            Player player = new Player();
-
-            lvl.entities.Add(player);
-            player.position = new Vector2f(0, -320);
-
-            Brush brush = new Brush();
-            brush.SetTexture(new Texture("brush.png"));
-            brush.SetSize(new Vector2i(1000, 300));
-            brush.SetPosition(new Vector2i(0, -500));
-            lvl.brushes.Add(brush);
-
-            Brush brush2 = new Brush();
-            brush2.SetTexture(new Texture("brush.png"));
-            brush2.SetSize(new Vector2i(1000, 300));
-            brush2.SetPosition(new Vector2i(20, -150));
-            lvl.brushes.Add(brush2);
-        }
 
         public static Entity EntityFromString(string name)
         {
@@ -56,6 +39,30 @@ namespace Engine
                     break;
             }
             return null;
+        }
+
+        public static byte[] ObjectToByteArray(object obj)
+        {
+            if (obj == null)
+                return null;
+            BinaryFormatter bf = new BinaryFormatter();
+            using (MemoryStream ms = new MemoryStream())
+            {
+                bf.Serialize(ms, obj);
+                return ms.ToArray();
+            }
+        }
+
+        public static T FromByteArray<T>(byte[] data)
+        {
+            if (data == null)
+                return default(T);
+            BinaryFormatter bf = new BinaryFormatter();
+            using (MemoryStream ms = new MemoryStream(data))
+            {
+                object obj = bf.Deserialize(ms);
+                return (T)obj;
+            }
         }
 
     }

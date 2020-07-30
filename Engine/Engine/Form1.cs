@@ -27,9 +27,7 @@ namespace Engine
         {
             this.SetDesktopLocation(x+8, y+31);
         }
-        private void button1_Click(object sender, EventArgs e)
-        {
-        }
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -64,6 +62,20 @@ namespace Engine
             Editor.EditorMain.tool = Editor.Tool.brush;
             button4.Enabled = false;
             button3.Enabled = true;
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            Editor.EditorMain.FileName = textBox1.Text;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            SaveLoadMap.Save(Editor.EditorMain.baselevel);
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SaveLoadMap.Load(Editor.EditorMain.baselevel);
         }
     }
 }

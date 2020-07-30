@@ -14,6 +14,7 @@ namespace Engine
         public static void LoadTextures()
         {
             textures.Add("playerIdle", new Texture("Assets//Player//Animations//stay.png"));
+            textures.Add("b_test", new Texture("Assets//Brushes//test.png"));
         }
 
         public static Texture GetTexture(string name)

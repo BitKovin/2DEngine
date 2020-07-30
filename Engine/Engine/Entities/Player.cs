@@ -24,7 +24,7 @@ namespace Engine.Entities
             SetTexture(TexturesData.GetTexture("playerIdle"));
             if (!Editor.EditorMain.GamePaused)
                 Start();
-
+            type = "Player";
         }
         public override void Start()
         {

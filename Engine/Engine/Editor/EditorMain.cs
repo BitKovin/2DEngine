@@ -22,8 +22,9 @@ namespace Engine.Editor
         public static string entityType;
         public static Entity curentEntity;
         public static EditorWindow form;
-        static Level baselevel;
+        public static Level baselevel;
         public static bool GamePaused;
+        public static string FileName = "test";
 
         public static Vector2f BrushStart;
         public static Vector2f BrushEnd;
@@ -53,7 +54,6 @@ namespace Engine.Editor
             if(curentEntity!=null)
             {
                 curentEntity.position = Input.MousePos;
-                Console.WriteLine(Input.MousePos);
             }
 
         }
@@ -119,7 +119,7 @@ namespace Engine.Editor
             Console.WriteLine(size);
             
             Brush brush = new Brush();
-            brush.SetTexture(new Texture("brush.png"));
+            brush.SetTexture("b_test");
             brush.SetSize(size);
             brush.SetPosition(pos);
             baselevel.brushes.Add(brush);

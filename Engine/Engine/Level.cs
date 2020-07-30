@@ -25,7 +25,7 @@ namespace Engine
                 clone.brushes.Add(brushClone);
                 brushClone.SetPosition(brush.position);
                 brushClone.SetSize(brush.size);
-                brushClone.SetTexture(brush.texture);
+                brushClone.SetTexture(brush.textureName);
             }
 
             foreach(Entity entity in entities)
@@ -53,7 +53,6 @@ namespace Engine
         }
         public void Update()
         {
-            Console.WriteLine("update");
             foreach (Entity ent in entities)
                 ent.Update();
         }

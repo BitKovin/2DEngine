@@ -13,6 +13,7 @@ namespace Engine
 
         public Vector2i position;
         public Vector2i size;
+        public string textureName;
         public Texture texture;
         Collision collision;
 
@@ -28,11 +29,12 @@ namespace Engine
             collision.position = new Vector2f(position.X, position.Y);
         }
 
-        public void SetTexture(Texture tex)
+        public void SetTexture(string Texture)
         {
 
-            texture = tex;
+            texture = TexturesData.GetTexture(Texture);
             texture.Repeated = true;
+            textureName = Texture;
 
         }
 

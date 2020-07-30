@@ -21,6 +21,7 @@ namespace Engine
         bool flipH;
         bool flipV;
         Level lvl;
+        public string type;
 
         public Entity()
         {
