@@ -23,7 +23,6 @@ namespace Engine
             Time.Init();
 
             Level lvl = new Level();
-            //Functions.MakeBase(lvl);
             curentLevel = lvl;
 
             Renderer.window.Closed += Window_Closed;
@@ -50,7 +49,6 @@ namespace Engine
         {
             Renderer.window.DispatchEvents();
             Time.FrameStart();
-            //text.text = "FPS: " + (1f/Time.DeltaTime).ToString();
             Input.Update();
             if (!Editor.EditorMain.GamePaused)
                 curentLevel.Update();

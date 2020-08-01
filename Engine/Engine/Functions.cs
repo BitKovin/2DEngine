@@ -33,10 +33,6 @@ namespace Engine
                 case("Player"):
                     Console.WriteLine("playerSpawned");
                     return new Player();
-
-                case (null):
-                    Console.WriteLine("null");
-                    break;
             }
             return null;
         }

@@ -77,5 +77,11 @@ namespace Engine
         {
             SaveLoadMap.Load(Editor.EditorMain.baselevel);
         }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Editor.EditorMain.brushType = comboBox2.Text;
+            Console.WriteLine(comboBox2.Text);
+        }
     }
 }

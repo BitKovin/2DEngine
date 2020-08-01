@@ -108,11 +108,13 @@ namespace Engine
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Items.AddRange(new object[] {
             "Null",
-            "Player"});
+            "b_test",
+            "playerIdle"});
             this.comboBox2.Location = new System.Drawing.Point(218, 151);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(121, 21);
             this.comboBox2.TabIndex = 12;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // label1
             // 

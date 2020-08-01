@@ -28,6 +28,8 @@ namespace Engine
         public string[] stringCustomSaveData;
         public bool[] boolCustomSaveData;
 
+        public Collision[] collisions;
+
         public Entity()
         {
         }
@@ -58,14 +60,18 @@ namespace Engine
             }
 
             texture = Texture;
-            sprite.Texture = Texture;
-            textureName = tex;
+            sprite.Texture = texture;
         }
 
         public void Draw(RenderTarget target, RenderStates states)
         {
+            float x = 1;
+            float y = 1;
+            if (flipH) x = -1;
+            if (flipV) y = -1;
             sprite.Position = new Vector2f(position.X, position.Y * -1);
             sprite.Rotation = rotation;
+            sprite.Scale = new Vector2f(x, y);
             sprite.Origin = new Vector2f(sprite.TextureRect.Width/2f, sprite.TextureRect.Height/2f);
             target.Draw(sprite);
         }
@@ -80,6 +86,11 @@ namespace Engine
         public virtual Entity GetCopy()
         {
             return (Entity)this.MemberwiseClone();
+        }
+
+        public virtual void UpdateCollision()
+        {
+            
         }
 
         public object Clone()

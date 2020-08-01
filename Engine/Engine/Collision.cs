@@ -13,7 +13,7 @@ namespace Engine
 
         public Vector2f position;
         public Vector2f size;
-
+        public Entity owner;
         public static bool MakeCollionTest(Collision col1,Collision col2)
         {
 

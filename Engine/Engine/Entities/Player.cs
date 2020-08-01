@@ -27,14 +27,22 @@ namespace Engine.Entities
             floatCustomSaveData = new float[2];
             floatCustomSaveData[0] = speed;
             floatCustomSaveData[1] = gravity;
+
+            collisions = new Collision[1];
+
+            collision = new Collision();
+            collision.size = new Vector2f(15, 35);
+            collision.position = position;
+            collision.owner = this;
+            collisions[0] = collision;
         }
         public override void Start()
         {
             base.Start();
 
             Camera.target = this;
-            collision = new Collision();
-            collision.size = new Vector2f(20,35);
+            //collision = new Collision();
+            //collision.size = new Vector2f(15,35);
         }
         public override void Update()
         {
@@ -48,7 +56,9 @@ namespace Engine.Entities
                 gravity *= 3f;
 
             Vector2f movement = new Vector2f(Input.Right, 0);
-            GameMain.text.text = position.ToString();
+            //GameMain.text.text = position.ToString();
+            if (Input.Right > 0) flipH = false;
+            if (Input.Right < 0) flipH = true;
             Vector2f move = (new Vector2f(movement.X, 0) * speed) * Time.DeltaTime;
             position += move;
             UpdateCollision();
@@ -89,7 +99,7 @@ namespace Engine.Entities
 
         }
 
-        void UpdateCollision()
+        public override void UpdateCollision()
         {
             collision.position = position;
         }

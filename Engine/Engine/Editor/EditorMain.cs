@@ -18,9 +18,10 @@ namespace Engine.Editor
         public static Tool tool;
         static Vector2i startPoint;
         static Vector2i endPoint;
-        public static string brushType;
-        public static string entityType;
+        public static string brushType = "b_test";
+        public static string entityType = "Player";
         public static Entity curentEntity;
+        public static Entity selectedEntity;
         public static EditorWindow form;
         public static Level baselevel;
         public static bool GamePaused;
@@ -56,17 +57,36 @@ namespace Engine.Editor
                 curentEntity.position = Input.MousePos;
             }
 
+            if(selectedEntity!=null)
+            {
+                if(Mouse.IsButtonPressed(Mouse.Button.Left))
+                {
+                    Collision mouseCol = new Collision();
+                    mouseCol.position = Input.MousePos;
+                    mouseCol.size = new Vector2f(5, 5);
+                    if (Collision.MakeCollionTest(mouseCol, selectedEntity.collisions[0]))
+                    {
+                        selectedEntity.position = Input.MousePos;
+                        selectedEntity.UpdateCollision();
+                    }
+                }
+
+            }
+
         }
 
         private static void Window_MouseButtonReleased(object sender, MouseButtonEventArgs e)
         {
+
             if (e.Button == Mouse.Button.Left)
             {
+
                 switch (tool)
                 {
                     case Tool.enity:
                         if (curentEntity == null) return;
-                        baselevel.entities.Add((Entity)curentEntity.Clone());
+                        Console.WriteLine(curentEntity.position);
+                        curentEntity.UpdateCollision();
                         curentEntity = null;
                         break;
                     case Tool.brush:
@@ -78,17 +98,40 @@ namespace Engine.Editor
                 }
 
             }
+
         }
 
         private static void Window_MouseButtonPressed(object sender, MouseButtonEventArgs e)
         {
-            
+
+            #region select
+            Collision mouseCol = new Collision();
+            mouseCol.position = Input.MousePos;
+            mouseCol.size = new Vector2f(5, 5);
+            Console.WriteLine(mouseCol.position);
+            foreach (Entity entity in GameMain.curentLevel.entities)
+                foreach (Collision col in entity.collisions)
+                {
+                    Console.WriteLine(col.position);
+                    if (Collision.MakeCollionTest(mouseCol, col))
+                    {
+                        selectedEntity = col.owner;
+                        Console.WriteLine("sellected");
+                        return;
+                    }
+                }
+            if (selectedEntity != null)
+                selectedEntity.UpdateCollision();
+            selectedEntity = null;
+            #endregion
+
             if (e.Button == Mouse.Button.Left)
             {
                 switch (tool)
                 {
                     case Tool.enity:
                         if (entityType == null) return;
+                        if (selectedEntity != null) return;
                         curentEntity = Functions.EntityFromString(entityType);
                         curentEntity.position = Input.MousePos;
                         GameMain.curentLevel.entities.Add(curentEntity);
@@ -99,7 +142,6 @@ namespace Engine.Editor
                     default:
                         break;
                 }
-
             }
         }
 
@@ -119,7 +161,7 @@ namespace Engine.Editor
             Console.WriteLine(size);
             
             Brush brush = new Brush();
-            brush.SetTexture("b_test");
+            brush.SetTexture(brushType);
             brush.SetSize(size);
             brush.SetPosition(pos);
             baselevel.brushes.Add(brush);
