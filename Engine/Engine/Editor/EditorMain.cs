@@ -163,12 +163,12 @@ namespace Engine.Editor
                                     return;
                                 }
                             }
-
+                        selectedEntity = null;
                         if (entityType == null) return;
                         if (selectedEntity != null) return;
                         curentEntity = Functions.EntityFromString(entityType);
                         curentEntity.position = Input.MousePos;
-                        //baselevel.entities.Add(curentEntity);
+                        baselevel.entities.Add(curentEntity);
                         break;
                     case Tool.brush:
 
@@ -181,7 +181,7 @@ namespace Engine.Editor
                                 return;
                             }
                         }
-
+                        selectedBrush = null;
                         BrushStart = ToolPos;
                         break;
                     default:
