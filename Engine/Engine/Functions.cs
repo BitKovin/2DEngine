@@ -61,5 +61,10 @@ namespace Engine
             }
         }
 
+        public static Vector2f SnapToGrid(Vector2f val, float grid)
+        {
+            return new Vector2f(val.X - val.X % grid, val.Y - val.Y % grid);
+        }
+
     }
 }

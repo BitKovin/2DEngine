@@ -26,6 +26,7 @@ namespace Engine
 
         static void Game()
         {
+            Thread.CurrentThread.Priority = ThreadPriority.AboveNormal;
             GameMain.Start();
             EditorMain.Start();
             while (Renderer.window.IsOpen)

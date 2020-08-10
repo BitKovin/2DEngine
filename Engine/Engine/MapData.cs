@@ -21,8 +21,8 @@ namespace Engine
                 Brush brush = new Brush();
                 BrushData data = Functions.FromByteArray<BrushData>(Byte);
                 brush.SetTexture(data.tex);
-                brush.SetPosition(new Vector2i(data.posX, data.posY));
-                brush.SetSize(new Vector2i(data.SizeX, data.SizeY));
+                brush.SetPosition(new Vector2f(data.posX, data.posY));
+                brush.SetSize(new Vector2f(data.SizeX, data.SizeY));
                 brushList.Add(brush);
             }
             return brushList;

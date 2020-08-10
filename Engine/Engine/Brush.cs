@@ -11,22 +11,26 @@ namespace Engine
     class Brush:Drawable
     {
 
-        public Vector2i position;
-        public Vector2i size;
+        public Vector2f position;
+        public Vector2f size;
         public string textureName;
         public Texture texture;
-        Collision collision;
+        public Collision collision;
 
         public Brush()
         {
+            collision = new Collision();
+            collision.size = new Vector2f(size.X, size.Y);
+            collision.position = new Vector2f(position.X, position.Y);
         }
 
         public void Init()
         {
             collision = new Collision();
-            GameMain.curentLevel.collisions.Add(collision);
-            collision.size = new Vector2f(size.X,size.Y);
+            collision.size = new Vector2f(size.X, size.Y);
             collision.position = new Vector2f(position.X, position.Y);
+            GameMain.curentLevel.collisions.Add(collision);
+
         }
 
         public void SetTexture(string Texture)
@@ -38,15 +42,17 @@ namespace Engine
 
         }
 
-        public void SetSize(Vector2i Size)
+        public void SetSize(Vector2f Size)
         {
             size = Size;
+            collision.size = new Vector2f(size.X, size.Y);
         }
 
-        public void SetPosition(Vector2i pos)
+        public void SetPosition(Vector2f pos)
         {
 
             position = pos;
+            collision.position = new Vector2f(position.X, position.Y);
 
         }
 
@@ -54,7 +60,7 @@ namespace Engine
         {
 
             Sprite spr = new Sprite(texture);
-            spr.TextureRect = new IntRect(new Vector2i(position.X-(size.X/2), -position.Y - (size.Y / 2)), size);
+            spr.TextureRect = new IntRect(new Vector2i((int)(position.X-(size.X/2)), (int)(-position.Y - (size.Y / 2))), new Vector2i((int)size.X,(int)size.Y));
             spr.Position = new Vector2f(position.X,-position.Y);
             spr.Origin = new Vector2f(spr.TextureRect.Width / 2f, spr.TextureRect.Height / 2f);
 

@@ -14,11 +14,13 @@ namespace Engine
         public static RenderWindow window;
         public static View view;
         static float oldZoom = 1;
-
+        static Texture tooltex = new Texture("Assets//Editor//tool.png");
+        static Sprite toolSpr = new Sprite(tooltex);
         public static void Init()
         {
             window = new RenderWindow(new VideoMode(1600,900), Constants.GameName);
             view = new View(new FloatRect(0, 0, Constants.BaseResolution.X * Camera.zoom, Constants.BaseResolution.Y * Camera.zoom));
+            toolSpr.Origin = new Vector2f(32,34);
         }
 
         public static void Render()
@@ -30,11 +32,16 @@ namespace Engine
             view.Zoom(Camera.zoom);
             oldZoom = Camera.zoom;
             window.SetView(view);
+            Vector2f pos = new Vector2f(Editor.EditorMain.ToolPos.X, -Editor.EditorMain.ToolPos.Y);
+            toolSpr.Position = pos;
+            window.Draw(toolSpr);
 
             foreach (Brush brush in GameMain.curentLevel.brushes)
             {
                 window.Draw(brush);
             }
+            if (Editor.EditorMain.brushDraw != null)
+                window.Draw(Editor.EditorMain.brushDraw);
 
             foreach (Entity ent in GameMain.curentLevel.entities)
             {

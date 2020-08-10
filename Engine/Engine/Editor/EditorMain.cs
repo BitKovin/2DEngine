@@ -22,11 +22,13 @@ namespace Engine.Editor
         public static string entityType = "Player";
         public static Entity curentEntity;
         public static Entity selectedEntity;
+        public static Brush selectedBrush;
         public static EditorWindow form;
         public static Level baselevel;
         public static bool GamePaused;
         public static string FileName = "test";
-
+        public static Brush brushDraw;
+        public static Vector2f ToolPos;
         public static Vector2f BrushStart;
         public static Vector2f BrushEnd;
 
@@ -52,9 +54,17 @@ namespace Engine.Editor
             Action action = () => { form.SetPos(winPos.X, winPos.Y); };
             form.Invoke(action);
 
+            ToolPos = Functions.SnapToGrid(Input.MousePos,5f);
+
             if(curentEntity!=null)
             {
                 curentEntity.position = Input.MousePos;
+            }
+
+            if(Keyboard.IsKeyPressed(Keyboard.Key.Delete))
+            {
+                baselevel.brushes.Remove(selectedBrush);
+                selectedBrush = null;
             }
 
             if(selectedEntity!=null)
@@ -71,6 +81,15 @@ namespace Engine.Editor
                     }
                 }
 
+            }
+
+            if(Mouse.IsButtonPressed(Mouse.Button.Left)&&tool==Tool.brush)
+            {
+                BrushEnd = ToolPos;
+                BuildDrawBrush();
+            }else
+            {
+                brushDraw = null;
             }
 
         }
@@ -90,7 +109,9 @@ namespace Engine.Editor
                         curentEntity = null;
                         break;
                     case Tool.brush:
-                        BrushEnd = Input.MousePos;
+
+                        if (selectedBrush != null) return;
+                        BrushEnd = ToolPos;
                         BuildBrush();
                         break;
                     default:
@@ -105,21 +126,7 @@ namespace Engine.Editor
         {
 
             #region select
-            Collision mouseCol = new Collision();
-            mouseCol.position = Input.MousePos;
-            mouseCol.size = new Vector2f(5, 5);
-            Console.WriteLine(mouseCol.position);
-            foreach (Entity entity in GameMain.curentLevel.entities)
-                foreach (Collision col in entity.collisions)
-                {
-                    Console.WriteLine(col.position);
-                    if (Collision.MakeCollionTest(mouseCol, col))
-                    {
-                        selectedEntity = col.owner;
-                        Console.WriteLine("sellected");
-                        return;
-                    }
-                }
+
             if (selectedEntity != null)
                 selectedEntity.UpdateCollision();
             selectedEntity = null;
@@ -127,17 +134,46 @@ namespace Engine.Editor
 
             if (e.Button == Mouse.Button.Left)
             {
+                Collision mouseCol = new Collision();
+                mouseCol.position = Input.MousePos;
+                mouseCol.size = new Vector2f(1, 1);
+                Console.WriteLine(mouseCol.position);
+
                 switch (tool)
                 {
                     case Tool.enity:
+
+                        foreach (Entity entity in baselevel.entities)
+                            foreach (Collision col in entity.collisions)
+                            {
+                                Console.WriteLine(col.position);
+                                if (Collision.MakeCollionTest(mouseCol, col))
+                                {
+                                    selectedEntity = col.owner;
+                                    Console.WriteLine("sellected");
+                                    return;
+                                }
+                            }
+
                         if (entityType == null) return;
                         if (selectedEntity != null) return;
                         curentEntity = Functions.EntityFromString(entityType);
                         curentEntity.position = Input.MousePos;
-                        GameMain.curentLevel.entities.Add(curentEntity);
+                        baselevel.entities.Add(curentEntity);
                         break;
                     case Tool.brush:
-                        BrushStart = Input.MousePos;
+
+                        foreach (Brush brush in baselevel.brushes)
+                        {
+                            if(Collision.MakeCollionTest(mouseCol, brush.collision))
+                            {
+                                selectedBrush = brush;
+                                Console.WriteLine("sellected");
+                                return;
+                            }
+                        }
+
+                        BrushStart = ToolPos;
                         break;
                     default:
                         break;
@@ -147,17 +183,19 @@ namespace Engine.Editor
 
         public static void BuildBrush()
         {
-            
-            Console.WriteLine("brush");
+
             float SizeX = BrushEnd.X - BrushStart.X;
             if(SizeX<0)
                 SizeX = SizeX * -1;
             float SizeY = BrushEnd.Y- BrushStart.Y;
+            if (SizeY > 0)
+                SizeY *= -1;
+            if (SizeX == 0 || SizeY == 0) return;
             float posX = (BrushStart.X + BrushEnd.X) / 2f;
             float posY = (BrushStart.Y + BrushEnd.Y) / 2f;
 
-            Vector2i pos = new Vector2i((int)posX, (int)posY);
-            Vector2i size = new Vector2i((int)SizeX, -(int)SizeY);
+            Vector2f pos = new Vector2f(posX, posY);
+            Vector2f size = new Vector2f(SizeX, -SizeY);
             Console.WriteLine(size);
             
             Brush brush = new Brush();
@@ -165,7 +203,28 @@ namespace Engine.Editor
             brush.SetSize(size);
             brush.SetPosition(pos);
             baselevel.brushes.Add(brush);
+            Console.WriteLine("brush");
+        }
 
+        public static void BuildDrawBrush()
+        {
+            float SizeX = BrushEnd.X - BrushStart.X;
+            if (SizeX < 0)
+                SizeX = SizeX * -1;
+            float SizeY = BrushEnd.Y - BrushStart.Y;
+            if (SizeY > 0)
+                SizeY *= -1;
+            float posX = (BrushStart.X + BrushEnd.X) / 2f;
+            float posY = (BrushStart.Y + BrushEnd.Y) / 2f;
+
+            Vector2f pos = new Vector2f(posX, posY);
+            Vector2f size = new Vector2f(SizeX, -SizeY);
+
+            Brush brush = new Brush();
+            brush.SetTexture(brushType);
+            brush.SetSize(size);
+            brush.SetPosition(pos);
+            brushDraw = brush;
         }
 
     }

@@ -9,10 +9,10 @@ namespace Engine
     [Serializable]
     class BrushData
     {
-        public int posX;
-        public int posY;
-        public int SizeX;
-        public int SizeY;
+        public float posX;
+        public float posY;
+        public float SizeX;
+        public float SizeY;
         public string tex;
         public BrushData(Brush brush)
         {
