@@ -31,7 +31,6 @@ namespace Engine
             switch (name)
             {
                 case("Player"):
-                    Console.WriteLine("playerSpawned");
                     return new Player();
             }
             return null;

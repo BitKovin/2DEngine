@@ -12,7 +12,6 @@ namespace Engine
     {
         public byte[][] brushes;
         public byte[][] entities;
-
         public List<Brush>GetBrushes()
         {
             List<Brush> brushList = new List<Brush>();
@@ -43,6 +42,8 @@ namespace Engine
                 entity.type = data.type;
                 entity.flipH = data.flipH;
                 entity.flipV = data.flipV;
+
+                entity.UpdateCollision();
 
                 entity.intCustomSaveData = data.intCustomSaveData;
                 entity.floatCustomSaveData = data.floatCustomSaveData;

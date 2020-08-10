@@ -27,7 +27,7 @@ namespace Engine
         {
             view = new View(new FloatRect(0, 0, Constants.BaseResolution.X*Camera.zoom, Constants.BaseResolution.Y * Camera.zoom));
             window.Clear(Color.Blue);
-            view.Center = Functions.Vector2ToVector2f(Camera.position);
+            view.Center = Camera.position;
             view.Zoom(1f / oldZoom);
             view.Zoom(Camera.zoom);
             oldZoom = Camera.zoom;

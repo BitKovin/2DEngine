@@ -31,6 +31,8 @@ namespace Engine.Editor
         public static Vector2f ToolPos;
         public static Vector2f BrushStart;
         public static Vector2f BrushEnd;
+        static Vector2f MousePosOld;
+        public static Vector2f cameraPos;
 
         public static void Start()
         {
@@ -92,6 +94,13 @@ namespace Engine.Editor
                 brushDraw = null;
             }
 
+            if(Mouse.IsButtonPressed(Mouse.Button.Right))
+            {
+                Vector2f move = Input.MousePosWindow - MousePosOld;
+                cameraPos += new Vector2f(-move.X,move.Y);
+            }
+            MousePosOld = Input.MousePosWindow;
+            Camera.position = cameraPos;
         }
 
         private static void Window_MouseButtonReleased(object sender, MouseButtonEventArgs e)
@@ -159,7 +168,7 @@ namespace Engine.Editor
                         if (selectedEntity != null) return;
                         curentEntity = Functions.EntityFromString(entityType);
                         curentEntity.position = Input.MousePos;
-                        baselevel.entities.Add(curentEntity);
+                        //baselevel.entities.Add(curentEntity);
                         break;
                     case Tool.brush:
 

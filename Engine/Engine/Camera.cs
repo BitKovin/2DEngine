@@ -10,7 +10,7 @@ namespace Engine
 {
     class Camera
     {
-        public static Vector2 position = new Vector2(0,0);
+        public static Vector2f position = new Vector2f(0,0);
         public static Entity target;
         public static float speed = 500f;
         public static float zoom = 1f;
@@ -18,7 +18,7 @@ namespace Engine
         public static void Update()
         {
             if(target!=null)
-                position = new Vector2(target.position.X, -target.position.Y);
+                position = new Vector2f(target.position.X, -target.position.Y);
         }
 
     }

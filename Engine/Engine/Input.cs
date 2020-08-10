@@ -61,8 +61,8 @@ namespace Engine
             #endregion
 
             #region MousePos
-            MousePos = new Vector2f((Mouse.GetPosition(Renderer.window).X - (Renderer.window.Size.X / 2)) / ((Renderer.window.Size.X / Renderer.view.Size.X)) + Camera.position.X, ( -Mouse.GetPosition(Renderer.window).Y + (Renderer.window.Size.Y / 2)) / ((Renderer.window.Size.Y / Renderer.view.Size.Y)) - Camera.position.Y);
-            MousePosWindow = new Vector2f(Mouse.GetPosition(Renderer.window).X - (Renderer.window.Size.X / 2), -Mouse.GetPosition(Renderer.window).Y + (Renderer.window.Size.Y / 2));
+            MousePos = new Vector2f((Mouse.GetPosition(Renderer.window).X - (Renderer.window.Size.X / 2)) / ((Renderer.window.Size.X / Renderer.view.Size.X)) + Camera.position.X, ( -Mouse.GetPosition(Renderer.window).Y + (Renderer.window.Size.Y / 2)) / (Renderer.window.Size.Y / Renderer.view.Size.Y) - Camera.position.Y);
+            MousePosWindow = new Vector2f(Mouse.GetPosition(Renderer.window).X - (Renderer.window.Size.X / 2) / (Renderer.window.Size.Y / Renderer.view.Size.Y), -Mouse.GetPosition(Renderer.window).Y + (Renderer.window.Size.Y / 2)) / (Renderer.window.Size.Y / Renderer.view.Size.Y);
             #endregion
 
         }
