@@ -22,3 +22,6 @@ F:\GitHub\2DEngine\Engine\Engine\obj\Release\Engine.csproj.CoreCompileInputs.cac
 F:\GitHub\2DEngine\Engine\Engine\obj\Release\Engine.csproj.CopyComplete
 F:\GitHub\2DEngine\Engine\Engine\obj\Release\Engine.exe
 F:\GitHub\2DEngine\Engine\Engine\obj\Release\Engine.pdb
+F:\GitHub\2DEngine\Engine\Engine\bin\Release\LuaInterface.dll
+F:\GitHub\2DEngine\Engine\Engine\obj\Release\Engine.EditorWindow.resources
+F:\GitHub\2DEngine\Engine\Engine\obj\Release\Engine.csproj.GenerateResource.cache

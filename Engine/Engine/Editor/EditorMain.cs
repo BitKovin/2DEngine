@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using SFML.Window;
 using SFML.Graphics;
 using SFML.System;
+using Engine.UI;
 namespace Engine.Editor
 {
     enum Tool
@@ -35,6 +36,8 @@ namespace Engine.Editor
         public static Vector2f cameraPos;
         static bool drawing;
 
+        static UiText CameraPos;
+
         public static void Start()
         {
             Renderer.window.MouseButtonPressed += Window_MouseButtonPressed;
@@ -42,6 +45,13 @@ namespace Engine.Editor
             GamePaused = true;
             baselevel = new Level();
             GameMain.curentLevel = baselevel;
+
+            CameraPos = new UiText();
+            CameraPos.position = new Vector2f(-1280 / 2, 720 / 2 - 40);
+            CameraPos.r_text.Color = Color.White;
+            CameraPos.r_text.Scale = new Vector2f(0.5f, 0.5f);
+            UiManager.objects.Add(CameraPos);
+
         }
 
         public static void StartLevel()
@@ -50,12 +60,20 @@ namespace Engine.Editor
             GameMain.curentLevel.Start();
             GamePaused = false;
         }
+        public static void StopLevel()
+        {
+            GameMain.curentLevel = baselevel;
+            GamePaused = true;
+            Camera.target = null;
+        }
 
         public static void Update()
         {
             Vector2i winPos = Renderer.window.Position;
             Action action = () => { form.SetPos(winPos.X, winPos.Y); };
             form.Invoke(action);
+
+            CameraPos.text = $"Camera Position: {(int)Camera.position.X}; {(int)Camera.position.Y}";
 
             ToolPos = Functions.SnapToGrid(Input.MousePos,5f);
 
@@ -113,7 +131,9 @@ namespace Engine.Editor
             drawing = false;
             if (e.Button == Mouse.Button.Left)
             {
-
+                Collision mouseCol = new Collision();
+                mouseCol.position = Input.MousePos;
+                mouseCol.size = new Vector2f(1, 1);
                 switch (tool)
                 {
                     case Tool.enity:
@@ -123,6 +143,17 @@ namespace Engine.Editor
                         curentEntity = null;
                         break;
                     case Tool.brush:
+
+                        if(startPoint==endPoint)
+                        foreach (Brush brush in baselevel.brushes)
+                        {
+                            if (Collision.MakeCollionTest(mouseCol, brush.collision))
+                            {
+                                selectedBrush = brush;
+                                Console.WriteLine("sellected");
+                                return;
+                            }
+                        }
 
                         if (selectedBrush != null) return;
                         BrushEnd = ToolPos;
@@ -177,15 +208,7 @@ namespace Engine.Editor
                         break;
                     case Tool.brush:
 
-                        foreach (Brush brush in baselevel.brushes)
-                        {
-                            if(Collision.MakeCollionTest(mouseCol, brush.collision))
-                            {
-                                selectedBrush = brush;
-                                Console.WriteLine("sellected");
-                                return;
-                            }
-                        }
+
                         selectedBrush = null;
                         BrushStart = ToolPos;
                         drawing = true;

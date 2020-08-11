@@ -18,7 +18,6 @@ namespace Engine
         {
             if(target!=null)
                 position = new Vector2f(target.position.X, -target.position.Y);
-            GameMain.text.text = position.ToString();
         }
 
     }

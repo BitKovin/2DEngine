@@ -31,7 +31,9 @@ namespace Engine
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            TopLevel = true;
+            TopMost = true;
+            Focus();
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -82,6 +84,11 @@ namespace Engine
         {
             Editor.EditorMain.brushType = comboBox2.Text;
             Console.WriteLine(comboBox2.Text);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Editor.EditorMain.StopLevel();
         }
     }
 }
