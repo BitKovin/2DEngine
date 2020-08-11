@@ -33,6 +33,7 @@ namespace Engine.Editor
         public static Vector2f BrushEnd;
         static Vector2f MousePosOld;
         public static Vector2f cameraPos;
+        static bool drawing;
 
         public static void Start()
         {
@@ -67,6 +68,9 @@ namespace Engine.Editor
             {
                 baselevel.brushes.Remove(selectedBrush);
                 selectedBrush = null;
+
+                baselevel.entities.Remove(selectedEntity);
+                selectedEntity = null;
             }
 
             if(selectedEntity!=null)
@@ -85,7 +89,7 @@ namespace Engine.Editor
 
             }
 
-            if(Mouse.IsButtonPressed(Mouse.Button.Left)&&tool==Tool.brush)
+            if(Mouse.IsButtonPressed(Mouse.Button.Left)&&tool==Tool.brush&&drawing)
             {
                 BrushEnd = ToolPos;
                 BuildDrawBrush();
@@ -100,12 +104,13 @@ namespace Engine.Editor
                 cameraPos += new Vector2f(-move.X,move.Y);
             }
             MousePosOld = Input.MousePosWindow;
+            if(GamePaused)
             Camera.position = cameraPos;
         }
 
         private static void Window_MouseButtonReleased(object sender, MouseButtonEventArgs e)
         {
-
+            drawing = false;
             if (e.Button == Mouse.Button.Left)
             {
 
@@ -183,6 +188,7 @@ namespace Engine.Editor
                         }
                         selectedBrush = null;
                         BrushStart = ToolPos;
+                        drawing = true;
                         break;
                     default:
                         break;

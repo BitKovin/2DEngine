@@ -32,8 +32,10 @@ namespace Engine
             view.Zoom(Camera.zoom);
             oldZoom = Camera.zoom;
             window.SetView(view);
+
             Vector2f pos = new Vector2f(Editor.EditorMain.ToolPos.X, -Editor.EditorMain.ToolPos.Y);
             toolSpr.Position = pos;
+
             window.Draw(toolSpr);
 
             foreach (Brush brush in GameMain.curentLevel.brushes)
