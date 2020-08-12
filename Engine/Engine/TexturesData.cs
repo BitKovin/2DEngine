@@ -15,6 +15,16 @@ namespace Engine
         {
             textures.Add("playerIdle", new Texture("Assets//Player//Animations//stay.png"));
             textures.Add("b_test", new Texture("Assets//Brushes//test.png"));
+            textures.Add("playerWalk0", new Texture("Assets//Player//Animations//walk0.png"));
+            textures.Add("playerWalk1", new Texture("Assets//Player//Animations//walk1.png"));
+            textures.Add("playerWalk2", new Texture("Assets//Player//Animations//walk2.png"));
+            textures.Add("playerWalk3", new Texture("Assets//Player//Animations//walk3.png"));
+            textures.Add("playerWalk4", new Texture("Assets//Player//Animations//walk4.png"));
+            textures.Add("playerWalk5", new Texture("Assets//Player//Animations//walk5.png"));
+            textures.Add("playerWalk6", new Texture("Assets//Player//Animations//walk6.png"));
+            textures.Add("playerWalk7", new Texture("Assets//Player//Animations//walk7.png"));
+            textures.Add("playerWalk8", new Texture("Assets//Player//Animations//stay.png"));
+            textures.Add("playerInAir", new Texture("Assets//Player//Animations//walk1.png"));
         }
 
         public static Texture GetTexture(string name)

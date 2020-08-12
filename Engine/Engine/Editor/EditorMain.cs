@@ -17,8 +17,6 @@ namespace Engine.Editor
     class EditorMain
     {
         public static Tool tool;
-        static Vector2i startPoint;
-        static Vector2i endPoint;
         public static string brushType = "b_test";
         public static string entityType = "Player";
         public static Entity curentEntity;
@@ -69,6 +67,7 @@ namespace Engine.Editor
 
         public static void Update()
         {
+            if (!GamePaused) return;
             Vector2i winPos = Renderer.window.Position;
             Action action = () => { form.SetPos(winPos.X, winPos.Y); };
             form.Invoke(action);
@@ -128,6 +127,7 @@ namespace Engine.Editor
 
         private static void Window_MouseButtonReleased(object sender, MouseButtonEventArgs e)
         {
+            if (!GamePaused) return;
             drawing = false;
             if (e.Button == Mouse.Button.Left)
             {
@@ -144,17 +144,19 @@ namespace Engine.Editor
                         break;
                     case Tool.brush:
 
-                        if(startPoint==endPoint)
-                        foreach (Brush brush in baselevel.brushes)
+                        if (BrushStart == BrushEnd)
                         {
-                            if (Collision.MakeCollionTest(mouseCol, brush.collision))
+                            Console.WriteLine("start seaching");
+                            foreach (Brush brush in baselevel.brushes)
                             {
-                                selectedBrush = brush;
-                                Console.WriteLine("sellected");
-                                return;
+                                if (Collision.MakeCollionTest(mouseCol, brush.collision))
+                                {
+                                    selectedBrush = brush;
+                                    Console.WriteLine("sellected");
+                                    return;
+                                }
                             }
                         }
-
                         if (selectedBrush != null) return;
                         BrushEnd = ToolPos;
                         BuildBrush();
@@ -169,7 +171,7 @@ namespace Engine.Editor
 
         private static void Window_MouseButtonPressed(object sender, MouseButtonEventArgs e)
         {
-
+            if (!GamePaused) return;
             #region select
 
             if (selectedEntity != null)
@@ -203,8 +205,11 @@ namespace Engine.Editor
                         if (entityType == null) return;
                         if (selectedEntity != null) return;
                         curentEntity = Functions.EntityFromString(entityType);
-                        curentEntity.position = Input.MousePos;
-                        baselevel.entities.Add(curentEntity);
+                        if (curentEntity != null)
+                        {
+                            curentEntity.position = Input.MousePos;
+                            baselevel.entities.Add(curentEntity);
+                        }
                         break;
                     case Tool.brush:
 
