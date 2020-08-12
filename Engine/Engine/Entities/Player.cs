@@ -123,7 +123,7 @@ namespace Engine.Entities
 
                     if(move.Y<0)
                     {
-                        if(Math.Abs(gravity)<11)
+                        if(Math.Abs(gravity)<50)
                         OnGround = true;
                         gravity = 0;
                         UpdateCollision();
