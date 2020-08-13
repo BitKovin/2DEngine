@@ -30,6 +30,7 @@
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
@@ -47,16 +48,22 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
 >>>>>>> parent of a1b34d6... moved on dot net
+=======
+>>>>>>> parent of d385e47... bak
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <Optimize>false</Optimize>
 =======
     <Optimize>true</Optimize>
 >>>>>>> parent of a1b34d6... moved on dot net
+=======
+    <Optimize>false</Optimize>
+>>>>>>> parent of d385e47... bak
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -144,6 +151,7 @@
     </EmbeddedResource>
   </ItemGroup>
 <<<<<<< HEAD
+<<<<<<< HEAD
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 >>>>>>> parent of d385e47... bak
 =======
@@ -159,6 +167,8 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+=======
+>>>>>>> parent of d385e47... bak
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 >>>>>>> parent of a1b34d6... moved on dot net
 </Project>

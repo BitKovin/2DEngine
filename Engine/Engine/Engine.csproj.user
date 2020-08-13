@@ -15,8 +15,12 @@
 =======
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
+<<<<<<< HEAD
     <PublishUrlHistory>publish\</PublishUrlHistory>
 >>>>>>> parent of a1b34d6... moved on dot net
+=======
+    <PublishUrlHistory />
+>>>>>>> parent of d385e47... bak
     <InstallUrlHistory />
     <SupportUrlHistory />
     <UpdateUrlHistory />
