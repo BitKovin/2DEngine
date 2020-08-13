@@ -49,6 +49,7 @@ namespace Engine.Editor
             CameraPos.r_text.Color = Color.White;
             CameraPos.r_text.Scale = new Vector2f(0.5f, 0.5f);
             UiManager.objects.Add(CameraPos);
+
         }
 
         public static void StartLevel()

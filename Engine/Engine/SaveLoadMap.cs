@@ -12,7 +12,7 @@ namespace Engine
     class SaveLoadMap
     {
 
-        public static void Save(Level level,string name)
+        public static void Save(Level level)
         {
             MapData mapData;
             try
@@ -36,22 +36,21 @@ namespace Engine
                 }
 
                 BinaryFormatter formatter = new BinaryFormatter();
-                FileStream file = new FileStream($"Assets//maps//{name}.map", FileMode.Create);
+                FileStream file = new FileStream($"Assets//maps//{EditorMain.FileName}.map", FileMode.Create);
 
                 formatter.Serialize(file, mapData);
                 file.Close();
-            }
-            catch (SystemException ex)
+            }catch(SystemException ex)
             {
                 Console.WriteLine(ex);
             }
         }
-        public static void Load(Level level,string name)
+        public static void Load(Level level)
         {
-            if (File.Exists($"Assets//maps//{name}.map"))
+            if(File.Exists($"Assets//maps//{EditorMain.FileName}.map"))
             {
                 BinaryFormatter formatter = new BinaryFormatter();
-                FileStream file = new FileStream($"Assets//maps//{name}.map", FileMode.Open);
+                FileStream file = new FileStream($"Assets//maps//{EditorMain.FileName}.map", FileMode.Open);
                 MapData mapData = (MapData)formatter.Deserialize(file);
                 level.brushes = mapData.GetBrushes();
                 level.entities = mapData.GetEntities();

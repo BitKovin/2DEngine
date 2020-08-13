@@ -73,11 +73,11 @@ namespace Engine
 
         private void button2_Click(object sender, EventArgs e)
         {
-            SaveLoadMap.Load(Editor.EditorMain.baselevel, Editor.EditorMain.FileName);
+            SaveLoadMap.Save(Editor.EditorMain.baselevel);
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            SaveLoadMap.Load(Editor.EditorMain.baselevel, Editor.EditorMain.FileName);
+            SaveLoadMap.Load(Editor.EditorMain.baselevel);
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
