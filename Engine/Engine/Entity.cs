@@ -30,8 +30,6 @@ namespace Engine
 
         public Collision[] collisions;
 
-        public bool showOnlyInEditor;
-
         public Entity()
         {
         }
@@ -67,7 +65,6 @@ namespace Engine
 
         public void Draw(RenderTarget target, RenderStates states)
         {
-            if (showOnlyInEditor && !Editor.EditorMain.GamePaused) return;
             float x = 1;
             float y = 1;
             if (flipH) x = -1;

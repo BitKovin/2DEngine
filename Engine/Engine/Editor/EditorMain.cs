@@ -67,13 +67,12 @@ namespace Engine.Editor
 
         public static void Update()
         {
+            if (!GamePaused) return;
             Vector2i winPos = Renderer.window.Position;
             Action action = () => { form.SetPos(winPos.X, winPos.Y); };
             form.Invoke(action);
 
             CameraPos.text = $"Camera Position: {(int)Camera.position.X}; {(int)Camera.position.Y}";
-            if (!GamePaused) return;
-
 
             ToolPos = Functions.SnapToGrid(Input.MousePos,5f);
 
