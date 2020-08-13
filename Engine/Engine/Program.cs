@@ -7,11 +7,20 @@ namespace Engine
 {
     class Program
     {
+        public static bool isEditor;
         static void Main(string[] args)
         {
-
-            Thread editor = new Thread(new ThreadStart(Editor));
-            editor.Start();
+            foreach(string s in args)
+            {
+                Console.WriteLine(s);
+                if (s == "-editor")
+                    isEditor = true;
+            }
+            if (isEditor)
+            {
+                Thread editor = new Thread(new ThreadStart(Editor));
+                editor.Start();
+            }
             Game();
         }
 
@@ -27,13 +36,18 @@ namespace Engine
         static void Game()
         {
             Thread.CurrentThread.Priority = ThreadPriority.AboveNormal;
+
             GameMain.Start();
-            EditorMain.Start();
+            if (isEditor)
+                EditorMain.Start();
+
             while (Renderer.window.IsOpen)
             {
                 GameMain.Update();
+                if(isEditor)
                 EditorMain.Update();
             }
+            if(isEditor)
             Application.Exit();
         }
     }
