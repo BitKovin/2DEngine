@@ -11,7 +11,11 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+=======
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+>>>>>>> parent of a1b34d6... moved on dot net
 =======
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
 >>>>>>> parent of a1b34d6... moved on dot net
@@ -28,7 +32,10 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of a1b34d6... moved on dot net
 =======
 >>>>>>> parent of a1b34d6... moved on dot net
 =======
@@ -50,6 +57,9 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of a1b34d6... moved on dot net
+=======
 >>>>>>> parent of a1b34d6... moved on dot net
 =======
 >>>>>>> parent of a1b34d6... moved on dot net
@@ -63,7 +73,11 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <Optimize>false</Optimize>
+=======
+    <Optimize>true</Optimize>
+>>>>>>> parent of a1b34d6... moved on dot net
 =======
     <Optimize>true</Optimize>
 >>>>>>> parent of a1b34d6... moved on dot net
@@ -162,7 +176,10 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of a1b34d6... moved on dot net
 =======
 >>>>>>> parent of a1b34d6... moved on dot net
 =======
@@ -181,6 +198,9 @@
   </ItemGroup>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of a1b34d6... moved on dot net
+=======
 >>>>>>> parent of a1b34d6... moved on dot net
 =======
 >>>>>>> parent of a1b34d6... moved on dot net
