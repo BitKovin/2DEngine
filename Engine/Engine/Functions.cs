@@ -28,15 +28,12 @@ namespace Engine
 
         public static Entity EntityFromString(string name)
         {
-            try
+            switch (name)
             {
-                Type t = Type.GetType("Engine.Entities." + name);
-                return Activator.CreateInstance(t) as Entity;
-            }catch(SystemException ex)
-            {
-                Console.WriteLine(ex);
-                return null;
+                case("Player"):
+                    return new Player();
             }
+            return null;
         }
 
         public static byte[] ObjectToByteArray(object obj)
