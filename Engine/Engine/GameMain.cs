@@ -40,7 +40,10 @@ namespace Engine
             text.position = new Vector2f(-1280 / 2, -720 / 2);
             text.r_text.Color = Color.White;
             UI.UiManager.objects.Add(text);
+            if(!Program.isEditor)
+            SaveLoadMap.Load(curentLevel,"test");
             curentLevel.Start();
+
         }
 
 
