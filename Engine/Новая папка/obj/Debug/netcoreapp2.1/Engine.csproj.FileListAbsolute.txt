@@ -1,0 +1,16 @@
+D:\Projects\Engine\Engine\bin\Debug\netcoreapp2.1\Engine.deps.json
+D:\Projects\Engine\Engine\bin\Debug\netcoreapp2.1\Engine.runtimeconfig.json
+D:\Projects\Engine\Engine\bin\Debug\netcoreapp2.1\Engine.runtimeconfig.dev.json
+D:\Projects\Engine\Engine\bin\Debug\netcoreapp2.1\Engine.dll
+D:\Projects\Engine\Engine\bin\Debug\netcoreapp2.1\Engine.pdb
+D:\Projects\Engine\Engine\bin\Debug\netcoreapp2.1\sfmlnet-audio-2.dll
+D:\Projects\Engine\Engine\bin\Debug\netcoreapp2.1\sfmlnet-graphics-2.dll
+D:\Projects\Engine\Engine\bin\Debug\netcoreapp2.1\sfmlnet-system-2.dll
+D:\Projects\Engine\Engine\bin\Debug\netcoreapp2.1\sfmlnet-window-2.dll
+D:\Projects\Engine\Engine\obj\Debug\netcoreapp2.1\Engine.csprojAssemblyReference.cache
+D:\Projects\Engine\Engine\obj\Debug\netcoreapp2.1\Engine.csproj.CoreCompileInputs.cache
+D:\Projects\Engine\Engine\obj\Debug\netcoreapp2.1\Engine.AssemblyInfoInputs.cache
+D:\Projects\Engine\Engine\obj\Debug\netcoreapp2.1\Engine.AssemblyInfo.cs
+D:\Projects\Engine\Engine\obj\Debug\netcoreapp2.1\Engine.csproj.CopyComplete
+D:\Projects\Engine\Engine\obj\Debug\netcoreapp2.1\Engine.dll
+D:\Projects\Engine\Engine\obj\Debug\netcoreapp2.1\Engine.pdb
