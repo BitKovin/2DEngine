@@ -82,10 +82,13 @@ namespace Engine.Entities
                     if(move.Y<0)
                     {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
                         if(Math.Abs(gravity)<11)
                         OnGround = true;
 >>>>>>> parent of d385e47... bak
+=======
+>>>>>>> parent of 3a2e066... Added animation system
                         gravity = 0;
                         OnGround = true;
                         UpdateCollision();
