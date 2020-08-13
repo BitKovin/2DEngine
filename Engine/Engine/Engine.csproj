@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -7,11 +8,45 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>Engine</RootNamespace>
     <AssemblyName>Engine</AssemblyName>
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+=======
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+>>>>>>> parent of a1b34d6... moved on dot net
+=======
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+>>>>>>> parent of a1b34d6... moved on dot net
+=======
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+>>>>>>> parent of a1b34d6... moved on dot net
+=======
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+>>>>>>> parent of a1b34d6... moved on dot net
+=======
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+>>>>>>> parent of a1b34d6... moved on dot net
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> parent of a1b34d6... moved on dot net
+=======
+>>>>>>> parent of a1b34d6... moved on dot net
+=======
+>>>>>>> parent of a1b34d6... moved on dot net
+=======
+>>>>>>> parent of a1b34d6... moved on dot net
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -27,12 +62,45 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of a1b34d6... moved on dot net
+=======
+>>>>>>> parent of a1b34d6... moved on dot net
+=======
+>>>>>>> parent of a1b34d6... moved on dot net
+=======
+>>>>>>> parent of a1b34d6... moved on dot net
+=======
+>>>>>>> parent of a1b34d6... moved on dot net
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+    <Optimize>false</Optimize>
+=======
     <Optimize>true</Optimize>
+>>>>>>> parent of a1b34d6... moved on dot net
+=======
+    <Optimize>true</Optimize>
+>>>>>>> parent of a1b34d6... moved on dot net
+=======
+    <Optimize>true</Optimize>
+>>>>>>> parent of a1b34d6... moved on dot net
+=======
+    <Optimize>true</Optimize>
+>>>>>>> parent of a1b34d6... moved on dot net
+=======
+    <Optimize>true</Optimize>
+>>>>>>> parent of a1b34d6... moved on dot net
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -119,6 +187,20 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> parent of a1b34d6... moved on dot net
+=======
+>>>>>>> parent of a1b34d6... moved on dot net
+=======
+>>>>>>> parent of a1b34d6... moved on dot net
+=======
+>>>>>>> parent of a1b34d6... moved on dot net
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.1">
       <Visible>False</Visible>
@@ -131,16 +213,18 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of a1b34d6... moved on dot net
+=======
+>>>>>>> parent of a1b34d6... moved on dot net
+=======
+>>>>>>> parent of a1b34d6... moved on dot net
+=======
+>>>>>>> parent of a1b34d6... moved on dot net
+=======
+>>>>>>> parent of a1b34d6... moved on dot net
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
-
-    <PropertyGroup>
-        <OutputType>WinExe</OutputType>
-        <TargetFramework>netcoreapp3.1</TargetFramework>
-        <UseWindowsForms>true</UseWindowsForms>
-        <LangVersion>8</LangVersion>
-    </PropertyGroup>
-    <ItemGroup>
-        <PackageReference Include="SFML.Net" Version="2.5.0" />
-    </ItemGroup>
 </Project>
