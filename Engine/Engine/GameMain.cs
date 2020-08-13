@@ -19,7 +19,7 @@ namespace Engine
 
             Renderer.Init();
             Renderer.window.SetFramerateLimit(150);
-            Renderer.window.SetVerticalSyncEnabled(true);
+            //Renderer.window.SetVerticalSyncEnabled(true);
             Time.Init();
 
             Level lvl = new Level();
@@ -34,6 +34,7 @@ namespace Engine
                 ent.Start();
             }
 
+            //Renderer.view.Zoom(0.5f);
 
             text = new UiText();
             text.position = new Vector2f(-1280 / 2, -720 / 2);
