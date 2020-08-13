@@ -3,7 +3,11 @@
   <PropertyGroup>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <PublishUrlHistory />
+=======
+    <PublishUrlHistory>publish\</PublishUrlHistory>
+>>>>>>> parent of a1b34d6... moved on dot net
 =======
     <PublishUrlHistory>publish\</PublishUrlHistory>
 >>>>>>> parent of a1b34d6... moved on dot net
