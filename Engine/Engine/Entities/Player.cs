@@ -81,6 +81,11 @@ namespace Engine.Entities
 
                     if(move.Y<0)
                     {
+<<<<<<< HEAD
+=======
+                        if(Math.Abs(gravity)<11)
+                        OnGround = true;
+>>>>>>> parent of d385e47... bak
                         gravity = 0;
                         OnGround = true;
                         UpdateCollision();
