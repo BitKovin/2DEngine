@@ -13,18 +13,18 @@ namespace Engine.UI
 
         public enum Origin
         {
+            Centre,
             Left,
             Right,
             Top,
-            Bottom,
-            Centre
+            Bottom
         }
 
         public Int32 layer;
         public Origin originH;
         public Origin originV;
 
-        public Vector2f Center = new Vector2f();
+        public Vector2f Center = new Vector2f(0,0);
 
         public Vector2f Top = new Vector2f(0, -Constants.BaseResolution.Y/2f);
         public Vector2f Bottom = new Vector2f(0, Constants.BaseResolution.Y / 2f);

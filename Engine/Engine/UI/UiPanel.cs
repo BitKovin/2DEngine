@@ -30,7 +30,51 @@ namespace Engine.UI
         {
             base.Update();
 
-            collision.position = position * 0.5f + new Vector2f(Camera.position.X, -Camera.position.Y) + originH - originV;
+            Vector2f origin = new Vector2f();
+
+            switch (originH)
+            {
+                case Origin.Left:
+                    origin += Left;
+                    break;
+                case Origin.Right:
+                    origin += Right;
+                    break;
+                case Origin.Top:
+                    origin += Top;
+                    break;
+                case Origin.Bottom:
+                    origin += Bottom;
+                    break;
+                case Origin.Centre:
+                    origin += Center;
+                    break;
+                default:
+                    break;
+            }
+
+            switch (originV)
+            {
+                case Origin.Left:
+                    origin += Left;
+                    break;
+                case Origin.Right:
+                    origin += Right;
+                    break;
+                case Origin.Top:
+                    origin += Top;
+                    break;
+                case Origin.Bottom:
+                    origin += Bottom;
+                    break;
+                case Origin.Centre:
+                    origin += Center;
+                    break;
+                default:
+                    break;
+            }
+
+            collision.position = new Vector2f(position.X, -position.Y) + new Vector2f(Camera.position.X, -Camera.position.Y) + new Vector2f(origin.X, -origin.Y);
             collision.size = size;
 
             Collision MouseCol = new Collision();
@@ -46,12 +90,58 @@ namespace Engine.UI
 
         public override void draw(RenderTarget target, RenderStates states)
         {
+
+            Vector2f origin = new Vector2f();
+
+            switch (originH)
+            {
+                case Origin.Left:
+                    origin += Left;
+                    break;
+                case Origin.Right:
+                    origin += Right;
+                    break;
+                case Origin.Top:
+                    origin += Top;
+                    break;
+                case Origin.Bottom:
+                    origin += Bottom;
+                    break;
+                case Origin.Centre:
+                    origin += Center;
+                    break;
+                default:
+                    break;
+            }
+
+            switch (originV)
+            {
+                case Origin.Left:
+                    origin += Left;
+                    break;
+                case Origin.Right:
+                    origin += Right;
+                    break;
+                case Origin.Top:
+                    origin += Top;
+                    break;
+                case Origin.Bottom:
+                    origin += Bottom;
+                    break;
+                case Origin.Centre:
+                    origin += Center;
+                    break;
+                default:
+                    break;
+            }
+
             r_rectangle.FillColor = color;
-            r_rectangle.Position = position * 0.5f + Renderer.view.Center - size / 2f + originH + originV;
-            r_rectangle.Size = size;    
+            r_rectangle.Position =Renderer.view.Center-size/2+origin+position;
+            r_rectangle.Size = size;
             r_rectangle.OutlineThickness = 1;
             r_rectangle.OutlineColor = Color.Black;
-            
+            Console.WriteLine(r_rectangle.Position);
+
             target.Draw(r_rectangle);
         }
     }

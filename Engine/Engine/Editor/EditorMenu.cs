@@ -15,21 +15,32 @@ namespace Engine.Editor
         {
             #region panel
             UiPanel panel = new UiPanel();
-            panel.originH = panel.Left;
-            panel.size = new Vector2f(150,Constants.BaseResolution.Y);
-            panel.position = new Vector2f(75, 0);
+            panel.originH = UiElement.Origin.Left;
+            panel.size = new Vector2f(100,Constants.BaseResolution.Y);
+            panel.position = new Vector2f(50, 0);
             panel.color = new Color(25, 25, 25, 250);
-            panel.layer = -1;
+            panel.layer = 0;
             UiManager.objects.Add(panel);
             #endregion
 
             #region play
             UiButton play = new UiButton();
-            play.originH = play.Left;
-            play.originV = play.Top;
-            //play.position = new Vector2f(50,20);
-            play.size = new Vector2f(30, 10);
+            play.originV = UiElement.Origin.Top;
+            play.position = new Vector2f(-14, 10);
+            play.size = new Vector2f(24, 13);
+            play.text = "play";
+            play.SetFontSize(10);
             UiManager.objects.Add(play);
+            #endregion
+
+            #region stop
+            UiButton stop = new UiButton();
+            stop.originV = UiElement.Origin.Top;
+            stop.position = new Vector2f(14, 10);
+            stop.size = new Vector2f(24, 13);
+            stop.text = "stop";
+            stop.SetFontSize(10);
+            UiManager.objects.Add(stop);
             #endregion
         }
     }
