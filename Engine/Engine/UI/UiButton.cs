@@ -67,7 +67,7 @@ namespace Engine.UI
 
         public override void draw(RenderTarget target, RenderStates states)
         {
-            r_rectangle.Position = position * 0.5f + Renderer.view.Center - size/2f;
+            r_rectangle.Position = position * 0.5f + Renderer.view.Center - size/2f + originH + originV;
             r_rectangle.Size = size;
             r_rectangle.OutlineThickness = 2;
             r_rectangle.OutlineColor = Color.Black;
@@ -87,7 +87,7 @@ namespace Engine.UI
             }
 
             r_text.DisplayedString = text;
-            r_text.Position = position * 0.5f + Renderer.view.Center;
+            r_text.Position = position * 0.5f + Renderer.view.Center + originH + originV;
 
             FloatRect textRect = r_text.GetLocalBounds();
             r_text.Origin = new Vector2f(textRect.Left + textRect.Width / 2.0f, textRect.Top + textRect.Height / 2.0f);

@@ -46,6 +46,8 @@ namespace Engine
             button.position = new Vector2f(0, 0);
             button.size = new Vector2f(100, 50);
             button.text = "button";
+            button.originH = button.Left;
+            button.originV = button.Top;
             UI.UiManager.objects.Add(button);
             
             button.OnClick += Button_OnClick;

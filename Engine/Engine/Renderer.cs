@@ -18,21 +18,33 @@ namespace Engine
         static Sprite toolSpr = new Sprite(tooltex);
         static Texture t_grid = new Texture("Assets//Editor//grid.png");
         static Sprite s_grid = new Sprite(t_grid);
+        public static float hToV;
 
         public static void Init()
         {
             window = new RenderWindow(new VideoMode(1600,900), Constants.GameName);
-            view = new View(new FloatRect(0, 0, Constants.BaseResolution.X * Camera.zoom, Constants.BaseResolution.Y * Camera.zoom));
+            hToV = (float)window.Size.X / (float)window.Size.Y;
+            view = new View(new FloatRect(0, 0, Constants.BaseResolution.Y * Camera.zoom * hToV, Constants.BaseResolution.Y * Camera.zoom));
             toolSpr.Origin = new Vector2f(32,34);
             t_grid.Repeated = true;
+
+            window.Resized += Window_Resized;
+
+        }
+
+        private static void Window_Resized(object sender, SizeEventArgs e)
+        {
+            hToV = (float)window.Size.X / (float)window.Size.Y;
+            view.Size = new Vector2f(Constants.BaseResolution.Y * hToV * Camera.zoom, Constants.BaseResolution.Y * Camera.zoom);
+            view.Center = Camera.position;
         }
 
         public static void Render()
         {
-            view = new View(new FloatRect(0, 0, Constants.BaseResolution.X*Camera.zoom, Constants.BaseResolution.Y * Camera.zoom));
+            view = new View(new FloatRect(0, 0, Constants.BaseResolution.Y*Camera.zoom * hToV, Constants.BaseResolution.Y * Camera.zoom));
             window.Clear(Color.Blue);
 
-
+            Console.WriteLine(hToV);
 
             view.Center = Camera.position;
             view.Zoom(1f / oldZoom);
