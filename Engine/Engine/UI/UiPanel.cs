@@ -140,7 +140,6 @@ namespace Engine.UI
             r_rectangle.Size = size;
             r_rectangle.OutlineThickness = 1;
             r_rectangle.OutlineColor = Color.Black;
-            Console.WriteLine(r_rectangle.Position);
 
             target.Draw(r_rectangle);
         }
