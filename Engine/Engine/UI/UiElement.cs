@@ -8,9 +8,10 @@ using SFML.Graphics;
 
 namespace Engine.UI
 {
-    class UiElement: Drawable
+    class UiElement: Drawable, IComparable
     {
 
+        public Int32 layer;
 
         public virtual void Update()
         {
@@ -27,5 +28,10 @@ namespace Engine.UI
             draw(target,states);
         }
 
+        public int CompareTo(object obj)
+        {
+            UiElement element = obj as UiElement;
+            return layer.CompareTo(element.layer);
+        }
     }
 }
