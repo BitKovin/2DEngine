@@ -40,27 +40,11 @@ namespace Engine
             text.position = new Vector2f(-1280 / 2, -720 / 2);
             text.r_text.Color = Color.White;
             UI.UiManager.objects.Add(text);
-
-
-            UiButton button = new UiButton();
-            button.position = new Vector2f(0, 0);
-            button.size = new Vector2f(100, 50);
-            button.text = "button";
-            button.originH = button.Left;
-            button.originV = button.Top;
-            UI.UiManager.objects.Add(button);
             
-            button.OnClick += Button_OnClick;
-
             if(!Program.isEditor)
                 SaveLoadMap.Load(curentLevel,"test");
             curentLevel.Start();
 
-        }
-
-        private static void Button_OnClick()
-        {
-            Console.WriteLine("button clicked");
         }
 
         public static void Update()

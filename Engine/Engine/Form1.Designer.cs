@@ -45,10 +45,9 @@ namespace Engine
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(377, 48);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Location = new System.Drawing.Point(283, 39);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 36);
+            this.button1.Size = new System.Drawing.Size(56, 29);
             this.button1.TabIndex = 0;
             this.button1.Text = "Load";
             this.button1.UseVisualStyleBackColor = true;
@@ -56,20 +55,18 @@ namespace Engine
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(135, 16);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.Location = new System.Drawing.Point(101, 13);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(316, 22);
+            this.textBox1.Size = new System.Drawing.Size(238, 20);
             this.textBox1.TabIndex = 3;
             this.textBox1.Text = "test";
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(295, 48);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Location = new System.Drawing.Point(221, 39);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 36);
+            this.button2.Size = new System.Drawing.Size(56, 29);
             this.button2.TabIndex = 4;
             this.button2.Text = "Save";
             this.button2.UseVisualStyleBackColor = true;
@@ -78,10 +75,9 @@ namespace Engine
             // t_Entities
             // 
             this.t_Entities.AutoSize = true;
-            this.t_Entities.Location = new System.Drawing.Point(17, 162);
-            this.t_Entities.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.t_Entities.Location = new System.Drawing.Point(13, 132);
             this.t_Entities.Name = "t_Entities";
-            this.t_Entities.Size = new System.Drawing.Size(54, 17);
+            this.t_Entities.Size = new System.Drawing.Size(41, 13);
             this.t_Entities.TabIndex = 8;
             this.t_Entities.Text = "Entities";
             // 
@@ -91,20 +87,18 @@ namespace Engine
             this.comboBox1.Items.AddRange(new object[] {
             "Null",
             "Player"});
-            this.comboBox1.Location = new System.Drawing.Point(21, 186);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox1.Location = new System.Drawing.Point(16, 151);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(160, 24);
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 9;
             this.comboBox1.Text = "Player";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // Play
             // 
-            this.Play.Location = new System.Drawing.Point(17, 49);
-            this.Play.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Play.Location = new System.Drawing.Point(13, 40);
             this.Play.Name = "Play";
-            this.Play.Size = new System.Drawing.Size(100, 28);
+            this.Play.Size = new System.Drawing.Size(75, 23);
             this.Play.TabIndex = 10;
             this.Play.Text = "Play";
             this.Play.UseVisualStyleBackColor = true;
@@ -117,30 +111,27 @@ namespace Engine
             "Null",
             "b_test",
             "playerIdle"});
-            this.comboBox2.Location = new System.Drawing.Point(291, 186);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox2.Location = new System.Drawing.Point(218, 151);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(160, 24);
+            this.comboBox2.Size = new System.Drawing.Size(121, 21);
             this.comboBox2.TabIndex = 12;
             this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(287, 162);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(215, 132);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 17);
+            this.label1.Size = new System.Drawing.Size(45, 13);
             this.label1.TabIndex = 11;
             this.label1.Text = "Brushes";
             // 
             // button3
             // 
             this.button3.Enabled = false;
-            this.button3.Location = new System.Drawing.Point(21, 124);
-            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button3.Location = new System.Drawing.Point(16, 101);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(160, 38);
+            this.button3.Size = new System.Drawing.Size(120, 31);
             this.button3.TabIndex = 13;
             this.button3.Text = "Enities";
             this.button3.UseVisualStyleBackColor = true;
@@ -148,10 +139,9 @@ namespace Engine
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(292, 124);
-            this.button4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button4.Location = new System.Drawing.Point(219, 101);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(160, 38);
+            this.button4.Size = new System.Drawing.Size(120, 31);
             this.button4.TabIndex = 14;
             this.button4.Text = "Brushes";
             this.button4.UseVisualStyleBackColor = true;
@@ -161,19 +151,17 @@ namespace Engine
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.label2.Location = new System.Drawing.Point(17, 16);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(13, 13);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(105, 24);
+            this.label2.Size = new System.Drawing.Size(82, 18);
             this.label2.TabIndex = 15;
             this.label2.Text = "map name:";
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(125, 48);
-            this.button5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button5.Location = new System.Drawing.Point(94, 39);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(100, 28);
+            this.button5.Size = new System.Drawing.Size(75, 23);
             this.button5.TabIndex = 16;
             this.button5.Text = "Stop";
             this.button5.UseVisualStyleBackColor = true;
@@ -181,10 +169,10 @@ namespace Engine
             // 
             // EditorWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(468, 689);
+            this.ClientSize = new System.Drawing.Size(351, 560);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button4);
@@ -199,12 +187,10 @@ namespace Engine
             this.Controls.Add(this.button1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.HelpButton = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "EditorWindow";
             this.Text = "Form1";
-            this.TopMost = true;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

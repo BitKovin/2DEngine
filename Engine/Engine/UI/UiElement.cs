@@ -11,10 +11,18 @@ namespace Engine.UI
     class UiElement: Drawable, IComparable
     {
 
-        public Int32 layer;
+        public enum Origin
+        {
+            Left,
+            Right,
+            Top,
+            Bottom,
+            Centre
+        }
 
-        public Vector2f originH;
-        public Vector2f originV;
+        public Int32 layer;
+        public Origin originH;
+        public Origin originV;
 
         public Vector2f Center = new Vector2f();
 
@@ -27,8 +35,8 @@ namespace Engine.UI
         public virtual void Update()
         {
 
-            Left = new Vector2f(-Constants.BaseResolution.Y * Renderer.hToV/2f, 0);
-            Right = new Vector2f(Constants.BaseResolution.Y * Renderer.hToV / 2f, 0);
+            Left = new Vector2f(-Renderer.view.Size.X/2, 0);
+            Right = new Vector2f(Renderer.view.Size.X/2, 0);
 
         }
 

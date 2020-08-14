@@ -13,10 +13,10 @@ namespace Engine.UI
         public Text r_text;
         public Vector2f position;
         public string text;
-
+        public Font font = new Font("OpenSans-Regular.ttf");
         public UiText()
         {
-            r_text = new Text("1000",new Font("OpenSans-Regular.ttf"));
+            r_text = new Text("1000",font);
         }
 
         public void Draw(RenderTarget target, RenderStates states)

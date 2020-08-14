@@ -49,6 +49,7 @@
     <Compile Include="Camera.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Editor\EditorMain.cs" />
+    <Compile Include="Editor\EditorMenu.cs" />
     <Compile Include="Entities\Player.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="EntityData.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="UI\UiElement.cs" />
     <Compile Include="UI\UiButton.cs" />
     <Compile Include="UI\UiManager.cs" />
+    <Compile Include="UI\UiPanel.cs" />
     <Compile Include="UI\UiText.cs" />
   </ItemGroup>
   <ItemGroup>

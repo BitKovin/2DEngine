@@ -82,7 +82,7 @@ namespace Engine.Entities
         {
             base.Update();
 
-            gravity -= 10f;
+            gravity -= 1400f*Time.DeltaTime;
             if (Math.Abs(gravity) < 1)
                 gravity *= 3f;
 
@@ -123,7 +123,7 @@ namespace Engine.Entities
 
                     if(move.Y<0)
                     {
-                        if(Math.Abs(gravity)<11)
+                        if(Math.Abs(gravity)<2000*Time.DeltaTime)
                         OnGround = true;
                         gravity = 0;
                         UpdateCollision();

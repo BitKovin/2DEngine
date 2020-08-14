@@ -13,6 +13,7 @@ namespace Engine.UI
     {
         public Text r_text;
         public RectangleShape r_rectangle;
+        public Font font = new Font("OpenSans-Regular.ttf");
         public Vector2f position;
         public Vector2f size;
         public string text;
@@ -27,7 +28,7 @@ namespace Engine.UI
 
         public UiButton()
         {
-            r_text = new Text("1000", new Font("OpenSans-Regular.ttf"));
+            r_text = new Text("1000", font);
             r_text.Color = Color.Black;
             r_rectangle = new RectangleShape();
             r_rectangle.FillColor = new Color(100,100,100);
@@ -36,19 +37,25 @@ namespace Engine.UI
 
             Renderer.window.MouseButtonPressed += Window_MouseButtonPressed;
 
+            r_text.Scale = new Vector2f(0.5f, 0.5f);
         }
 
         private void Window_MouseButtonPressed(object sender, MouseButtonEventArgs e)
         {
-            if (e.Button == Mouse.Button.Left&hovered)
-                OnClick();
+            if (e.Button == Mouse.Button.Left & hovered)
+                try
+                {
+                    OnClick();
+                } catch (SystemException ex)
+                { }
         }
+        
 
         public override void Update()
         {
             base.Update();
 
-            collision.position = position * 0.5f + new Vector2f(Camera.position.X,-Camera.position.Y);
+            collision.position = position * 0.5f + new Vector2f(Camera.position.X,-Camera.position.Y) + originH - originV;
             collision.size = size;
 
             Collision MouseCol = new Collision();
@@ -67,9 +74,9 @@ namespace Engine.UI
 
         public override void draw(RenderTarget target, RenderStates states)
         {
-            r_rectangle.Position = position * 0.5f + Renderer.view.Center - size/2f + originH + originV;
+            r_rectangle.Position = position + Renderer.view.Center - size/2f + originH + originV;
             r_rectangle.Size = size;
-            r_rectangle.OutlineThickness = 2;
+            r_rectangle.OutlineThickness = 1;
             r_rectangle.OutlineColor = Color.Black;
 
             if(hovered)
@@ -94,5 +101,11 @@ namespace Engine.UI
             target.Draw(r_rectangle);
             target.Draw(r_text);
         }
+
+        public void SetFontSize(uint val)
+        {
+            r_text.CharacterSize = val * 2;
+        }
+
     }
 }

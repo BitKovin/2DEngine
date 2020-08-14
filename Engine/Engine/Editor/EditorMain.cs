@@ -49,6 +49,9 @@ namespace Engine.Editor
             CameraPos.r_text.Color = Color.White;
             CameraPos.r_text.Scale = new Vector2f(0.5f, 0.5f);
             UiManager.objects.Add(CameraPos);
+
+            EditorMenu.Start();
+
         }
 
         public static void StartLevel()
@@ -68,8 +71,8 @@ namespace Engine.Editor
         {
             Vector2i winPos = Renderer.window.Position;
             Action action = () => { form.SetPos(winPos.X, winPos.Y); };
-            if(form!=null)
-            form.Invoke(action);
+            //if(form!=null)
+            //form.Invoke(action);
 
             CameraPos.text = $"Camera Position: {(int)Camera.position.X}; {(int)Camera.position.Y}";
 
