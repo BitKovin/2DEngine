@@ -9,6 +9,7 @@ namespace Engine.UI
 {
     class UiManager
     {
-        public static List<Drawable> objects = new List<Drawable>();
+        public static List<UiElement> objects = new List<UiElement>();
+        public static bool UiHover;
     }
 }

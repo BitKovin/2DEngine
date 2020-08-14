@@ -7,7 +7,7 @@ namespace Engine
 {
     class Program
     {
-        public static bool isEditor;
+        public static bool isEditor = true;
         static void Main(string[] args)
         {
             foreach(string s in args)

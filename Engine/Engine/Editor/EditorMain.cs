@@ -66,12 +66,14 @@ namespace Engine.Editor
 
         public static void Update()
         {
-            if (!GamePaused) return;
             Vector2i winPos = Renderer.window.Position;
             Action action = () => { form.SetPos(winPos.X, winPos.Y); };
+            if(form!=null)
             form.Invoke(action);
 
             CameraPos.text = $"Camera Position: {(int)Camera.position.X}; {(int)Camera.position.Y}";
+
+            if (!GamePaused) return;
 
             ToolPos = Functions.SnapToGrid(Input.MousePos,5f);
 
@@ -170,6 +172,7 @@ namespace Engine.Editor
 
         private static void Window_MouseButtonPressed(object sender, MouseButtonEventArgs e)
         {
+            if (UI.UiManager.UiHover) return;
             if (!GamePaused) return;
             #region select
 

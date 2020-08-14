@@ -70,6 +70,8 @@
     <Compile Include="StateMachine.cs" />
     <Compile Include="TexturesData.cs" />
     <Compile Include="Time.cs" />
+    <Compile Include="UI\UiElement.cs" />
+    <Compile Include="UI\UiButton.cs" />
     <Compile Include="UI\UiManager.cs" />
     <Compile Include="UI\UiText.cs" />
   </ItemGroup>
