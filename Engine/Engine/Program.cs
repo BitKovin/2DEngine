@@ -16,22 +16,9 @@ namespace Engine
                 if (s == "-editor")
                     isEditor = true;
             }
-            if (isEditor)
-            {
-                Thread editor = new Thread(new ThreadStart(Editor));
-                editor.Start();
-            }
             Game();
         }
-
-        static void Editor()
-        {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            EditorMain.form = new EditorWindow();
-            Application.Run(EditorMain.form);
-
-        }
+        
 
         static void Game()
         {
@@ -43,12 +30,14 @@ namespace Engine
 
             while (Renderer.window.IsOpen)
             {
+                Renderer.window.DispatchEvents();
+                Time.FrameStart();
+                Input.Update();
+
+                if (isEditor)
+                    EditorMain.Update();
                 GameMain.Update();
-                if(isEditor)
-                EditorMain.Update();
             }
-            if(isEditor)
-            Application.Exit();
         }
     }
 }

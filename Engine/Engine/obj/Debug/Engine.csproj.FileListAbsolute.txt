@@ -36,8 +36,6 @@ D:\2DEngine\Engine\Engine\bin\Debug\sfmlnet-graphics-2.dll
 D:\2DEngine\Engine\Engine\bin\Debug\sfmlnet-system-2.dll
 D:\2DEngine\Engine\Engine\bin\Debug\sfmlnet-window-2.dll
 D:\2DEngine\Engine\Engine\obj\Debug\Engine.csprojAssemblyReference.cache
-D:\2DEngine\Engine\Engine\obj\Debug\Engine.EditorWindow.resources
-D:\2DEngine\Engine\Engine\obj\Debug\Engine.csproj.GenerateResource.cache
 D:\2DEngine\Engine\Engine\obj\Debug\Engine.csproj.CoreCompileInputs.cache
 D:\2DEngine\Engine\Engine\obj\Debug\Engine.csproj.CopyComplete
 D:\2DEngine\Engine\Engine\obj\Debug\Engine.exe
