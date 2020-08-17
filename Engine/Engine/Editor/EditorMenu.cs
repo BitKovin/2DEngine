@@ -118,6 +118,7 @@ namespace Engine.Editor
             UiManager.objects.Add(entityName);
             #endregion
 
+
             #region Brush
             brush = new UiButton();
             brush.originV = UiElement.Origin.Top;

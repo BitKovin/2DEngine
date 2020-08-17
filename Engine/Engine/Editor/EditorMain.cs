@@ -55,16 +55,12 @@ namespace Engine.Editor
 
         public static void StartLevel()
         {
-            selectedEntity = null;
-            selectedBrush = null;
             GameMain.curentLevel = baselevel.Clone();
             GameMain.curentLevel.Start();
             GamePaused = false;
         }
         public static void StopLevel()
         {
-            selectedEntity = null;
-            selectedBrush = null;
             GameMain.curentLevel = baselevel;
             GamePaused = true;
             Camera.target = null;
@@ -104,6 +100,9 @@ namespace Engine.Editor
                 {
                     selectedEntity.position = Input.MousePos;
                     selectedEntity.UpdateCollision();
+                }else
+                {
+                    selectedEntity = null;
                 }
 
             }
@@ -176,7 +175,6 @@ namespace Engine.Editor
         {
             if (UI.UiManager.UiHover) return;
             if (!GamePaused) return;
-            selectedEntity = null;
             #region select
 
             if (selectedEntity != null)

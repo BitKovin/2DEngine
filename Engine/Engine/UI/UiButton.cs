@@ -201,7 +201,7 @@ namespace Engine.UI
             {
                 r_text.Color = new Color(10, 10, 10);
                 r_rectangle.FillColor = new Color(70, 70, 70);
-                r_rectangle.OutlineColor = new Color(20,20,20);
+                r_rectangle.OutlineColor = new Color(10,10,10);
             }
 
             target.Draw(r_rectangle);
