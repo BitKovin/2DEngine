@@ -12,7 +12,6 @@ namespace Engine
 {
     class GameMain
     {
-        public static UiText text;
         public static Level curentLevel;
         public static void Start()
         {
@@ -35,11 +34,7 @@ namespace Engine
             }
 
             //Renderer.view.Zoom(0.5f);
-
-            text = new UiText();
-            text.position = new Vector2f(-1280 / 2, -720 / 2);
-            text.r_text.Color = Color.White;
-            UI.UiManager.objects.Add(text);
+            
             
             if(!Program.isEditor)
                 SaveLoadMap.Load(curentLevel,"test");
@@ -49,9 +44,7 @@ namespace Engine
 
         public static void Update()
         {
-            Renderer.window.DispatchEvents();
-            Time.FrameStart();
-            Input.Update();
+            
 
 
             UiManager.UiHover = false;

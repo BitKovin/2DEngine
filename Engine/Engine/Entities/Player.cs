@@ -95,7 +95,6 @@ namespace Engine.Entities
             UpdateCollision();
             Collide(move);
 
-            OnGround = false;
             move = (new Vector2f(0, gravity) + new Vector2f(0, movement.Y) * speed) * Time.DeltaTime;
             position += move;
             UpdateCollision();
@@ -123,7 +122,6 @@ namespace Engine.Entities
 
                     if(move.Y<0)
                     {
-                        if(Math.Abs(gravity)<2000*Time.DeltaTime)
                         OnGround = true;
                         gravity = 0;
                         UpdateCollision();
@@ -138,6 +136,8 @@ namespace Engine.Entities
                     position -= move;
                     return;
                 }
+                if (Math.Abs(gravity) > 100)
+                    OnGround = false;
             }
 
         }

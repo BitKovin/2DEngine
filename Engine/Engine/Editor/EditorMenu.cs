@@ -12,6 +12,10 @@ namespace Engine.Editor
     class EditorMenu
     {
         public static UiInputField fileName;
+        public static UiInputField entityName;
+        public static UiInputField brushName;
+        static UiButton entity;
+        static UiButton brush;
         public static void Start()
         {
             #region panel
@@ -81,6 +85,75 @@ namespace Engine.Editor
             save.OnClick += Save_OnClick;
             #endregion
 
+            #region spawner
+            UiText t_spawner = new UiText();
+            t_spawner.originH = UiElement.Origin.Left;
+            t_spawner.originV = UiElement.Origin.Top;
+            t_spawner.position = new Vector2f(50,50);
+            t_spawner.text = "SPAWNER";
+            UiManager.objects.Add(t_spawner);
+            #endregion
+
+            #region Entity
+            entity = new UiButton();
+            entity.originV = UiElement.Origin.Top;
+            entity.originH = UiElement.Origin.Left;
+            entity.position = new Vector2f(50, 70);
+            entity.size = new Vector2f(92, 15);
+            entity.SetFontSize(15);
+            entity.text = "ENTITY";
+            entity.active = false;
+            UiManager.objects.Add(entity);
+            entity.OnClick += Entity_OnClick;
+            #endregion
+
+            #region EntityName
+            entityName = new UiInputField();
+            entityName.originV = UiElement.Origin.Top;
+            entityName.originH = UiElement.Origin.Left;
+            entityName.position = new Vector2f(50, 92);
+            entityName.size = new Vector2f(92, 11);
+            entityName.SetFontSize(10);
+            entityName.text = "Player";
+            UiManager.objects.Add(entityName);
+            #endregion
+
+            #region Brush
+            brush = new UiButton();
+            brush.originV = UiElement.Origin.Top;
+            brush.originH = UiElement.Origin.Left;
+            brush.position = new Vector2f(50, 120);
+            brush.size = new Vector2f(92, 15);
+            brush.SetFontSize(15);
+            brush.text = "BRUSH";
+            UiManager.objects.Add(brush);
+            brush.OnClick += Brush_OnClick;
+            #endregion
+
+            #region EntityName
+            brushName = new UiInputField();
+            brushName.originV = UiElement.Origin.Top;
+            brushName.originH = UiElement.Origin.Left;
+            brushName.position = new Vector2f(50, 142);
+            brushName.size = new Vector2f(92, 11);
+            brushName.SetFontSize(10);
+            brushName.text = "b_test";
+            UiManager.objects.Add(brushName);
+            #endregion
+        }
+
+        private static void Entity_OnClick()
+        {
+            EditorMain.tool = Tool.enity;
+            entity.active = false;
+            brush.active = true;
+        }
+
+        private static void Brush_OnClick()
+        {
+            EditorMain.tool = Tool.brush;
+            brush.active = false;
+            entity.active = true;
         }
 
         private static void Save_OnClick()

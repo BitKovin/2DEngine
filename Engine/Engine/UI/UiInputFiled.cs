@@ -37,8 +37,15 @@ namespace Engine.UI
 
             Renderer.window.MouseButtonPressed += Window_MouseButtonPressed;
             Renderer.window.TextEntered += Window_TextEntered;
+            Renderer.window.KeyPressed += Window_KeyPressed;
 
             r_text.Scale = new Vector2f(0.5f, 0.5f);
+        }
+
+        private void Window_KeyPressed(object sender, KeyEventArgs e)
+        {
+            if (e.Code == Keyboard.Key.Escape)
+                entering = false;
         }
 
         private void Window_TextEntered(object sender, TextEventArgs e)

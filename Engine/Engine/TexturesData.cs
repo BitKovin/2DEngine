@@ -29,7 +29,13 @@ namespace Engine
 
         public static Texture GetTexture(string name)
         {
-            return textures[name];
+            try
+            {
+                return textures[name];
+            }catch(SystemException ex)
+            {
+                return textures["b_test"];
+            }
         }
 
     }

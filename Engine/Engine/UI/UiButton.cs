@@ -21,6 +21,8 @@ namespace Engine.UI
         public bool clicking;
         public Collision collision;
 
+        public bool active = true;
+
         public delegate void onClick();
 
         public event onClick OnClick;
@@ -114,6 +116,11 @@ namespace Engine.UI
                 UiManager.UiHover = true;
                 clicking = Mouse.IsButtonPressed(Mouse.Button.Left);
             }
+            if(!active)
+            {
+                hovered = false;
+                clicking = false;
+            }
         }
 
         public override void draw(RenderTarget target, RenderStates states)
@@ -183,11 +190,20 @@ namespace Engine.UI
                 r_rectangle.FillColor = new Color(200, 200, 200);
             }
 
+            r_text.Color = Color.Black;
             r_text.DisplayedString = text;
             r_text.Position = position + Renderer.view.Center + origin;
 
             FloatRect textRect = r_text.GetLocalBounds();
             r_text.Origin = new Vector2f(textRect.Left + textRect.Width / 2.0f, textRect.Top + textRect.Height / 2.0f);
+
+            if (!active)
+            {
+                r_text.Color = new Color(10, 10, 10);
+                r_rectangle.FillColor = new Color(70, 70, 70);
+                r_rectangle.OutlineColor = new Color(20,20,20);
+            }
+
             target.Draw(r_rectangle);
             target.Draw(r_text);
         }

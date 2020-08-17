@@ -22,7 +22,6 @@ namespace Engine.Editor
         public static Entity curentEntity;
         public static Entity selectedEntity;
         public static Brush selectedBrush;
-        public static EditorWindow form;
         public static Level baselevel;
         public static bool GamePaused;
         public static string FileName = "test";
@@ -56,27 +55,32 @@ namespace Engine.Editor
 
         public static void StartLevel()
         {
+            selectedEntity = null;
+            selectedBrush = null;
             GameMain.curentLevel = baselevel.Clone();
             GameMain.curentLevel.Start();
             GamePaused = false;
         }
         public static void StopLevel()
         {
+            selectedEntity = null;
+            selectedBrush = null;
             GameMain.curentLevel = baselevel;
             GamePaused = true;
             Camera.target = null;
+            foreach (Entity entity in baselevel.entities)
+                entity.UpdateCollision();
         }
 
         public static void Update()
         {
-            Vector2i winPos = Renderer.window.Position;
-            Action action = () => { form.SetPos(winPos.X, winPos.Y); };
-            //if(form!=null)
-            //form.Invoke(action);
 
             CameraPos.text = $"Camera Position: {(int)Camera.position.X}; {(int)Camera.position.Y}";
 
             if (!GamePaused) return;
+
+            entityType = EditorMenu.entityName.text;
+            brushType = EditorMenu.brushName.text;
 
             ToolPos = Functions.SnapToGrid(Input.MousePos,5f);
 
@@ -98,14 +102,8 @@ namespace Engine.Editor
             {
                 if(Mouse.IsButtonPressed(Mouse.Button.Left))
                 {
-                    Collision mouseCol = new Collision();
-                    mouseCol.position = Input.MousePos;
-                    mouseCol.size = new Vector2f(5, 5);
-                    if (Collision.MakeCollionTest(mouseCol, selectedEntity.collisions[0]))
-                    {
-                        selectedEntity.position = Input.MousePos;
-                        selectedEntity.UpdateCollision();
-                    }
+                    selectedEntity.position = Input.MousePos;
+                    selectedEntity.UpdateCollision();
                 }
 
             }
@@ -131,6 +129,7 @@ namespace Engine.Editor
 
         private static void Window_MouseButtonReleased(object sender, MouseButtonEventArgs e)
         {
+            if (UiManager.UiHover) return;
             if (!GamePaused) return;
             drawing = false;
             if (e.Button == Mouse.Button.Left)
@@ -177,6 +176,7 @@ namespace Engine.Editor
         {
             if (UI.UiManager.UiHover) return;
             if (!GamePaused) return;
+            selectedEntity = null;
             #region select
 
             if (selectedEntity != null)
