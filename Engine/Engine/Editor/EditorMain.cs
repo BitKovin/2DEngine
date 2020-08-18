@@ -100,9 +100,6 @@ namespace Engine.Editor
                 {
                     selectedEntity.position = Input.MousePos;
                     selectedEntity.UpdateCollision();
-                }else
-                {
-                    selectedEntity = null;
                 }
 
             }
@@ -130,9 +127,10 @@ namespace Engine.Editor
         {
             if (UiManager.UiHover) return;
             if (!GamePaused) return;
-            drawing = false;
+            
             if (e.Button == Mouse.Button.Left)
             {
+                drawing = false;
                 Collision mouseCol = new Collision();
                 mouseCol.position = Input.MousePos;
                 mouseCol.size = new Vector2f(1, 1);
@@ -175,6 +173,7 @@ namespace Engine.Editor
         {
             if (UI.UiManager.UiHover) return;
             if (!GamePaused) return;
+            selectedEntity = null;
             #region select
 
             if (selectedEntity != null)

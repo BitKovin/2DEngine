@@ -12,7 +12,7 @@ namespace Engine.Entities
 {
     class Player: Entity
     {
-        public float speed = 500f;
+        public float speed = 400f;
         public float stepHeight = 5f;
         float gravity;
         Collision collision;
