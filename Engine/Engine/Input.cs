@@ -8,7 +8,7 @@ using SFML.System;
 
 namespace Engine
 {
-    class Input
+    public class Input
     {
 
         public static float Forward, Right;

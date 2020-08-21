@@ -8,7 +8,7 @@ using SFML.System;
 
 namespace Engine
 {
-    class Brush:Drawable
+    public class Brush:Drawable
     {
 
         public Vector2f position;

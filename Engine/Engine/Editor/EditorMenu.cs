@@ -9,7 +9,7 @@ using SFML.Graphics;
 
 namespace Engine.Editor
 {
-    class EditorMenu
+    public class EditorMenu
     {
         public static UiInputField fileName;
         public static UiInputField entityName;

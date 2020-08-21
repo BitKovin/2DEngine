@@ -8,7 +8,7 @@ using SFML.Graphics;
 
 namespace Engine
 {
-    class Entity: Drawable,ICloneable
+    public class Entity: Drawable,ICloneable
     {
 
         public Texture texture;

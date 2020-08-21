@@ -9,7 +9,7 @@ using Engine.Editor;
 
 namespace Engine
 {
-    class SaveLoadMap
+    public class SaveLoadMap
     {
 
         public static void Save(Level level,string name)

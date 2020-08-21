@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 using System.Numerics;
 using SFML.System;
 using SFML.Graphics;
-using Engine.Entities;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using Game.Entities;
 
 namespace Engine
 {
-    class Functions
+    public class Functions
     {
 
 
@@ -20,7 +20,7 @@ namespace Engine
         {
             try
             {
-                Type t = Type.GetType("Engine.Entities." + name);
+                Type t = Game.EntitiesList.entities[name];
                 return Activator.CreateInstance(t) as Entity;
             }catch(SystemException ex)
             {

@@ -9,7 +9,7 @@ using SFML.System;
 namespace Engine
 {
 
-    class Renderer
+    public class Renderer
     {
         public static RenderWindow window;
         public static View view;
@@ -43,8 +43,8 @@ namespace Engine
         {
             view = new View(new FloatRect(0, 0, Constants.BaseResolution.Y*Camera.zoom * hToV, Constants.BaseResolution.Y * Camera.zoom));
             window.Clear(Color.Blue);
-            
 
+            Console.WriteLine(Camera.position);
             view.Center = Camera.position;
             view.Zoom(1f / oldZoom);
             view.Zoom(Camera.zoom);

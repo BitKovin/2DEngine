@@ -7,7 +7,7 @@ using SFML.Graphics;
 
 namespace Engine.UI
 {
-    class UiManager
+    public class UiManager
     {
         public static List<UiElement> objects = new List<UiElement>();
         public static bool UiHover;

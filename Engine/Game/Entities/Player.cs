@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
-using System.Numerics;
+using Engine;
+using Engine.Editor;
 
-namespace Engine.Entities
+namespace Game.Entities
 {
-    class Player: Entity
+    public class Player : Entity
     {
         public float speed = 400f;
         public float stepHeight = 5f;
@@ -25,7 +26,7 @@ namespace Engine.Entities
         public Player()
         {
             SetTexture("playerIdle");
-            if (!Editor.EditorMain.GamePaused)
+            if (!EditorMain.GamePaused)
                 Start();
             type = "Player";
             floatCustomSaveData = new float[2];
@@ -48,7 +49,7 @@ namespace Engine.Entities
         {
             base.Start();
             Renderer.window.KeyPressed += Window_KeyPressed;
-            Camera.target = this;
+            //Camera.target = this;
             //collision = new Collision();
             //collision.size = new Vector2f(15,35);
 
@@ -82,7 +83,7 @@ namespace Engine.Entities
         {
             base.Update();
 
-            gravity -= 1400f*Time.DeltaTime;
+            gravity -= 1400f * Engine.Time.DeltaTime;
             if (Math.Abs(gravity) < 1)
                 gravity *= 3f;
 
@@ -90,19 +91,20 @@ namespace Engine.Entities
             //GameMain.text.text = position.ToString();
             if (Input.Right > 0) flipH = false;
             if (Input.Right < 0) flipH = true;
-            Vector2f move = (new Vector2f(movement.X, 0) * speed) * Time.DeltaTime;
+            Vector2f move = (new Vector2f(movement.X, 0) * speed) * Engine.Time.DeltaTime;
             position += move;
             UpdateCollision();
             Collide(move);
 
-            move = (new Vector2f(0, gravity) + new Vector2f(0, movement.Y) * speed) * Time.DeltaTime;
+            move = (new Vector2f(0, gravity) + new Vector2f(0, movement.Y) * speed) * Engine.Time.DeltaTime;
             position += move;
             UpdateCollision();
             Collide(move);
-            if(movement.X!=0)
+            if (movement.X != 0)
             {
                 stateMachine.SetState("walk");
-            }else
+            }
+            else
             {
                 stateMachine.SetState("idle");
             }
@@ -120,7 +122,7 @@ namespace Engine.Entities
                 if (Collision.MakeCollionTest(collision, col))
                 {
 
-                    if(move.Y<0)
+                    if (move.Y < 0)
                     {
                         OnGround = true;
                         gravity = 0;
@@ -147,14 +149,9 @@ namespace Engine.Entities
             collision.position = position;
         }
 
-        public override Entity GetCopy()
-        {
-            return (Player)this.MemberwiseClone();
-        }
-
         private void Window_KeyPressed(object sender, KeyEventArgs e)
         {
-            if (e.Code == Keyboard.Key.Space&&OnGround)
+            if (e.Code == Keyboard.Key.Space && OnGround)
                 gravity = 300;
         }
 

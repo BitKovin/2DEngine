@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Engine
 {
-    class StateMachine
+    public class StateMachine
     {
         public Dictionary<string, Animation> states = new Dictionary<string, Animation>();
         string curentState;

@@ -8,7 +8,7 @@ using SFML.System;
 
 namespace Engine.UI
 {
-    class UiText: UiElement
+    public class UiText: UiElement
     {
         public Text r_text;
         public Vector2f position;

@@ -8,7 +8,7 @@ using SFML.System;
 
 namespace Engine
 {
-    class Time
+    public class Time
     {
         public static float DeltaTime;
         static Clock clock;

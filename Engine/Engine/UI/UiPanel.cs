@@ -8,7 +8,7 @@ using SFML.System;
 
 namespace Engine.UI
 {
-    class UiPanel: UiElement
+    public class UiPanel: UiElement
     {
         public RectangleShape r_rectangle;
         public Vector2f position;

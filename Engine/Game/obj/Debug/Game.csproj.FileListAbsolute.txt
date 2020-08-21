@@ -1,0 +1,14 @@
+F:\GitHub\2DEngine\Engine\Game\obj\Debug\Game.csprojAssemblyReference.cache
+F:\GitHub\2DEngine\Engine\Game\obj\Debug\Game.csproj.CoreCompileInputs.cache
+F:\GitHub\2DEngine\Engine\Game\bin\Debug\Game.dll
+F:\GitHub\2DEngine\Engine\Game\bin\Debug\Game.pdb
+F:\GitHub\2DEngine\Engine\Game\bin\Debug\Engine.exe
+F:\GitHub\2DEngine\Engine\Game\bin\Debug\sfmlnet-audio-2.dll
+F:\GitHub\2DEngine\Engine\Game\bin\Debug\sfmlnet-graphics-2.dll
+F:\GitHub\2DEngine\Engine\Game\bin\Debug\sfmlnet-system-2.dll
+F:\GitHub\2DEngine\Engine\Game\bin\Debug\sfmlnet-window-2.dll
+F:\GitHub\2DEngine\Engine\Game\bin\Debug\Engine.pdb
+F:\GitHub\2DEngine\Engine\Game\bin\Debug\Engine.exe.config
+F:\GitHub\2DEngine\Engine\Game\obj\Debug\Game.csproj.CopyComplete
+F:\GitHub\2DEngine\Engine\Game\obj\Debug\Game.dll
+F:\GitHub\2DEngine\Engine\Game\obj\Debug\Game.pdb

@@ -9,7 +9,7 @@ using SFML.Window;
 
 namespace Engine.UI
 {
-    class UiButton : UiElement
+    public class UiButton : UiElement
     {
         public Text r_text;
         public RectangleShape r_rectangle;
@@ -58,6 +58,8 @@ namespace Engine.UI
             base.Update();
 
             Vector2f origin = new Vector2f();
+
+
 
             switch (originH)
             {

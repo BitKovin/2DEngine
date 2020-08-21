@@ -8,9 +8,9 @@ using SFML.System;
 
 namespace Engine
 {
-    class Camera
+    public class Camera
     {
-        public static Vector2f position = new Vector2f(0,0);
+        public static Vector2f position = new Vector2f(0,-100);
         public static Entity target;
         public static float zoom = 1f;
 

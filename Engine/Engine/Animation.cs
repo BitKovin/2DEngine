@@ -7,7 +7,7 @@ using SFML.Graphics;
 
 namespace Engine
 {
-    class Animation
+    public class Animation
     {
         public float frameTime;
         public int curentFrameId;

@@ -7,7 +7,7 @@ using SFML.Graphics;
 
 namespace Engine
 {
-    class TexturesData
+    public class TexturesData
     {
         static Dictionary<string,Texture> textures = new Dictionary<string, Texture>();
 

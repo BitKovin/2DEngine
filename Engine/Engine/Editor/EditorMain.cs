@@ -9,12 +9,12 @@ using SFML.System;
 using Engine.UI;
 namespace Engine.Editor
 {
-    enum Tool
+    public enum Tool
     {
         enity,
         brush
     };
-    class EditorMain
+    public class EditorMain
     {
         public static Tool tool;
         public static string brushType = "b_test";
@@ -55,6 +55,8 @@ namespace Engine.Editor
 
         public static void StartLevel()
         {
+            selectedBrush = null;
+            selectedEntity = null;
             GameMain.curentLevel = baselevel.Clone();
             GameMain.curentLevel.Start();
             GamePaused = false;
@@ -96,7 +98,7 @@ namespace Engine.Editor
 
             if(selectedEntity!=null)
             {
-                if(Mouse.IsButtonPressed(Mouse.Button.Left))
+                if(Mouse.IsButtonPressed(Mouse.Button.Left)&!UiManager.UiHover)
                 {
                     selectedEntity.position = Input.MousePos;
                     selectedEntity.UpdateCollision();

@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using SFML.Graphics;
 using SFML.System;
-using Engine.Entities;
+using Game.Entities;
+
 namespace Engine
 {
-    class Level
+    public class Level
     {
 
         public List<Entity> entities = new List<Entity>();
@@ -39,7 +40,6 @@ namespace Engine
 
         public void Start()
         {
-
             foreach (Entity ent in entities)
             {
                 ent.Start();
@@ -49,6 +49,8 @@ namespace Engine
             {
                 bruh.Init();
             }
+
+
 
         }
         public void Update()

@@ -8,7 +8,7 @@ using SFML.Graphics;
 
 namespace Engine.UI
 {
-    class UiElement: Drawable, IComparable
+    public class UiElement: Drawable, IComparable
     {
 
         public enum Origin

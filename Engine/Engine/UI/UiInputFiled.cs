@@ -9,7 +9,7 @@ using SFML.Window;
 
 namespace Engine.UI
 {
-    class UiInputField : UiElement
+    public class UiInputField : UiElement
     {
         public Text r_text;
         public RectangleShape r_rectangle;

@@ -8,7 +8,7 @@ using SFML.System;
 
 namespace Engine
 {
-    class Collision
+    public class Collision
     {
 
         public Vector2f position;

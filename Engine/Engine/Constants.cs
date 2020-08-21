@@ -5,7 +5,7 @@ using SFML.System;
 
 namespace Engine
 {
-    class Constants
+    public class Constants
     {
         public static string GameName;
         public static Vector2i BaseResolution = new Vector2i(640,360);

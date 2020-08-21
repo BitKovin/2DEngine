@@ -10,12 +10,12 @@ using System.IO;
 
 namespace Engine
 {
-    class GameMain
+    public class GameMain
     {
         public static Level curentLevel;
         public static void Start()
         {
-
+            Game.EntitiesList.Load();
             Renderer.Init();
             Renderer.window.SetFramerateLimit(150);
             Renderer.window.SetVerticalSyncEnabled(true);
@@ -44,8 +44,6 @@ namespace Engine
 
         public static void Update()
         {
-            
-
 
             UiManager.UiHover = false;
             foreach (UiElement uiElement in UiManager.objects)
