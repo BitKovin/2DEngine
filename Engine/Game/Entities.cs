@@ -16,5 +16,19 @@ namespace Game
             entities.Add("Player", typeof(Player));
         }
 
+        public static Engine.Entity GetEntity(string type)
+        {
+            try
+            {
+                Type t = Type.GetType("Game.Entities." + type);
+                return Activator.CreateInstance(t) as Engine.Entity;
+            }
+            catch (SystemException ex)
+            {
+                Console.WriteLine(ex);
+                return null;
+            }
+        }
+
     }
 }

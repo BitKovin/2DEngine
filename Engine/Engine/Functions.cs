@@ -18,15 +18,7 @@ namespace Engine
 
         public static Entity EntityFromString(string name)
         {
-            try
-            {
-                Type t = Game.EntitiesList.entities[name];
-                return Activator.CreateInstance(t) as Entity;
-            }catch(SystemException ex)
-            {
-                Console.WriteLine(ex);
-                return null;
-            }
+            return Game.EntitiesList.GetEntity(name);
         }
 
         public static byte[] ObjectToByteArray(object obj)

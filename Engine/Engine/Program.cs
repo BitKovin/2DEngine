@@ -5,9 +5,9 @@ using Engine.Editor;
 
 namespace Engine
 {
-    class Program
+    public class Program
     {
-        public static bool isEditor = true;
+        public static bool isEditor = false;
         static void Main(string[] args)
         {
             foreach(string s in args)
@@ -25,8 +25,7 @@ namespace Engine
             Thread.CurrentThread.Priority = ThreadPriority.AboveNormal;
 
             GameMain.Start();
-            if (isEditor)
-                EditorMain.Start();
+
 
             while (Renderer.window.IsOpen)
             {

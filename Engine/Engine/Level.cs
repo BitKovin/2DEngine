@@ -50,8 +50,6 @@ namespace Engine
                 bruh.Init();
             }
 
-
-
         }
         public void Update()
         {

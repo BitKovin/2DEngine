@@ -7,8 +7,11 @@ using SFML.Window;
 using SFML.Graphics;
 using SFML.System;
 using Engine.UI;
+using System.Runtime.InteropServices;
+
 namespace Engine.Editor
 {
+
     public enum Tool
     {
         enity,
@@ -35,6 +38,10 @@ namespace Engine.Editor
 
         static UiText CameraPos;
 
+
+        [DllImport("user32.dll")]
+        private static extern int ShowWindow(int hwnd, int nCmdShow);
+
         public static void Start()
         {
             Renderer.window.MouseButtonPressed += Window_MouseButtonPressed;
@@ -51,6 +58,8 @@ namespace Engine.Editor
 
             EditorMenu.Start();
 
+            ShowWindow((int)Renderer.window.SystemHandle, 3);
+
         }
 
         public static void StartLevel()
@@ -65,7 +74,6 @@ namespace Engine.Editor
         {
             GameMain.curentLevel = baselevel;
             GamePaused = true;
-            Camera.target = null;
             foreach (Entity entity in baselevel.entities)
                 entity.UpdateCollision();
         }
@@ -118,7 +126,7 @@ namespace Engine.Editor
             if(Mouse.IsButtonPressed(Mouse.Button.Right))
             {
                 Vector2f move = Input.MousePosWindow - MousePosOld;
-                cameraPos += new Vector2f(-move.X,move.Y);
+                cameraPos -= new Vector2f(move.X,move.Y);
             }
             MousePosOld = Input.MousePosWindow;
             if(GamePaused)

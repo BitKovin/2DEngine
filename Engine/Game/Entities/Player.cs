@@ -112,6 +112,7 @@ namespace Game.Entities
                 stateMachine.SetState("inAir");
             stateMachine.Update();
             SetTexture(stateMachine.OutFrame);
+            Camera.position = position;
         }
 
         void Collide(Vector2f move)

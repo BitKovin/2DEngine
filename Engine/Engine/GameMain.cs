@@ -15,8 +15,14 @@ namespace Engine
         public static Level curentLevel;
         public static void Start()
         {
-            Game.EntitiesList.Load();
             Renderer.Init();
+            Game.Game.Init();
+
+            if (Program.isEditor)
+                Editor.EditorMain.Start();
+
+            Game.EntitiesList.Load();
+
             Renderer.window.SetFramerateLimit(150);
             Renderer.window.SetVerticalSyncEnabled(true);
             Time.Init();
@@ -28,17 +34,7 @@ namespace Engine
 
             TexturesData.LoadTextures();
 
-            foreach (Entity ent in curentLevel.entities)
-            {
-                ent.Start();
-            }
-
-            //Renderer.view.Zoom(0.5f);
-            
-            
-            if(!Program.isEditor)
-                SaveLoadMap.Load(curentLevel,"test");
-            curentLevel.Start();
+            Game.Game.Update();
 
         }
 
@@ -52,6 +48,7 @@ namespace Engine
 
             if (!Editor.EditorMain.GamePaused)
                 curentLevel.Update();
+            Game.Game.Update();
             Camera.Update();
 
 
