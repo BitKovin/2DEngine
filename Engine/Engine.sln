@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.28307.1082
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Engine", "Engine\Engine.csproj", "{6407154C-3FA5-445F-AF1F-428E7AF4BB48}"
+	ProjectSection(ProjectDependencies) = postProject
+		{521CAD90-8A01-432A-8197-21DFC398BACB} = {521CAD90-8A01-432A-8197-21DFC398BACB}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game", "Game\Game.csproj", "{521CAD90-8A01-432A-8197-21DFC398BACB}"
 EndProject

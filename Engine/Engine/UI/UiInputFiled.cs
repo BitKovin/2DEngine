@@ -21,6 +21,8 @@ namespace Engine.UI
         public bool entering;
         public Collision collision;
 
+        public EntityParam param;
+
         public delegate void onClick();
 
         public event onClick OnClick;
@@ -134,6 +136,11 @@ namespace Engine.UI
 
             MouseCol.position = Input.MousePos;
             MouseCol.size = new Vector2f(2, 2);
+
+            if(param!=null)
+            {
+                param.value = text;
+            }
 
             hovered = Collision.MakeCollionTest(collision, MouseCol);
             if (hovered)

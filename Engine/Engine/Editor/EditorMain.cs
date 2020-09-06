@@ -138,6 +138,8 @@ namespace Engine.Editor
                 Vector2f move = Input.MousePosWindow - MousePosOld;
                 cameraPos -= new Vector2f(move.X,move.Y);
             }
+
+
             MousePosOld = Input.MousePosWindow;
             if(GamePaused)
             Camera.position = cameraPos;
@@ -194,16 +196,20 @@ namespace Engine.Editor
         {
             if (UI.UiManager.UiHover) return;
             if (!GamePaused) return;
-            selectedEntity = null;
-            #region select
+            
 
-            if (selectedEntity != null)
-                selectedEntity.UpdateCollision();
-            selectedEntity = null;
-            #endregion
 
             if (e.Button == Mouse.Button.Left)
             {
+                selectedEntity = null;
+
+                #region select
+
+                if (selectedEntity != null)
+                    selectedEntity.UpdateCollision();
+                selectedEntity = null;
+                #endregion
+
                 Collision mouseCol = new Collision();
                 mouseCol.position = Input.MousePos;
                 mouseCol.size = new Vector2f(1, 1);
@@ -222,6 +228,7 @@ namespace Engine.Editor
                                     selectedEntity = col.owner;
                                     PosDif = Input.MousePos - selectedEntity.position;
                                     Console.WriteLine("sellected");
+                                    EditorMenu.BuildEntityMenu(col.owner);
                                     return;
                                 }
                             }

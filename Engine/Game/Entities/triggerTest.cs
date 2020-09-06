@@ -18,6 +18,9 @@ namespace Game.Entities
         Collision collision = new Collision();
         public TriggerTest()
         {
+
+
+
             collisions = new Collision[1];
             collision.owner = this;
             collisions[0] = collision;
@@ -41,10 +44,14 @@ namespace Game.Entities
             SizeY.value = "100";
             type = "TriggerTest";
 
+            stringCustomSaveData = new string[3];
+            stringCustomSaveData[0] = text.value;
+            stringCustomSaveData[1] = SizeX.value;
+            stringCustomSaveData[2] = SizeY.value;
+
             collision.position = position;
             collision.size = new Vector2f(float.Parse(SizeX.value), float.Parse(SizeY.value));
 
-            Console.WriteLine(collision.position);
         }
 
         public override void Start()
@@ -75,13 +82,19 @@ namespace Game.Entities
 
         public override void Draw(RenderTarget target, RenderStates states)
         {
-            collision.position = position;
-            collision.size = new Vector2f(float.Parse(SizeX.value), float.Parse(SizeY.value));
-            RectangleShape box = new RectangleShape();
-            box.Position = new Vector2f(position.X - collision.size.X/2,-position.Y - collision.size.Y/2);
-            box.Size = collision.size;
-            box.FillColor = new Color(0,255,0,150);
-            target.Draw(box);
+            try
+            {
+                collision.position = position;
+                collision.size = new Vector2f(float.Parse(SizeX.value), float.Parse(SizeY.value));
+                RectangleShape box = new RectangleShape();
+                box.Position = new Vector2f(position.X - collision.size.X / 2, -position.Y - collision.size.Y / 2);
+                box.Size = collision.size;
+                box.FillColor = new Color(0, 255, 0, 150);
+                target.Draw(box);
+            }catch(SystemException)
+            {
+
+            }
         }
         
     }

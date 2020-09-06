@@ -19,6 +19,9 @@ namespace Engine.Editor
         static UiButton entity;
         static UiButton brush;
         public static UiText objName;
+
+        static List<UiElement> EntityParams = new List<UiElement>();
+
         public static void Start()
         {
             #region Spawner
@@ -29,7 +32,7 @@ namespace Engine.Editor
             panel.size = new Vector2f(100,180);
             panel.position = new Vector2f(50, 90);
             panel.color = new Color(25, 25, 25, 250);
-            panel.layer = 0;
+            panel.layer = -5;
             UiManager.objects.Add(panel);
             #endregion
 
@@ -156,7 +159,7 @@ namespace Engine.Editor
             panel2.size = new Vector2f(100, 200);
             panel2.position = new Vector2f(-50, 100);
             panel2.color = new Color(25, 25, 25, 250);
-            panel2.layer = 0;
+            panel2.layer = -5;
             UiManager.objects.Add(panel2);
             #endregion
             #region Name
@@ -169,6 +172,41 @@ namespace Engine.Editor
             UiManager.objects.Add(objName);
             #endregion
             #endregion
+
+        }
+
+
+        public static void BuildEntityMenu(Entity entity)
+        {
+            foreach (UiElement element in EntityParams)
+                UiManager.objects.Remove(element);
+
+            if (entity.entityParams==null) return;
+            int i = 0;
+            foreach(EntityParam param in entity.entityParams)
+            {
+                UiText text = new UiText();
+                text.originH = Origin.Right;
+                text.originV = Origin.Top;
+                text.position = new Vector2f(-50, 50 + i * 40);
+                text.text = param.name;
+                text.SetFontSize(15);
+                UiManager.objects.Add(text);
+                EntityParams.Add(text);
+
+                UiInputField inputField = new UiInputField();
+                inputField.originH = Origin.Right;
+                inputField.originV = Origin.Top;
+                inputField.position = new Vector2f(-50, 65 + i * 40);
+                inputField.size = new Vector2f(90, 13);
+                inputField.text = param.value;
+                inputField.SetFontSize(12);
+                inputField.param = param;
+                UiManager.objects.Add(inputField);
+                EntityParams.Add(inputField);
+
+                i++;
+            }
 
         }
 

@@ -26,7 +26,7 @@ namespace Engine
         public bool flipV;
         public string type;
 
-        public static EntityParam[] entityParams;
+        public EntityParam[] entityParams;
 
         public int[] intCustomSaveData;
         public float[] floatCustomSaveData;

@@ -70,11 +70,10 @@ namespace Engine
 
             foreach (Entity ent in GameMain.curentLevel.entities)
             {
-                //if(!ent.HideInGame&!Editor.EditorMain.GamePaused)
+                if(!ent.HideInGame||ent.HideInGame&&Editor.EditorMain.GamePaused)
                 window.Draw(ent);
                 foreach (Entity ent2 in ent.child)
                 {
-                    //if (!ent.HideInGame & !Editor.EditorMain.GamePaused)
                         window.Draw(ent2);
                 }
             }
