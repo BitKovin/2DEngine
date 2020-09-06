@@ -52,6 +52,7 @@
     <Compile Include="Editor\EditorMenu.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="EntityData.cs" />
+    <Compile Include="EntityParam.cs" />
     <Compile Include="Functions.cs" />
     <Compile Include="GameMain.cs" />
     <Compile Include="Input.cs" />

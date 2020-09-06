@@ -55,7 +55,6 @@ namespace Engine
                 MapData mapData = (MapData)formatter.Deserialize(file);
                 level.brushes = mapData.GetBrushes();
                 level.entities = mapData.GetEntities();
-
                 file.Close();
             }
         }

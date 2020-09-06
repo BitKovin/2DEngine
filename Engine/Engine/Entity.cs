@@ -10,6 +10,9 @@ namespace Engine
 {
     public class Entity: Drawable,ICloneable
     {
+        public bool HideInGame;
+
+        public bool Trigger;
 
         public Texture texture;
         public string textureName;
@@ -22,6 +25,8 @@ namespace Engine
         public bool flipH;
         public bool flipV;
         public string type;
+
+        public static EntityParam[] entityParams;
 
         public int[] intCustomSaveData;
         public float[] floatCustomSaveData;
@@ -63,7 +68,7 @@ namespace Engine
             sprite.Texture = texture;
         }
 
-        public void Draw(RenderTarget target, RenderStates states)
+        public virtual void Draw(RenderTarget target, RenderStates states)
         {
             float x = 1;
             float y = 1;

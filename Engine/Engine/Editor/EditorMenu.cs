@@ -7,6 +7,8 @@ using Engine.UI;
 using SFML.System;
 using SFML.Graphics;
 
+using static Engine.UI.UiElement;
+
 namespace Engine.Editor
 {
     public class EditorMenu
@@ -16,13 +18,16 @@ namespace Engine.Editor
         public static UiInputField brushName;
         static UiButton entity;
         static UiButton brush;
+        public static UiText objName;
         public static void Start()
         {
+            #region Spawner
             #region panel
             UiPanel panel = new UiPanel();
-            panel.originH = UiElement.Origin.Left;
-            panel.size = new Vector2f(100,Constants.BaseResolution.Y);
-            panel.position = new Vector2f(50, 0);
+            panel.originH = Origin.Left;
+            panel.originV = Origin.Top;
+            panel.size = new Vector2f(100,180);
+            panel.position = new Vector2f(50, 90);
             panel.color = new Color(25, 25, 25, 250);
             panel.layer = 0;
             UiManager.objects.Add(panel);
@@ -30,7 +35,7 @@ namespace Engine.Editor
 
             #region play
             UiButton play = new UiButton();
-            play.originV = UiElement.Origin.Top;
+            play.originV = Origin.Top;
             play.position = new Vector2f(-14, 10);
             play.size = new Vector2f(24, 13);
             play.text = "play";
@@ -41,7 +46,7 @@ namespace Engine.Editor
 
             #region stop
             UiButton stop = new UiButton();
-            stop.originV = UiElement.Origin.Top;
+            stop.originV = Origin.Top;
             stop.position = new Vector2f(14, 10);
             stop.size = new Vector2f(24, 13);
             stop.text = "stop";
@@ -52,8 +57,8 @@ namespace Engine.Editor
 
             #region fileName
             fileName = new UiInputField();
-            fileName.originV = UiElement.Origin.Top;
-            fileName.originH = UiElement.Origin.Left;
+            fileName.originV = Origin.Top;
+            fileName.originH = Origin.Left;
             fileName.position = new Vector2f(50, 10);
             fileName.size = new Vector2f(92, 13);
             fileName.SetFontSize(10);
@@ -63,8 +68,8 @@ namespace Engine.Editor
 
             #region load
             UiButton load = new UiButton();
-            load.originV = UiElement.Origin.Top;
-            load.originH = UiElement.Origin.Left;
+            load.originV = Origin.Top;
+            load.originH = Origin.Left;
             load.position = new Vector2f(84, 26);
             load.size = new Vector2f(24, 13);
             load.text = "load";
@@ -141,6 +146,30 @@ namespace Engine.Editor
             brushName.text = "b_test";
             UiManager.objects.Add(brushName);
             #endregion
+            #endregion
+
+            #region EntityMenu
+            #region panel
+            UiPanel panel2 = new UiPanel();
+            panel2.originH = Origin.Right;
+            panel2.originV = Origin.Top;
+            panel2.size = new Vector2f(100, 200);
+            panel2.position = new Vector2f(-50, 100);
+            panel2.color = new Color(25, 25, 25, 250);
+            panel2.layer = 0;
+            UiManager.objects.Add(panel2);
+            #endregion
+            #region Name
+            objName = new UiText();
+            objName.SetFontSize(15);
+            objName.originH = Origin.Right;
+            objName.originV = Origin.Top;
+            objName.position = new Vector2f(-50,10);
+            objName.text = "test";
+            UiManager.objects.Add(objName);
+            #endregion
+            #endregion
+
         }
 
         private static void Entity_OnClick()
@@ -165,6 +194,7 @@ namespace Engine.Editor
         private static void Load_OnClick()
         {
             SaveLoadMap.Load(EditorMain.baselevel, fileName.text);
+            EditorMain.StopLevel();
         }
 
         private static void Stop_OnClick()

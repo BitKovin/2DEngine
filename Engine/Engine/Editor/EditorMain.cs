@@ -38,6 +38,7 @@ namespace Engine.Editor
 
         static UiText CameraPos;
 
+        static Vector2f PosDif;
 
         [DllImport("user32.dll")]
         private static extern int ShowWindow(int hwnd, int nCmdShow);
@@ -90,6 +91,15 @@ namespace Engine.Editor
 
             ToolPos = Functions.SnapToGrid(Input.MousePos,5f);
 
+            if (selectedEntity != null)
+            {
+                EditorMenu.objName.text = selectedEntity.type;
+            }
+            else
+            {
+                EditorMenu.objName.text = "";
+            }
+
             if(curentEntity!=null)
             {
                 curentEntity.position = Input.MousePos;
@@ -108,7 +118,7 @@ namespace Engine.Editor
             {
                 if(Mouse.IsButtonPressed(Mouse.Button.Left)&!UiManager.UiHover)
                 {
-                    selectedEntity.position = Input.MousePos;
+                    selectedEntity.position = Input.MousePos - PosDif;
                     selectedEntity.UpdateCollision();
                 }
 
@@ -163,6 +173,7 @@ namespace Engine.Editor
                                 {
                                     selectedBrush = brush;
                                     Console.WriteLine("sellected");
+                                    
                                     return;
                                 }
                             }
@@ -205,10 +216,11 @@ namespace Engine.Editor
                         foreach (Entity entity in baselevel.entities)
                             foreach (Collision col in entity.collisions)
                             {
-                                Console.WriteLine(col.position);
+                                //Console.WriteLine(col.position);
                                 if (Collision.MakeCollionTest(mouseCol, col))
                                 {
                                     selectedEntity = col.owner;
+                                    PosDif = Input.MousePos - selectedEntity.position;
                                     Console.WriteLine("sellected");
                                     return;
                                 }

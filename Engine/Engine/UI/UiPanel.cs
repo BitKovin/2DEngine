@@ -74,7 +74,7 @@ namespace Engine.UI
                     break;
             }
 
-            collision.position = new Vector2f(position.X, -position.Y) + new Vector2f(Camera.position.X, -Camera.position.Y) + new Vector2f(origin.X, -origin.Y);
+            collision.position = new Vector2f(position.X, -position.Y) + new Vector2f(Camera.position.X, Camera.position.Y) + new Vector2f(origin.X, -origin.Y);
             collision.size = size;
 
             Collision MouseCol = new Collision();
@@ -83,6 +83,7 @@ namespace Engine.UI
             MouseCol.size = new Vector2f(2, 2);
 
             hovered = Collision.MakeCollionTest(collision, MouseCol);
+
 
             if (hovered)
                 UiManager.UiHover = true;
