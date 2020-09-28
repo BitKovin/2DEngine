@@ -21,6 +21,8 @@ namespace Engine.UI
         public bool clicking;
         public Collision collision;
 
+        public Action action;
+
         public bool active = true;
 
         public delegate void onClick();
@@ -45,11 +47,12 @@ namespace Engine.UI
         private void Window_MouseButtonPressed(object sender, MouseButtonEventArgs e)
         {
             if (e.Button == Mouse.Button.Left & hovered)
+
                 try
                 {
                     OnClick();
-                } catch (SystemException ex)
-                { }
+                }
+                catch (SystemException ex) { }
         }
         
 
@@ -125,7 +128,7 @@ namespace Engine.UI
             }
         }
 
-        public override void draw(RenderTarget target, RenderStates states)
+        public override void draw(RenderTarget target, RenderStates states, Vector2f pos)
         {
 
             Vector2f origin = new Vector2f();
@@ -208,6 +211,12 @@ namespace Engine.UI
 
             target.Draw(r_rectangle);
             target.Draw(r_text);
+
+            foreach (UiElement element in child)
+            {
+                element.draw(target, states, position + pos);
+            }
+
         }
 
         public void SetFontSize(uint val)

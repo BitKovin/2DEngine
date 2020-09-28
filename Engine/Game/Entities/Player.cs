@@ -92,6 +92,8 @@ namespace Game.Entities
             if (Input.Right > 0) flipH = false;
             if (Input.Right < 0) flipH = true;
             Vector2f move = (new Vector2f(movement.X, 0) * speed) * Engine.Time.DeltaTime;
+
+            /*
             position += move;
             UpdateCollision();
             Collide(move);
@@ -100,6 +102,7 @@ namespace Game.Entities
             position += move;
             UpdateCollision();
             Collide(move);
+            */
             if (movement.X != 0)
             {
                 stateMachine.SetState("walk");
@@ -108,8 +111,10 @@ namespace Game.Entities
             {
                 stateMachine.SetState("idle");
             }
-            if (!OnGround)
-                stateMachine.SetState("inAir");
+            
+            //if (!OnGround)
+                //stateMachine.SetState("inAir");
+                
             stateMachine.Update();
             SetTexture(stateMachine.OutFrame);
             Camera.position = position;

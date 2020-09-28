@@ -18,6 +18,7 @@ namespace Engine.Editor
         public static UiInputField brushName;
         static UiButton entity;
         static UiButton brush;
+        static UiButton Disable;
         public static UiText objName;
 
         static List<UiElement> EntityParams = new List<UiElement>();
@@ -81,6 +82,18 @@ namespace Engine.Editor
             load.OnClick += Load_OnClick;
             #endregion
 
+            #region New
+            UiButton New = new UiButton();
+            New.originV = UiElement.Origin.Top;
+            New.originH = UiElement.Origin.Left;
+            New.position = new Vector2f(16, 26);
+            New.size = new Vector2f(24, 13);
+            New.text = "new";
+            New.SetFontSize(10);
+            UiManager.objects.Add(New);
+            New.OnClick += New_OnClick;
+            #endregion
+
             #region save
             UiButton save = new UiButton();
             save.originV = UiElement.Origin.Top;
@@ -110,7 +123,7 @@ namespace Engine.Editor
             entity.size = new Vector2f(92, 15);
             entity.SetFontSize(15);
             entity.text = "ENTITY";
-            entity.active = false;
+            entity.active = true;
             UiManager.objects.Add(entity);
             entity.OnClick += Entity_OnClick;
             #endregion
@@ -149,6 +162,20 @@ namespace Engine.Editor
             brushName.text = "b_test";
             UiManager.objects.Add(brushName);
             #endregion
+
+            #region Disable
+            Disable = new UiButton();
+            Disable.originV = UiElement.Origin.Top;
+            Disable.originH = UiElement.Origin.Left;
+            Disable.position = new Vector2f(50, 170);
+            Disable.size = new Vector2f(92, 15);
+            Disable.SetFontSize(15);
+            Disable.text = "DISABLE";
+            UiManager.objects.Add(Disable);
+            Disable.OnClick += Disable_OnClick;
+            Disable.active = false;
+            #endregion
+
             #endregion
 
             #region EntityMenu
@@ -175,6 +202,20 @@ namespace Engine.Editor
 
         }
 
+        private static void Disable_OnClick()
+        {
+            EditorMain.tool = Tool.empty;
+            entity.active = true;
+            brush.active = true;
+            Disable.active = false;
+        }
+
+        private static void New_OnClick()
+        {
+            EditorMain.baselevel = new Level();
+            fileName.text = "Unnamed";
+            EditorMain.StopLevel();
+        }
 
         public static void BuildEntityMenu(Entity entity)
         {
@@ -188,20 +229,22 @@ namespace Engine.Editor
                 UiText text = new UiText();
                 text.originH = Origin.Right;
                 text.originV = Origin.Top;
-                text.position = new Vector2f(-50, 50 + i * 40);
+                text.position = new Vector2f(-50, 40 + i * 40);
                 text.text = param.name;
-                text.SetFontSize(15);
+                text.SetFontSize(12);
+                text.r_text.Style = Text.Styles.Bold;
                 UiManager.objects.Add(text);
                 EntityParams.Add(text);
 
                 UiInputField inputField = new UiInputField();
                 inputField.originH = Origin.Right;
                 inputField.originV = Origin.Top;
-                inputField.position = new Vector2f(-50, 65 + i * 40);
+                inputField.position = new Vector2f(-50, 55 + i * 40);
                 inputField.size = new Vector2f(90, 13);
                 inputField.text = param.value;
-                inputField.SetFontSize(12);
+                inputField.SetFontSize(10);
                 inputField.param = param;
+                inputField.r_text.Style = Text.Styles.Italic;
                 UiManager.objects.Add(inputField);
                 EntityParams.Add(inputField);
 
@@ -215,6 +258,7 @@ namespace Engine.Editor
             EditorMain.tool = Tool.enity;
             entity.active = false;
             brush.active = true;
+            Disable.active = true;
         }
 
         private static void Brush_OnClick()
@@ -222,6 +266,7 @@ namespace Engine.Editor
             EditorMain.tool = Tool.brush;
             brush.active = false;
             entity.active = true;
+            Disable.active = true;
         }
 
         private static void Save_OnClick()

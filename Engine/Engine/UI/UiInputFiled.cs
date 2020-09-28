@@ -147,7 +147,7 @@ namespace Engine.UI
                 UiManager.UiHover = true;
         }
 
-        public override void draw(RenderTarget target, RenderStates states)
+        public override void draw(RenderTarget target, RenderStates states, Vector2f pos)
         {
 
             Vector2f origin = new Vector2f();
@@ -221,6 +221,12 @@ namespace Engine.UI
             r_text.Origin = new Vector2f(0, textRect.Top + textRect.Height / 2.0f);
             target.Draw(r_rectangle);
             target.Draw(r_text);
+
+            foreach (UiElement element in child)
+            {
+                element.draw(target, states, position + pos);
+            }
+
         }
 
         public void SetFontSize(uint val)

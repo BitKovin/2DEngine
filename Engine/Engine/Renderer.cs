@@ -52,8 +52,8 @@ namespace Engine
 
             if (Editor.EditorMain.GamePaused)
             {
-                s_grid.Position = Camera.position - new Vector2f(800, 800);
-                s_grid.TextureRect = new IntRect((int)Camera.position.X, (int)Camera.position.Y, 2000, 2000);
+                s_grid.Position = new Vector2f(Camera.position.X,-Camera.position.Y) - new Vector2f(2000, 2000);
+                s_grid.TextureRect = new IntRect((int)Camera.position.X, -(int)Camera.position.Y, 5000, 5000);
                 window.Draw(s_grid);
 
                 Vector2f pos = new Vector2f(Editor.EditorMain.ToolPos.X, -Editor.EditorMain.ToolPos.Y);

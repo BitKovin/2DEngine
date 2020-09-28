@@ -40,6 +40,9 @@ namespace Engine
 
         public void Start()
         {
+
+            Physics.Physics.Clear();
+
             foreach (Entity ent in entities)
             {
                 ent.Start();
@@ -53,8 +56,10 @@ namespace Engine
         }
         public void Update()
         {
-            foreach (Entity ent in entities)
-                ent.Update();
+            Parallel.For(0, entities.Count,
+                               index => {
+                                   entities[index].Update();
+                               });
         }
 
     }

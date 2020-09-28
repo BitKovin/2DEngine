@@ -14,8 +14,10 @@ namespace Engine.Editor
 
     public enum Tool
     {
+        empty,
         enity,
         brush
+        
     };
     public class EditorMain
     {
@@ -60,6 +62,8 @@ namespace Engine.Editor
             EditorMenu.Start();
 
             ShowWindow((int)Renderer.window.SystemHandle, 3);
+
+            StopLevel();
 
         }
 
@@ -147,7 +151,6 @@ namespace Engine.Editor
 
         private static void Window_MouseButtonReleased(object sender, MouseButtonEventArgs e)
         {
-            if (UiManager.UiHover) return;
             if (!GamePaused) return;
             
             if (e.Button == Mouse.Button.Left)
@@ -165,7 +168,7 @@ namespace Engine.Editor
                         curentEntity = null;
                         break;
                     case Tool.brush:
-
+                        if (UiManager.UiHover) return;
                         if (BrushStart == BrushEnd)
                         {
                             Console.WriteLine("start seaching");
@@ -248,6 +251,42 @@ namespace Engine.Editor
                         selectedBrush = null;
                         BrushStart = ToolPos;
                         drawing = true;
+                        break;
+
+                    case Tool.empty:
+
+                        if (UiManager.UiHover) return;
+
+                        foreach (Entity entity in baselevel.entities)
+                            foreach (Collision col in entity.collisions)
+                            {
+                                //Console.WriteLine(col.position);
+                                if (Collision.MakeCollionTest(mouseCol, col))
+                                {
+                                    selectedEntity = col.owner;
+                                    PosDif = Input.MousePos - selectedEntity.position;
+                                    Console.WriteLine("sellected");
+                                    EditorMenu.BuildEntityMenu(col.owner);
+                                    return;
+                                }
+                            }
+                        selectedEntity = null;
+
+                        if (true)
+                        {
+                            Console.WriteLine("start seaching");
+                            foreach (Brush brush in baselevel.brushes)
+                            {
+                                if (Collision.MakeCollionTest(mouseCol, brush.collision))
+                                {
+                                    selectedBrush = brush;
+                                    Console.WriteLine("sellected");
+
+                                    return;
+                                }
+                            }
+                        }
+
                         break;
                     default:
                         break;

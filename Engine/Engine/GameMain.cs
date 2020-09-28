@@ -4,17 +4,17 @@ using System.Text;
 using Engine.UI;
 using SFML.System;
 using SFML.Graphics;
-
-
 using System.IO;
 
 namespace Engine
 {
     public class GameMain
     {
+
         public static Level curentLevel;
         public static void Start()
         {
+
             Renderer.Init();
             Game.Game.Init();
 
@@ -36,6 +36,8 @@ namespace Engine
 
             Game.Game.Update();
 
+            Physics.Physics.Init();
+
         }
 
         public static void Update()
@@ -45,6 +47,8 @@ namespace Engine
             foreach (UiElement uiElement in UiManager.objects)
                 uiElement.Update();
             UiManager.objects.Sort();
+
+            Physics.Physics.Update();
 
             if (!Editor.EditorMain.GamePaused)
                 curentLevel.Update();

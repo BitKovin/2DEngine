@@ -31,6 +31,8 @@ namespace Engine
             collision.position = new Vector2f(position.X, position.Y);
             GameMain.curentLevel.collisions.Add(collision);
 
+            Physics.Physics.CreateStaticBox(position.X, position.Y, size.X, size.Y);
+
         }
 
         public void SetTexture(string Texture)

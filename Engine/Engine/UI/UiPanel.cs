@@ -89,7 +89,7 @@ namespace Engine.UI
                 UiManager.UiHover = true;
         }
 
-        public override void draw(RenderTarget target, RenderStates states)
+        public override void draw(RenderTarget target, RenderStates states, Vector2f pos)
         {
 
             Vector2f origin = new Vector2f();
@@ -143,6 +143,12 @@ namespace Engine.UI
             r_rectangle.OutlineColor = Color.Black;
 
             target.Draw(r_rectangle);
+
+            foreach(UiElement element in child)
+            {
+                element.draw(target, states, position + pos);
+            }
+
         }
     }
 }

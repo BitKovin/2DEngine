@@ -20,7 +20,7 @@ namespace Engine.UI
             r_text.Scale = new Vector2f(0.5f,0.5f);
         }
 
-        public override void draw(RenderTarget target, RenderStates states)
+        public override void draw(RenderTarget target, RenderStates states, Vector2f pos)
         {
 
             Vector2f origin = new Vector2f();
@@ -72,6 +72,12 @@ namespace Engine.UI
             FloatRect textRect = r_text.GetLocalBounds();
             r_text.Origin = new Vector2f(textRect.Left + textRect.Width / 2.0f, textRect.Top + textRect.Height / 2.0f);
             target.Draw(r_text);
+
+            foreach (UiElement element in child)
+            {
+                element.draw(target, states, position + pos);
+            }
+
         }
 
         public void SetFontSize(uint val)

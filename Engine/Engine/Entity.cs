@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SFML.System;
 using SFML.Graphics;
+using Box2DX.Dynamics;
 
 namespace Engine
 {
@@ -13,6 +14,8 @@ namespace Engine
         public bool HideInGame;
 
         public bool Trigger;
+
+        public Body physicBody;
 
         public Texture texture;
         public string textureName;
@@ -102,5 +105,6 @@ namespace Engine
         {
             return this.MemberwiseClone();
         }
+
     }
 }

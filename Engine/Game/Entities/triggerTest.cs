@@ -27,7 +27,7 @@ namespace Game.Entities
 
             Trigger = true;
             HideInGame = true;
-            Console.WriteLine("trigger");
+            //Console.WriteLine("trigger");
             SetTexture("playerIdle");
             text = new EntityParam();
             SizeX = new EntityParam();
@@ -69,7 +69,7 @@ namespace Game.Entities
                 if (!ent.Trigger)
                     if(Collision.MakeCollionTest(collision,ent.collisions[0]))
                     {
-                        Console.WriteLine(text.value);
+                        //Console.WriteLine(text.value);
                     }
             }
 

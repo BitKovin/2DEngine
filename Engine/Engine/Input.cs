@@ -14,10 +14,11 @@ namespace Engine
         public static float Forward, Right;
         public static Vector2f MousePos;
         public static Vector2f MousePosWindow;
+        public static bool cursorInBounds;
 
         public static void Update()
         {
-
+            cursorInBounds = false;
             #region Right
             if (Keyboard.IsKeyPressed(Keyboard.Key.A))
                 Right -= Time.DeltaTime * 7f;
@@ -64,6 +65,15 @@ namespace Engine
             MousePos = new Vector2f((Mouse.GetPosition(Renderer.window).X - (Renderer.window.Size.X / 2)) / ((Renderer.window.Size.X / Renderer.view.Size.X)) + Camera.position.X, ( -Mouse.GetPosition(Renderer.window).Y + (Renderer.window.Size.Y / 2)) / (Renderer.window.Size.Y / Renderer.view.Size.Y) + Camera.position.Y);
             MousePosWindow = new Vector2f(Mouse.GetPosition(Renderer.window).X - (Renderer.window.Size.X / 2) / (Renderer.window.Size.Y / Renderer.view.Size.Y), -Mouse.GetPosition(Renderer.window).Y + (Renderer.window.Size.Y / 2)) / (Renderer.window.Size.Y / Renderer.view.Size.Y);
             #endregion
+
+            if(MousePos.X>Camera.position.X-(float)Constants.BaseResolution.Y*Renderer.hToV)
+                if (MousePos.X < Camera.position.X + (float)Constants.BaseResolution.Y * Renderer.hToV)
+
+                    if (MousePos.Y > Camera.position.X - (float)Constants.BaseResolution.Y)
+                        if (MousePos.Y < Camera.position.X + (float)Constants.BaseResolution.Y)
+                        {
+                            cursorInBounds = true;
+                        }
 
         }
 

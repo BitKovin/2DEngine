@@ -12,6 +12,7 @@ namespace Engine
     {
         public static Vector2f position = new Vector2f(0,-100);
         public static float zoom = 1f;
+        
 
         public static void Update()
         {

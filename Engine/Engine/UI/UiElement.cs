@@ -24,6 +24,8 @@ namespace Engine.UI
         public Origin originH;
         public Origin originV;
 
+        public List<UiElement> child = new List<UiElement>();
+
         public Vector2f Center = new Vector2f(0,0);
 
         public Vector2f Top = new Vector2f(0, -Constants.BaseResolution.Y/2f);
@@ -40,14 +42,14 @@ namespace Engine.UI
 
         }
 
-        public virtual void draw(RenderTarget target, RenderStates states)
+        public virtual void draw(RenderTarget target, RenderStates states, Vector2f pos)
         {
 
         }
 
         public void Draw(RenderTarget target, RenderStates states)
         {
-            draw(target,states);
+            draw(target,states, new Vector2f(0,0));
         }
 
         public int CompareTo(object obj)
