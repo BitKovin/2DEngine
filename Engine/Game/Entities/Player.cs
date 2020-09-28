@@ -8,12 +8,14 @@ using SFML.System;
 using SFML.Window;
 using Engine;
 using Engine.Editor;
+using Engine.Physics;
 
 namespace Game.Entities
 {
     public class Player : Entity
     {
-        public float speed = 400f;
+
+        public float speed = 300f;
         public float stepHeight = 5f;
         float gravity;
         Collision collision;
@@ -78,6 +80,10 @@ namespace Game.Entities
             stateMachine.states.Add("walk", walk);
             stateMachine.states.Add("inAir", inAir);
             stateMachine.SetState("idle");
+
+            physicBody = Physics.CreateBox(position.X, position.Y, 15, 35, this,0);
+            physicBody.FreezeRotation();
+
         }
         public override void Update()
         {
@@ -91,18 +97,10 @@ namespace Game.Entities
             //GameMain.text.text = position.ToString();
             if (Input.Right > 0) flipH = false;
             if (Input.Right < 0) flipH = true;
-            Vector2f move = (new Vector2f(movement.X, 0) * speed) * Engine.Time.DeltaTime;
+            Vector2f move = new Vector2f(movement.X, 0) * speed;
 
-            /*
-            position += move;
-            UpdateCollision();
-            Collide(move);
+            physicBody.SetLinearVelocity(new Box2DX.Common.Vec2(move.X,physicBody.GetLinearVelocity().Y));
 
-            move = (new Vector2f(0, gravity) + new Vector2f(0, movement.Y) * speed) * Engine.Time.DeltaTime;
-            position += move;
-            UpdateCollision();
-            Collide(move);
-            */
             if (movement.X != 0)
             {
                 stateMachine.SetState("walk");
@@ -120,35 +118,6 @@ namespace Game.Entities
             Camera.position = position;
         }
 
-        void Collide(Vector2f move)
-        {
-
-            foreach (Collision col in GameMain.curentLevel.collisions)
-            {
-                if (Collision.MakeCollionTest(collision, col))
-                {
-
-                    if (move.Y < 0)
-                    {
-                        OnGround = true;
-                        gravity = 0;
-                        UpdateCollision();
-                    }
-                    if (move.Y > 0)
-                    {
-                        gravity = 0;
-                        OnGround = false;
-                        UpdateCollision();
-                    }
-
-                    position -= move;
-                    return;
-                }
-                if (Math.Abs(gravity) > 100)
-                    OnGround = false;
-            }
-
-        }
 
         public override void UpdateCollision()
         {
@@ -157,8 +126,8 @@ namespace Game.Entities
 
         private void Window_KeyPressed(object sender, KeyEventArgs e)
         {
-            if (e.Code == Keyboard.Key.Space && OnGround)
-                gravity = 300;
+            if (e.Code == Keyboard.Key.Space)
+                physicBody.ApplyImpulse(new Box2DX.Common.Vec2(0,20000),physicBody.GetWorldCenter());
         }
 
     }

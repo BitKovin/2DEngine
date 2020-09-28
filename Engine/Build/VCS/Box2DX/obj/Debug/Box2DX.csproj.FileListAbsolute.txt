@@ -1,0 +1,6 @@
+F:\GitHub\2DEngine\Engine\Output\Box2DX.dll
+F:\GitHub\2DEngine\Engine\Output\Box2DX.pdb
+F:\GitHub\2DEngine\Engine\Build\VCS\Box2DX\obj\Debug\Box2DX.csprojAssemblyReference.cache
+F:\GitHub\2DEngine\Engine\Build\VCS\Box2DX\obj\Debug\Box2DX.csproj.CoreCompileInputs.cache
+F:\GitHub\2DEngine\Engine\Build\VCS\Box2DX\obj\Debug\Box2DX.dll
+F:\GitHub\2DEngine\Engine\Build\VCS\Box2DX\obj\Debug\Box2DX.pdb

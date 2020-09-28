@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Engine", "Engine\Engine.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game", "Game\Game.csproj", "{521CAD90-8A01-432A-8197-21DFC398BACB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Box2DX", "Box2DX\Box2DX.csproj", "{C157BCA5-BAC7-455F-A7DE-59D506D46ECF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +26,10 @@ Global
 		{521CAD90-8A01-432A-8197-21DFC398BACB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{521CAD90-8A01-432A-8197-21DFC398BACB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{521CAD90-8A01-432A-8197-21DFC398BACB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C157BCA5-BAC7-455F-A7DE-59D506D46ECF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C157BCA5-BAC7-455F-A7DE-59D506D46ECF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C157BCA5-BAC7-455F-A7DE-59D506D46ECF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C157BCA5-BAC7-455F-A7DE-59D506D46ECF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

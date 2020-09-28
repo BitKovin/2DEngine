@@ -23,7 +23,7 @@ namespace Engine.Physics
             AABB aabb = new AABB();
             aabb.LowerBound.Set(-100000, -10000);
             aabb.UpperBound.Set(100000,100000);
-            world = new World(aabb, new Vec2(0,-50), false);
+            world = new World(aabb, new Vec2(0,-9.8f*20f), false);
         }
 
         public static void Test(Entity entity)
@@ -93,13 +93,35 @@ namespace Engine.Physics
             // Наш полигон который описывает вершины			
             PolygonDef pDef = new PolygonDef();
             pDef.Restitution = 0;
-            pDef.Friction = 1;
+            pDef.Friction = 0.95f;
             pDef.Density = 0.5f;
             pDef.SetAsBox(sx/2f, sy/2f);
             // Создание самого тела
             Body body = world.CreateBody(bDef);
             body.CreateShape(pDef);
-            body.IsStatic();
+
+            body.SetMassFromShapes();
+            body.SetUserData(entity);
+
+
+            return body;
+        }
+
+        public static Body CreateBox(float x, float y, float sx, float sy, Entity entity,float f)
+        {
+            BodyDef bDef = new BodyDef();
+            bDef.Position.Set(x, y);
+            bDef.Angle = 0;
+            // Наш полигон который описывает вершины			
+            PolygonDef pDef = new PolygonDef();
+            pDef.Restitution = 0;
+            pDef.Friction = f;
+            pDef.Density = 0.5f;
+            pDef.SetAsBox(sx / 2f, sy / 2f);
+            // Создание самого тела
+            Body body = world.CreateBody(bDef);
+            body.CreateShape(pDef);
+
             body.SetMassFromShapes();
             body.SetUserData(entity);
 

@@ -13,3 +13,4 @@ F:\GitHub\2DEngine\Engine\Game\obj\Debug\Game.csproj.CopyComplete
 F:\GitHub\2DEngine\Engine\Game\obj\Debug\Game.dll
 F:\GitHub\2DEngine\Engine\Game\obj\Debug\Game.pdb
 F:\GitHub\2DEngine\Engine\Game\bin\Debug\Box2DX.dll
+F:\GitHub\2DEngine\Engine\Game\bin\Debug\Box2DX.pdb
