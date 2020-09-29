@@ -77,6 +77,7 @@ namespace Engine.Editor
         }
         public static void StopLevel()
         {
+            Physics.Physics.Clear();
             GameMain.curentLevel = baselevel;
             GamePaused = true;
             foreach (Entity entity in baselevel.entities)

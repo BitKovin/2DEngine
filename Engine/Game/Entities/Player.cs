@@ -83,6 +83,10 @@ namespace Game.Entities
 
             physicBody = Physics.CreateBox(position.X, position.Y, 15, 35, this,0);
             physicBody.FreezeRotation();
+            Box2DX.Collision.MassData massData = new Box2DX.Collision.MassData();
+            massData.I = 0;
+            massData.Mass = 1000;
+            physicBody.SetMass(massData);
 
         }
         public override void Update()
@@ -90,8 +94,30 @@ namespace Game.Entities
             base.Update();
 
             gravity -= 1400f * Engine.Time.DeltaTime;
-            if (Math.Abs(gravity) < 1)
-                gravity *= 3f;
+
+            
+
+            Box2DX.Collision.Segment segment = new Box2DX.Collision.Segment();
+            segment.P1 = new Box2DX.Common.Vec2(position.X, position.Y);
+            segment.P2 = new Box2DX.Common.Vec2(position.X, position.Y-20);
+
+            Box2DX.Collision.Segment segment2 = new Box2DX.Collision.Segment();
+            segment2.P1 = new Box2DX.Common.Vec2(position.X, position.Y);
+            segment2.P2 = new Box2DX.Common.Vec2(position.X-7f, position.Y - 20);
+
+            Box2DX.Collision.Segment segment3 = new Box2DX.Collision.Segment();
+            segment3.P1 = new Box2DX.Common.Vec2(position.X, position.Y);
+            segment3.P2 = new Box2DX.Common.Vec2(position.X+7f, position.Y - 20);
+
+            float l;
+            Box2DX.Common.Vec2 normal;
+
+            OnGround = Math.Abs(physicBody.GetLinearVelocity().Y) < 100 & (
+                Physics.world.RaycastOne(segment, out l, out normal, false, null) != null
+                ||Physics.world.RaycastOne(segment, out l, out normal, false, null) != null
+                || Physics.world.RaycastOne(segment2, out l, out normal, false, null) != null
+                || Physics.world.RaycastOne(segment3, out l, out normal, false, null) != null);
+            
 
             Vector2f movement = new Vector2f(Input.Right, 0);
             //GameMain.text.text = position.ToString();
@@ -110,8 +136,8 @@ namespace Game.Entities
                 stateMachine.SetState("idle");
             }
             
-            //if (!OnGround)
-                //stateMachine.SetState("inAir");
+            if (!OnGround)
+                stateMachine.SetState("inAir");
                 
             stateMachine.Update();
             SetTexture(stateMachine.OutFrame);
@@ -126,8 +152,8 @@ namespace Game.Entities
 
         private void Window_KeyPressed(object sender, KeyEventArgs e)
         {
-            if (e.Code == Keyboard.Key.Space)
-                physicBody.ApplyImpulse(new Box2DX.Common.Vec2(0,20000),physicBody.GetWorldCenter());
+            if (e.Code == Keyboard.Key.Space&&OnGround)
+                physicBody.ApplyImpulse(new Box2DX.Common.Vec2(0,160000),physicBody.GetWorldCenter());
         }
 
     }

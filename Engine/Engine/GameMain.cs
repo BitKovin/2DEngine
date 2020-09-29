@@ -14,7 +14,7 @@ namespace Engine
         public static Level curentLevel;
         public static void Start()
         {
-
+            Physics.Physics.Init();
             Renderer.Init();
             Game.Game.Init();
 
@@ -36,7 +36,7 @@ namespace Engine
 
             Game.Game.Update();
 
-            Physics.Physics.Init();
+            
 
         }
 

@@ -14,7 +14,7 @@ namespace Engine.Physics
 {
     public static class Physics
     {
-        static World world;
+        public static World world;
 
         public static Vector2 gravity { set { world.Gravity = new Vec2(value.X, value.Y); } }
 
@@ -23,7 +23,7 @@ namespace Engine.Physics
             AABB aabb = new AABB();
             aabb.LowerBound.Set(-100000, -10000);
             aabb.UpperBound.Set(100000,100000);
-            world = new World(aabb, new Vec2(0,-9.8f*20f), false);
+            world = new World(aabb, new Vec2(0,-9.8f*45f), false);
         }
 
         public static void Test(Entity entity)
@@ -46,7 +46,7 @@ namespace Engine.Physics
 
         public static void Update()
         {
-            world.Step(Time.DeltaTime, 1,20);
+            world.Step(Time.DeltaTime, 50,100);
 
             for (Body list = world.GetBodyList(); list != null; list = list.GetNext())
             {
@@ -94,7 +94,7 @@ namespace Engine.Physics
             PolygonDef pDef = new PolygonDef();
             pDef.Restitution = 0;
             pDef.Friction = 0.95f;
-            pDef.Density = 0.5f;
+            pDef.Density = 7f;
             pDef.SetAsBox(sx/2f, sy/2f);
             // Создание самого тела
             Body body = world.CreateBody(bDef);
@@ -116,7 +116,7 @@ namespace Engine.Physics
             PolygonDef pDef = new PolygonDef();
             pDef.Restitution = 0;
             pDef.Friction = f;
-            pDef.Density = 0.5f;
+            pDef.Density = 200f;
             pDef.SetAsBox(sx / 2f, sy / 2f);
             // Создание самого тела
             Body body = world.CreateBody(bDef);

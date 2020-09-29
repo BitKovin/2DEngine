@@ -259,9 +259,11 @@ namespace Box2DX.Dynamics
 #else
 				if (Vec2.Dot(b._linearVelocity, b._linearVelocity) > Settings.MaxLinearVelocitySquared)
 				{
-					//b._linearVelocity.Normalize();
-					//b._linearVelocity *= Settings.MaxLinearVelocity;
-				}
+                    float y = b._linearVelocity.Y;
+					b._linearVelocity.Normalize();
+					b._linearVelocity *= Settings.MaxLinearVelocity;
+                    b._linearVelocity.Y = y;
+                }
 
 				if (b._angularVelocity * b._angularVelocity > Settings.MaxAngularVelocitySquared)
 				{
