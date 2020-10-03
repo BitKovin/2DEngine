@@ -194,7 +194,7 @@ namespace Engine.UI
                     break;
             }
 
-            r_rectangle.Position = position + Renderer.view.Center - size / 2f + origin;
+            r_rectangle.Position = position + Renderer.view.Center - size / 2f + origin + pos;
             r_rectangle.Size = size;
             r_rectangle.OutlineThickness = 1;
             r_rectangle.OutlineColor = Color.Black;
@@ -215,7 +215,7 @@ namespace Engine.UI
             }
 
             r_text.DisplayedString = text;
-            r_text.Position = position + Renderer.view.Center + origin - new Vector2f(size.X/2,0);
+            r_text.Position = position + Renderer.view.Center + origin - new Vector2f(size.X/2,0) + pos;
 
             FloatRect textRect = r_text.GetLocalBounds();
             r_text.Origin = new Vector2f(0, textRect.Top + textRect.Height / 2.0f);

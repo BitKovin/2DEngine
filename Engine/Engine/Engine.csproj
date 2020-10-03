@@ -75,6 +75,7 @@
     <Compile Include="UI\UiManager.cs" />
     <Compile Include="UI\UiPanel.cs" />
     <Compile Include="UI\UiText.cs" />
+    <Compile Include="UI\UiWindow.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Game, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">

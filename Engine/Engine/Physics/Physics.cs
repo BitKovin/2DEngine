@@ -146,5 +146,13 @@ namespace Engine.Physics
             body.SetMass(massData);
         }
 
+        public static Shape Raycast(Vec2 start, Vec2 end, out float lambda, out Vec2 normal, bool solidShapes, object userData)
+        {
+            Segment segment = new Segment();
+            segment.P1 = start;
+            segment.P2 = end;
+            return world.RaycastOne(segment, out lambda,out normal, solidShapes, userData);
+        }
+
     }
 }

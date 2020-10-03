@@ -27,6 +27,11 @@ namespace Engine
             textures.Add("playerInAir", new Texture("Assets//Player//Animations//walk1.png"));
         }
 
+        public static void Add(string name, string path)
+        {
+            textures.Add(name, new Texture(path));
+        }
+
         public static Texture GetTexture(string name)
         {
             try

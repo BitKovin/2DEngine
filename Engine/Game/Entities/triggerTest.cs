@@ -69,7 +69,7 @@ namespace Game.Entities
                 if (!ent.Trigger)
                     if(Collision.MakeCollionTest(collision,ent.collisions[0]))
                     {
-                        //Console.WriteLine(text.value);
+                        Console.WriteLine(text.value);
                     }
             }
 

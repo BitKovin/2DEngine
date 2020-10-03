@@ -36,6 +36,11 @@ namespace Engine
                 EntityData data = Functions.FromByteArray<EntityData>(Byte);
                 Entity entity = Functions.EntityFromString(data.type);
 
+                EntityParam[] entityParams = new EntityParam[data.entityParams.Length];
+                for (int i = 0; i < data.entityParams.Length; i++)
+                {
+                    entity.entityParams[i].value = data.entityParams[i];
+                }
                 entity.position = new Vector2f(data.posX, data.posY);
                 entity.rotation = data.rot;
                 entity.SetTexture(data.tex);

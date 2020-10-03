@@ -22,8 +22,15 @@ namespace Engine
         public string[] stringCustomSaveData;
         public bool[] boolCustomSaveData;
 
+        public string[] entityParams;
+
         public EntityData(Entity entity)
         {
+            entityParams = new string[entity.entityParams.Length];
+            for (int i = 0; i < entity.entityParams.Length; i++)
+            {
+                entityParams[i] = entity.entityParams[i].value;
+            }
             type = entity.type;
             posX = entity.position.X;
             posY = entity.position.Y;

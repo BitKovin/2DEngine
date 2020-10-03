@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using System.Collections.Generic;
 using System.Text;
 using Engine.UI;
@@ -12,10 +13,13 @@ namespace Engine
     {
 
         public static Level curentLevel;
+        
         public static void Start()
         {
+
             Physics.Physics.Init();
             Renderer.Init();
+
             Game.Game.Init();
 
             if (Program.isEditor)

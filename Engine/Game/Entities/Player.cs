@@ -43,6 +43,11 @@ namespace Game.Entities
             collision.owner = this;
             collisions[0] = collision;
 
+            entityParams = new EntityParam[1];
+            entityParams[0] = new EntityParam();
+            entityParams[0].name = "name";
+            entityParams[0].value = "player";
+
         }
 
 
@@ -117,7 +122,19 @@ namespace Game.Entities
                 ||Physics.world.RaycastOne(segment, out l, out normal, false, null) != null
                 || Physics.world.RaycastOne(segment2, out l, out normal, false, null) != null
                 || Physics.world.RaycastOne(segment3, out l, out normal, false, null) != null);
-            
+
+
+
+            Box2DX.Collision.Segment left = new Box2DX.Collision.Segment();
+            left.P1 = new Box2DX.Common.Vec2(position.X, position.Y);
+            left.P2 = new Box2DX.Common.Vec2(position.X - 10f, position.Y - 17);
+
+            Box2DX.Collision.Segment right = new Box2DX.Collision.Segment();
+            right.P1 = new Box2DX.Common.Vec2(position.X, position.Y);
+            right.P2 = new Box2DX.Common.Vec2(position.X + 10f, position.Y - 17);
+
+            bool Left = Physics.world.RaycastOne(left, out l, out normal, false, null)==null;
+            bool Right = Physics.world.RaycastOne(right, out l, out normal, false, null) == null;
 
             Vector2f movement = new Vector2f(Input.Right, 0);
             //GameMain.text.text = position.ToString();
@@ -125,9 +142,13 @@ namespace Game.Entities
             if (Input.Right < 0) flipH = true;
             Vector2f move = new Vector2f(movement.X, 0) * speed;
 
+            if ((move.X < 0 & !Left) || (move.X>0&!Right))
+                move = new Vector2f();
+
+
             physicBody.SetLinearVelocity(new Box2DX.Common.Vec2(move.X,physicBody.GetLinearVelocity().Y));
 
-            if (movement.X != 0)
+            if (move.X != 0)
             {
                 stateMachine.SetState("walk");
             }
@@ -142,6 +163,9 @@ namespace Game.Entities
             stateMachine.Update();
             SetTexture(stateMachine.OutFrame);
             Camera.position = position;
+
+            UpdateCollision();
+
         }
 
 
