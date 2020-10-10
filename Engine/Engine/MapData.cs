@@ -35,26 +35,28 @@ namespace Engine
             {
                 EntityData data = Functions.FromByteArray<EntityData>(Byte);
                 Entity entity = Functions.EntityFromString(data.type);
-
-                EntityParam[] entityParams = new EntityParam[data.entityParams.Length];
-                for (int i = 0; i < data.entityParams.Length; i++)
+                if (entity != null)
                 {
-                    entity.entityParams[i].value = data.entityParams[i];
+                    EntityParam[] entityParams = new EntityParam[data.entityParams.Length];
+                    for (int i = 0; i < data.entityParams.Length; i++)
+                    {
+                        entity.entityParams[i].value = data.entityParams[i];
+                    }
+                    entity.position = new Vector2f(data.posX, data.posY);
+                    entity.rotation = data.rot;
+                    entity.SetTexture(data.tex);
+                    entity.type = data.type;
+                    entity.flipH = data.flipH;
+                    entity.flipV = data.flipV;
+
+                    entity.UpdateCollision();
+
+                    entity.intCustomSaveData = data.intCustomSaveData;
+                    entity.floatCustomSaveData = data.floatCustomSaveData;
+                    entity.stringCustomSaveData = data.stringCustomSaveData;
+                    entity.boolCustomSaveData = data.boolCustomSaveData;
+                    entityList.Add(entity);
                 }
-                entity.position = new Vector2f(data.posX, data.posY);
-                entity.rotation = data.rot;
-                entity.SetTexture(data.tex);
-                entity.type = data.type;
-                entity.flipH = data.flipH;
-                entity.flipV = data.flipV;
-
-                entity.UpdateCollision();
-
-                entity.intCustomSaveData = data.intCustomSaveData;
-                entity.floatCustomSaveData = data.floatCustomSaveData;
-                entity.stringCustomSaveData = data.stringCustomSaveData;
-                entity.boolCustomSaveData = data.boolCustomSaveData;
-                entityList.Add(entity);
             }
 
             return entityList;

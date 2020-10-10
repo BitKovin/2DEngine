@@ -20,6 +20,9 @@ namespace Game.Entities
 
             type = "Test";
 
+            entityParams = new EntityParam[1];
+            entityParams[0] = new EntityParam();
+            entityParams[0].name = "Name";
             collision = new Collision();
             collision.size = new Vector2f(50, 50);
             collision.position = position;

@@ -10,16 +10,14 @@ using SFML.System;
 
 namespace Game.Entities
 {
-    public class TriggerTest:Entity
+    public class Trigger:Entity
     {
         EntityParam text;
         EntityParam SizeX;
         EntityParam SizeY;
         Collision collision = new Collision();
-        public TriggerTest()
+        public Trigger()
         {
-
-
 
             collisions = new Collision[1];
             collision.owner = this;
@@ -42,7 +40,7 @@ namespace Game.Entities
             SizeX.value = "100";
             SizeY.name = "Size Y";
             SizeY.value = "100";
-            type = "TriggerTest";
+            type = "Trigger";
 
             stringCustomSaveData = new string[3];
             stringCustomSaveData[0] = text.value;
@@ -69,9 +67,14 @@ namespace Game.Entities
                 if (!ent.Trigger)
                     if(Collision.MakeCollionTest(collision,ent.collisions[0]))
                     {
-                        Console.WriteLine(text.value);
+                        OnTriggerStay();
                     }
             }
+
+        }
+
+        public virtual void OnTriggerStay()
+        {
 
         }
 
