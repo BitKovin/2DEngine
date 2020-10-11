@@ -25,7 +25,9 @@ namespace Engine.Editor
 
         public static void Start()
         {
+
             #region Spawner
+            /*
             #region panel
             UiPanel panel = new UiPanel();
             panel.originH = Origin.Left;
@@ -175,7 +177,7 @@ namespace Engine.Editor
             Disable.OnClick += Disable_OnClick;
             Disable.active = false;
             #endregion
-
+            */
             #endregion
 
             #region EntityMenu
@@ -210,7 +212,7 @@ namespace Engine.Editor
             Disable.active = false;
         }
 
-        private static void New_OnClick()
+        public static void New_OnClick()
         {
             EditorMain.baselevel = new Level();
             fileName.text = "Unnamed";
@@ -253,7 +255,7 @@ namespace Engine.Editor
 
         }
 
-        private static void Entity_OnClick()
+        public static void Entity_OnClick()
         {
             EditorMain.tool = Tool.enity;
             entity.active = false;
@@ -261,7 +263,7 @@ namespace Engine.Editor
             Disable.active = true;
         }
 
-        private static void Brush_OnClick()
+        public static void Brush_OnClick()
         {
             EditorMain.tool = Tool.brush;
             brush.active = false;
@@ -269,15 +271,21 @@ namespace Engine.Editor
             Disable.active = true;
         }
 
-        private static void Save_OnClick()
+        public static void Save_OnClick()
         {
-            SaveLoadMap.Save(EditorMain.baselevel, fileName.text);
+            SaveLoadMap.Save(EditorMain.baselevel, Editor.EditorMain.FileName);
         }
 
-        private static void Load_OnClick()
+        public static void Load_OnClick()
         {
-            SaveLoadMap.Load(EditorMain.baselevel, fileName.text);
-            EditorMain.StopLevel();
+            try
+            {
+                SaveLoadMap.Load(EditorMain.baselevel, Editor.EditorMain.FileName);
+                EditorMain.StopLevel();
+            }catch(SystemException ex)
+            {
+                Console.WriteLine(ex);
+            }
         }
 
         private static void Stop_OnClick()

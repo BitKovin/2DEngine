@@ -36,7 +36,7 @@ namespace Engine
                 }
 
                 BinaryFormatter formatter = new BinaryFormatter();
-                FileStream file = new FileStream($"Assets//maps//{name}.map", FileMode.Create);
+                FileStream file = new FileStream($"{name}", FileMode.Create);
 
                 formatter.Serialize(file, mapData);
                 file.Close();
@@ -48,10 +48,10 @@ namespace Engine
         }
         public static void Load(Level level,string name)
         {
-            if (File.Exists($"Assets//maps//{name}.map"))
+            if (File.Exists($"{name}"))
             {
                 BinaryFormatter formatter = new BinaryFormatter();
-                FileStream file = new FileStream($"Assets//maps//{name}.map", FileMode.Open);
+                FileStream file = new FileStream($"{name}", FileMode.Open);
                 MapData mapData = (MapData)formatter.Deserialize(file);
                 level.brushes = mapData.GetBrushes();
                 level.entities = mapData.GetEntities();

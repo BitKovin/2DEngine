@@ -23,7 +23,7 @@ namespace Engine.Editor
     public class EditorMain
     {
         public static EditorForm form;
-
+        static float timeAfterClick;
         public static Tool tool;
         public static string brushType = "b_test";
         public static string entityType = "Player";
@@ -32,7 +32,7 @@ namespace Engine.Editor
         public static Brush selectedBrush;
         public static Level baselevel;
         public static bool GamePaused;
-        public static string FileName = "test";
+        public static string FileName = "";
         public static Brush brushDraw;
         public static Vector2f ToolPos;
         public static Vector2f BrushStart;
@@ -106,10 +106,12 @@ namespace Engine.Editor
             System.Windows.Forms.Application.DoEvents();
             CameraPos.text = $"Camera Position: {(int)Camera.position.X}; {(int)Camera.position.Y}";
 
+            timeAfterClick += Time.DeltaTime;
+
             if (!GamePaused) return;
 
-            entityType = EditorMenu.entityName.text;
-            brushType = EditorMenu.brushName.text;
+            //entityType = EditorMenu.entityName.text;
+            //brushType = EditorMenu.brushName.text;
 
             ToolPos = Functions.SnapToGrid(Input.MousePos,5f);
 
@@ -169,6 +171,7 @@ namespace Engine.Editor
 
         private static void Window_MouseButtonReleased(object sender, MouseButtonEventArgs e)
         {
+            timeAfterClick = 0;
             if (!GamePaused) return;
             
             if (e.Button == Mouse.Button.Left)
@@ -236,6 +239,7 @@ namespace Engine.Editor
                 mouseCol.size = new Vector2f(1, 1);
                 Console.WriteLine(mouseCol.position);
 
+                
                 switch (tool)
                 {
                     case Tool.enity:
@@ -246,11 +250,21 @@ namespace Engine.Editor
                                 //Console.WriteLine(col.position);
                                 if (Collision.MakeCollionTest(mouseCol, col))
                                 {
-                                    selectedEntity = col.owner;
-                                    PosDif = Input.MousePos - selectedEntity.position;
-                                    Console.WriteLine("sellected");
-                                    EditorMenu.BuildEntityMenu(col.owner);
-                                    return;
+
+                                    if (timeAfterClick < 1f)
+                                    {
+                                        EditorMenu.BuildEntityMenu(col.owner);
+                                        return;
+                                    }
+                                    else
+                                    {
+
+                                        selectedEntity = col.owner;
+                                        PosDif = Input.MousePos - selectedEntity.position;
+                                        Console.WriteLine("sellected");
+                                        
+                                        return;
+                                    }
                                 }
                             }
                         selectedEntity = null;
@@ -281,11 +295,24 @@ namespace Engine.Editor
                                 //Console.WriteLine(col.position);
                                 if (Collision.MakeCollionTest(mouseCol, col))
                                 {
-                                    selectedEntity = col.owner;
-                                    PosDif = Input.MousePos - selectedEntity.position;
-                                    Console.WriteLine("sellected");
-                                    EditorMenu.BuildEntityMenu(col.owner);
-                                    return;
+                                    if (timeAfterClick < 1f)
+                                    {
+
+                                        selectedEntity = col.owner;
+                                        PosDif = Input.MousePos - selectedEntity.position;
+                                        Console.WriteLine("sellected");
+
+                                        EditorMenu.BuildEntityMenu(col.owner);
+                                        return;
+                                    }
+                                    else
+                                    {
+                                        selectedEntity = col.owner;
+                                        PosDif = Input.MousePos - selectedEntity.position;
+                                        Console.WriteLine("sellected");
+                                        
+                                        return;
+                                    }
                                 }
                             }
                         selectedEntity = null;
