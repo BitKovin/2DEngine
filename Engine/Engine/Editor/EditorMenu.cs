@@ -258,17 +258,11 @@ namespace Engine.Editor
         public static void Entity_OnClick()
         {
             EditorMain.tool = Tool.enity;
-            entity.active = false;
-            brush.active = true;
-            Disable.active = true;
         }
 
         public static void Brush_OnClick()
         {
             EditorMain.tool = Tool.brush;
-            brush.active = false;
-            entity.active = true;
-            Disable.active = true;
         }
 
         public static void Save_OnClick()

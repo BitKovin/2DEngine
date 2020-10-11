@@ -187,6 +187,7 @@ namespace Engine.Editor
                         Console.WriteLine(curentEntity.position);
                         curentEntity.UpdateCollision();
                         curentEntity = null;
+                        tool = Tool.empty;
                         break;
                     case Tool.brush:
                         if (UiManager.UiHover) return;

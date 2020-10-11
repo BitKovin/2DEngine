@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
+using SFML.Window;
+
 
 namespace Engine
 {
@@ -144,6 +146,15 @@ namespace Engine
         private void button2_Click(object sender, EventArgs e)
         {
             Editor.EditorMenu.Brush_OnClick();
+        }
+
+        private void button2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(Keyboard.IsKeyPressed(Keyboard.Key.LShift))
+                if(e.KeyChar=='s')
+                {
+                    saveToolStripMenuItem_Click(null, null);
+                }
         }
     }
 
