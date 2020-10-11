@@ -15,8 +15,8 @@ namespace Engine
         public static View view;
         static float oldZoom = 1;
         static Texture tooltex = new Texture("Assets//Editor//tool.png");
-        static Sprite toolSpr = new Sprite(tooltex);
-        static Texture t_grid = new Texture("Assets//Editor//grid.png");
+        public static Sprite toolSpr = new Sprite(tooltex);
+        public static Texture t_grid = new Texture("Assets//Editor//grid.png");
         static Sprite s_grid = new Sprite(t_grid);
         public static float hToV;
 
@@ -32,7 +32,7 @@ namespace Engine
 
         }
 
-        private static void Window_Resized(object sender, SizeEventArgs e)
+        public static void Window_Resized(object sender, SizeEventArgs e)
         {
             hToV = (float)window.Size.X / (float)window.Size.Y;
             view.Size = new Vector2f(Constants.BaseResolution.Y * hToV * Camera.zoom, Constants.BaseResolution.Y * Camera.zoom);

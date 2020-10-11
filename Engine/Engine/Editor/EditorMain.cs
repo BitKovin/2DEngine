@@ -8,6 +8,7 @@ using SFML.Graphics;
 using SFML.System;
 using Engine.UI;
 using System.Runtime.InteropServices;
+using System.Drawing.Drawing2D;
 
 namespace Engine.Editor
 {
@@ -21,6 +22,8 @@ namespace Engine.Editor
     };
     public class EditorMain
     {
+        public static EditorForm form;
+
         public static Tool tool;
         public static string brushType = "b_test";
         public static string entityType = "Player";
@@ -61,10 +64,24 @@ namespace Engine.Editor
 
             EditorMenu.Start();
 
-            ShowWindow((int)Renderer.window.SystemHandle, 3);
+            //ShowWindow((int)Renderer.window.SystemHandle, 3);
 
             StopLevel();
 
+        }
+
+        public static void WindowInit()
+        {
+            form = new EditorForm();
+            form.Show();
+
+            Renderer.window = new RenderWindow(form.drawingSurface1.Handle);
+            Renderer.hToV = (float)Renderer.window.Size.X / (float)Renderer.window.Size.Y;
+            Renderer.view = new SFML.Graphics.View(new FloatRect(0, 0, Constants.BaseResolution.Y * Camera.zoom * Renderer.hToV, Constants.BaseResolution.Y * Camera.zoom));
+            Renderer.toolSpr.Origin = new Vector2f(32, 34);
+            Renderer.t_grid.Repeated = true;
+
+            Renderer.window.Resized += Renderer.Window_Resized;
         }
 
         public static void StartLevel()
@@ -86,7 +103,7 @@ namespace Engine.Editor
 
         public static void Update()
         {
-
+            System.Windows.Forms.Application.DoEvents();
             CameraPos.text = $"Camera Position: {(int)Camera.position.X}; {(int)Camera.position.Y}";
 
             if (!GamePaused) return;

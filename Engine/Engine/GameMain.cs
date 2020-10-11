@@ -16,14 +16,22 @@ namespace Engine
         
         public static void Start()
         {
-
-            Physics.Physics.Init();
-            Renderer.Init();
-
             Game.Game.Init();
 
+            Physics.Physics.Init();
+
             if (Program.isEditor)
+            {
+                Editor.EditorMain.WindowInit();
                 Editor.EditorMain.Start();
+            }
+            else
+            {
+                Renderer.Init();
+            }
+            
+
+
 
             Game.EntitiesList.Load();
 
@@ -53,6 +61,9 @@ namespace Engine
             UiManager.objects.Sort();
 
             Physics.Physics.Update();
+
+            if (Program.isEditor)
+                Editor.EditorMain.Update();
 
             if (!Editor.EditorMain.GamePaused)
                 curentLevel.Update();
