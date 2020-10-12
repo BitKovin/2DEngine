@@ -16,6 +16,7 @@ namespace Engine.Editor
         public static UiInputField fileName;
         public static UiInputField entityName;
         public static UiInputField brushName;
+        public static EntityMenu form;
         static UiButton entity;
         static UiButton brush;
         static UiButton Disable;
@@ -25,19 +26,6 @@ namespace Engine.Editor
 
         public static void Start()
         {
-
-            #region Spawner
-            /*
-            #region panel
-            UiPanel panel = new UiPanel();
-            panel.originH = Origin.Left;
-            panel.originV = Origin.Top;
-            panel.size = new Vector2f(100,180);
-            panel.position = new Vector2f(50, 90);
-            panel.color = new Color(25, 25, 25, 250);
-            panel.layer = -5;
-            UiManager.objects.Add(panel);
-            #endregion
 
             #region play
             UiButton play = new UiButton();
@@ -60,6 +48,21 @@ namespace Engine.Editor
             UiManager.objects.Add(stop);
             stop.OnClick += Stop_OnClick;
             #endregion
+
+            #region Spawner
+            /*
+            #region panel
+            UiPanel panel = new UiPanel();
+            panel.originH = Origin.Left;
+            panel.originV = Origin.Top;
+            panel.size = new Vector2f(100,180);
+            panel.position = new Vector2f(50, 90);
+            panel.color = new Color(25, 25, 25, 250);
+            panel.layer = -5;
+            UiManager.objects.Add(panel);
+            #endregion
+
+
 
             #region fileName
             fileName = new UiInputField();
@@ -180,6 +183,7 @@ namespace Engine.Editor
             */
             #endregion
 
+            /*
             #region EntityMenu
             #region panel
             UiPanel panel2 = new UiPanel();
@@ -201,7 +205,7 @@ namespace Engine.Editor
             UiManager.objects.Add(objName);
             #endregion
             #endregion
-
+    */
         }
 
         private static void Disable_OnClick()
@@ -215,44 +219,22 @@ namespace Engine.Editor
         public static void New_OnClick()
         {
             EditorMain.baselevel = new Level();
-            fileName.text = "Unnamed";
+            EditorMain.FileName = "Unnamed";
             EditorMain.StopLevel();
         }
 
         public static void BuildEntityMenu(Entity entity)
         {
-            foreach (UiElement element in EntityParams)
-                UiManager.objects.Remove(element);
 
-            if (entity.entityParams==null) return;
-            int i = 0;
-            foreach(EntityParam param in entity.entityParams)
+            if (form != null)
             {
-                UiText text = new UiText();
-                text.originH = Origin.Right;
-                text.originV = Origin.Top;
-                text.position = new Vector2f(-50, 40 + i * 40);
-                text.text = param.name;
-                text.SetFontSize(12);
-                text.r_text.Style = Text.Styles.Bold;
-                UiManager.objects.Add(text);
-                EntityParams.Add(text);
-
-                UiInputField inputField = new UiInputField();
-                inputField.originH = Origin.Right;
-                inputField.originV = Origin.Top;
-                inputField.position = new Vector2f(-50, 55 + i * 40);
-                inputField.size = new Vector2f(90, 13);
-                inputField.text = param.value;
-                inputField.SetFontSize(10);
-                inputField.param = param;
-                inputField.r_text.Style = Text.Styles.Italic;
-                UiManager.objects.Add(inputField);
-                EntityParams.Add(inputField);
-
-                i++;
+                form.Close();
+                form = null;
             }
 
+            form = new EntityMenu();
+            form.Build(entity);
+            form.Show();
         }
 
         public static void Entity_OnClick()

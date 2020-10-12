@@ -25,7 +25,7 @@ namespace Game.Entities
         Animation walk;
         Animation inAir;
 
-        public Player()
+        public Player():base()
         {
             SetTexture("playerIdle");
             if (!EditorMain.GamePaused)
@@ -43,10 +43,6 @@ namespace Game.Entities
             collision.owner = this;
             collisions[0] = collision;
 
-            entityParams = new EntityParam[1];
-            entityParams[0] = new EntityParam();
-            entityParams[0].name = "name";
-            entityParams[0].value = "player";
 
         }
 

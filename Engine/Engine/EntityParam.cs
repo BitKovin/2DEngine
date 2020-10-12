@@ -11,6 +11,15 @@ namespace Engine
         public string name;
         public string value;
 
+        public EntityParam()
+        { }
+
+        public EntityParam(string n, string v)
+        {
+            name = n;
+            value = v;
+        }
+
         object ICloneable.Clone()
         {
             return this.MemberwiseClone() as EntityParam;

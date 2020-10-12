@@ -27,25 +27,19 @@ namespace Game.Entities
             HideInGame = true;
             //Console.WriteLine("trigger");
             SetTexture("playerIdle");
-            text = new EntityParam();
-            SizeX = new EntityParam();
-            SizeY = new EntityParam();
-            entityParams = new EntityParam[3];
-            entityParams[0] = text;
-            entityParams[1] = SizeX;
-            entityParams[2] = SizeY;
-            text.name = "text";
-            text.value = "hello world";
-            SizeX.name = "Size X";
-            SizeX.value = "100";
-            SizeY.name = "Size Y";
-            SizeY.value = "100";
+
+            SizeX = new EntityParam("Size X", "100");
+            SizeY = new EntityParam("Size Y", "100");
+            text = new EntityParam("Text", "Hello world!");
+
+            entityParams.Add(SizeX);
+            entityParams.Add(SizeY);
+            entityParams.Add(text);
+
             type = "Trigger";
 
-            stringCustomSaveData = new string[3];
-            stringCustomSaveData[0] = text.value;
-            stringCustomSaveData[1] = SizeX.value;
-            stringCustomSaveData[2] = SizeY.value;
+            Console.WriteLine("2");
+            Console.WriteLine(entityParams.Count);
 
             collision.position = position;
             collision.size = new Vector2f(float.Parse(SizeX.value), float.Parse(SizeY.value));
@@ -67,7 +61,7 @@ namespace Game.Entities
                 if (!ent.Trigger)
                     if(Collision.MakeCollionTest(collision,ent.collisions[0]))
                     {
-                        OnTriggerStay();
+                        Console.WriteLine(text);
                     }
             }
 

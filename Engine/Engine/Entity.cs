@@ -29,7 +29,7 @@ namespace Engine
         public bool flipV;
         public string type;
 
-        public EntityParam[] entityParams;
+        public List<EntityParam> entityParams = new List<EntityParam>();
 
         public int[] intCustomSaveData;
         public float[] floatCustomSaveData;
@@ -40,6 +40,9 @@ namespace Engine
 
         public Entity()
         {
+            entityParams.Add(new EntityParam("name", ""));
+            Console.WriteLine("1");
+            Console.WriteLine(entityParams.Count);
         }
 
         public virtual void Start()

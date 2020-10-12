@@ -26,8 +26,8 @@ namespace Engine
 
         public EntityData(Entity entity)
         {
-            entityParams = new string[entity.entityParams.Length];
-            for (int i = 0; i < entity.entityParams.Length; i++)
+            entityParams = new string[entity.entityParams.Count];
+            for (int i = 0; i < entity.entityParams.Count; i++)
             {
                 entityParams[i] = entity.entityParams[i].value;
             }

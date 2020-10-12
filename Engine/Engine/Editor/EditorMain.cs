@@ -117,11 +117,11 @@ namespace Engine.Editor
 
             if (selectedEntity != null)
             {
-                EditorMenu.objName.text = selectedEntity.type;
+                //EditorMenu.objName.text = selectedEntity.type;
             }
             else
             {
-                EditorMenu.objName.text = "";
+                //EditorMenu.objName.text = "";
             }
 
             if(curentEntity!=null)
@@ -171,6 +171,7 @@ namespace Engine.Editor
 
         private static void Window_MouseButtonReleased(object sender, MouseButtonEventArgs e)
         {
+            selectedEntity = null;
             timeAfterClick = 0;
             if (!GamePaused) return;
             
@@ -252,7 +253,7 @@ namespace Engine.Editor
                                 if (Collision.MakeCollionTest(mouseCol, col))
                                 {
 
-                                    if (timeAfterClick < 1f)
+                                    if (timeAfterClick < 1.5f)
                                     {
                                         EditorMenu.BuildEntityMenu(col.owner);
                                         return;
@@ -296,7 +297,7 @@ namespace Engine.Editor
                                 //Console.WriteLine(col.position);
                                 if (Collision.MakeCollionTest(mouseCol, col))
                                 {
-                                    if (timeAfterClick < 1f)
+                                    if (timeAfterClick < 1.5f)
                                     {
 
                                         selectedEntity = col.owner;
