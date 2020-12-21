@@ -54,7 +54,7 @@ namespace Engine
 
         public static void Update()
         {
-
+            DebugDraw.Reset();
             UiManager.UiHover = false;
             foreach (UiElement uiElement in UiManager.objects)
                 uiElement.Update();

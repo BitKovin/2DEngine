@@ -51,6 +51,7 @@
     <Compile Include="Brush.cs" />
     <Compile Include="Camera.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="DebugDraw.cs" />
     <Compile Include="EditorForm.cs">
       <SubType>Form</SubType>
     </Compile>

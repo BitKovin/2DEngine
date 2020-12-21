@@ -77,6 +77,9 @@ namespace Engine
                         window.Draw(ent2);
                 }
             }
+
+            DebugDraw.Draw(window);
+
             DrawUI();
             window.Display();
 

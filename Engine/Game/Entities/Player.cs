@@ -162,6 +162,8 @@ namespace Game.Entities
 
             UpdateCollision();
 
+            DebugDraw.AddRectangle(position, new Vector2f(15, 35), Color.Green);
+
         }
 
 

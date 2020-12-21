@@ -13,6 +13,7 @@ namespace Game
         public static void Init()
         {
             Program.isEditor = true;
+            DebugDraw.enabled = true;
         }
 
         public static void Start()
