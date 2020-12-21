@@ -46,7 +46,7 @@ namespace Engine.Physics
 
         public static void Update()
         {
-            world.Step(Time.DeltaTime, 50,100);
+            world.Step(Time.DeltaTime, 500,1000);
 
             for (Body list = world.GetBodyList(); list != null; list = list.GetNext())
             {
@@ -61,6 +61,11 @@ namespace Engine.Physics
                 }
             }
 
+        }
+
+        public static float GetRotation(this Body body)
+        {
+            return body.GetAngle() * -57.2958f;
         }
 
         public static Body CreateStaticBox(float x, float y, float sx, float sy)

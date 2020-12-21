@@ -41,8 +41,6 @@ namespace Engine
         public Entity()
         {
             entityParams.Add(new EntityParam("name", ""));
-            Console.WriteLine("1");
-            Console.WriteLine(entityParams.Count);
         }
 
         public virtual void Start()
@@ -58,6 +56,11 @@ namespace Engine
 
             foreach (Entity ent in child)
                 ent.Update();
+
+        }
+
+        public virtual void EditorUpdate()
+        {
 
         }
 

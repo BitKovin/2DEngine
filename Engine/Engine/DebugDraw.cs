@@ -20,6 +20,7 @@ namespace Engine
 
         public static void AddRectangle(Vector2f pos, Vector2f size, Color color)
         {
+            if (!enabled) return;
             RectangleShape rectangleShape = new RectangleShape();
             rectangleShape.Position = new Vector2f(pos.X,-pos.Y);
             rectangleShape.Size = size;
@@ -31,9 +32,25 @@ namespace Engine
             objs.Add(rectangleShape);
         }
 
+        public static void AddRectangle(Vector2f pos, Vector2f size,float angle , Color color)
+        {
+            if (!enabled) return;
+            RectangleShape rectangleShape = new RectangleShape();
+            rectangleShape.Position = new Vector2f(pos.X, -pos.Y);
+            rectangleShape.Size = size;
+            rectangleShape.FillColor = Color.Transparent;
+            rectangleShape.OutlineThickness = 1;
+            rectangleShape.OutlineColor = new Color(color.R, color.G, color.B, 200);
+            rectangleShape.Origin = new Vector2f(size.X / 2f, size.Y / 2f);
+            rectangleShape.Rotation = angle;
+
+            objs.Add(rectangleShape);
+        }
+
         public static void Draw(RenderWindow window)
         {
-            foreach(Drawable draw in objs)
+            if (!enabled) return;
+            foreach (Drawable draw in objs)
                 window.Draw(draw);
         }
 

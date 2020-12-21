@@ -166,6 +166,11 @@ namespace Game.Entities
 
         }
 
+        public override void EditorUpdate()
+        {
+            base.EditorUpdate();
+            DebugDraw.AddRectangle(position, new Vector2f(15, 35), Color.Green);
+        }
 
         public override void UpdateCollision()
         {

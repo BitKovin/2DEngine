@@ -66,7 +66,13 @@ namespace Engine
                 Editor.EditorMain.Update();
 
             if (!Editor.EditorMain.GamePaused)
+            {
                 curentLevel.Update();
+            }else
+            {
+                foreach (Entity ent in Editor.EditorMain.baselevel.entities)
+                    ent.EditorUpdate();
+            }
             Game.Game.Update();
             Camera.Update();
 

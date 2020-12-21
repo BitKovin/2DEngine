@@ -38,7 +38,7 @@ namespace Game.Entities
         public override void Update()
         {
             base.Update();
-
+            DebugDraw.AddRectangle(position, new Vector2f(50, 50),physicBody.GetRotation(), SFML.Graphics.Color.Green);
         }
 
         public override void UpdateCollision()

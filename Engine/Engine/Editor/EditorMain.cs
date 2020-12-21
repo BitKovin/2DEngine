@@ -185,7 +185,6 @@ namespace Engine.Editor
                 {
                     case Tool.enity:
                         if (curentEntity == null) return;
-                        Console.WriteLine(curentEntity.position);
                         curentEntity.UpdateCollision();
                         curentEntity = null;
                         tool = Tool.empty;

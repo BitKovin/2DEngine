@@ -35,12 +35,12 @@
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.drawingSurface1 = new Engine.DrawingSurface();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.drawingSurface1 = new Engine.DrawingSurface();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuStrip2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -60,9 +60,9 @@
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newToolStripMenuItem,
+            this.loadToolStripMenuItem,
             this.saveToolStripMenuItem,
-            this.saveAsToolStripMenuItem,
-            this.loadToolStripMenuItem});
+            this.saveAsToolStripMenuItem});
             this.fileToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
@@ -102,7 +102,7 @@
             this.loadToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
             this.loadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.loadToolStripMenuItem.Text = "load";
+            this.loadToolStripMenuItem.Text = "open";
             this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
             // 
             // panel1
@@ -120,50 +120,6 @@
             this.panel1.TabIndex = 3;
             this.panel1.Click += new System.EventHandler(this.panel1_Click);
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            // 
-            // button1
-            // 
-            this.button1.ForeColor = System.Drawing.Color.Snow;
-            this.button1.Location = new System.Drawing.Point(3, 105);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(205, 32);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Entity";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // textBox2
-            // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox2.ForeColor = System.Drawing.SystemColors.Menu;
-            this.textBox2.Location = new System.Drawing.Point(4, 72);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(204, 31);
-            this.textBox2.TabIndex = 2;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
-            // 
-            // drawingSurface1
-            // 
-            this.drawingSurface1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.drawingSurface1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.drawingSurface1.Location = new System.Drawing.Point(211, 48);
-            this.drawingSurface1.Name = "drawingSurface1";
-            this.drawingSurface1.Padding = new System.Windows.Forms.Padding(140, 0, 0, 0);
-            this.drawingSurface1.Size = new System.Drawing.Size(1011, 571);
-            this.drawingSurface1.TabIndex = 0;
-            this.drawingSurface1.Text = "drawingSurface1";
-            this.drawingSurface1.Click += new System.EventHandler(this.drawingSurface1_Click);
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.menuStrip1.Location = new System.Drawing.Point(211, 24);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1011, 24);
-            this.menuStrip1.TabIndex = 4;
-            this.menuStrip1.Text = "menuStrip1";
             // 
             // textBox1
             // 
@@ -189,6 +145,50 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             this.button2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.button2_KeyPress);
+            // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox2.ForeColor = System.Drawing.SystemColors.Menu;
+            this.textBox2.Location = new System.Drawing.Point(4, 72);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(204, 31);
+            this.textBox2.TabIndex = 2;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            // 
+            // button1
+            // 
+            this.button1.ForeColor = System.Drawing.Color.Snow;
+            this.button1.Location = new System.Drawing.Point(3, 105);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(205, 32);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Entity";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // drawingSurface1
+            // 
+            this.drawingSurface1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.drawingSurface1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.drawingSurface1.Location = new System.Drawing.Point(211, 48);
+            this.drawingSurface1.Name = "drawingSurface1";
+            this.drawingSurface1.Padding = new System.Windows.Forms.Padding(140, 0, 0, 0);
+            this.drawingSurface1.Size = new System.Drawing.Size(1011, 571);
+            this.drawingSurface1.TabIndex = 0;
+            this.drawingSurface1.Text = "drawingSurface1";
+            this.drawingSurface1.Click += new System.EventHandler(this.drawingSurface1_Click);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.menuStrip1.Location = new System.Drawing.Point(211, 24);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1011, 24);
+            this.menuStrip1.TabIndex = 4;
+            this.menuStrip1.Text = "menuStrip1";
             // 
             // EditorForm
             // 

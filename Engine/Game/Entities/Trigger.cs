@@ -38,8 +38,6 @@ namespace Game.Entities
 
             type = "Trigger";
 
-            Console.WriteLine("2");
-            Console.WriteLine(entityParams.Count);
 
             collision.position = position;
             collision.size = new Vector2f(float.Parse(SizeX.value), float.Parse(SizeY.value));
@@ -61,7 +59,7 @@ namespace Game.Entities
                 if (!ent.Trigger)
                     if(Collision.MakeCollionTest(collision,ent.collisions[0]))
                     {
-                        Console.WriteLine(text);
+                        Console.WriteLine(text.value);
                     }
             }
 
