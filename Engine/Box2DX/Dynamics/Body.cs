@@ -160,8 +160,8 @@ namespace Box2DX.Dynamics
 		internal Body _prev;
 		internal Body _next;
 
-		internal Shape _shapeList;
-		internal int _shapeCount;
+		public Shape _shapeList;
+		public int _shapeCount;
 
 		internal JointEdge _jointList;
 		internal ContactEdge _contactList;
@@ -491,16 +491,22 @@ namespace Box2DX.Dynamics
 			}
 		}
 
-		/// <summary>
-		/// Set the position of the body's origin and rotation (radians).
-		/// This breaks any contacts and wakes the other bodies.
-		/// </summary>
-		/// <param name="position">The new world position of the body's origin (not necessarily
-		/// the center of mass).</param>
-		/// <param name="angle">The new world rotation angle of the body in radians.</param>
-		/// <returns>Return false if the movement put a shape outside the world. In this case the
-		/// body is automatically frozen.</returns>
-		public bool SetXForm(Vec2 position, float angle)
+        /// <summary>
+        /// Set the position of the body's origin and rotation (radians).
+        /// This breaks any contacts and wakes the other bodies.
+        /// </summary>
+        /// <param name="position">The new world position of the body's origin (not necessarily
+        /// the center of mass).</param>
+        /// <param name="angle">The new world rotation angle of the body in radians.</param>
+        /// <returns>Return false if the movement put a shape outside the world. In this case the
+        /// body is automatically frozen.</returns>
+
+        public void SetPos(Vec2 pos)
+        {
+            _xf.Position = pos;
+        }
+
+        public bool SetXForm(Vec2 position, float angle)
 		{
 			Box2DXDebug.Assert(_world._lock == false);
 			if (_world._lock == true)

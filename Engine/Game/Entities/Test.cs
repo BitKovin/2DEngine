@@ -29,6 +29,9 @@ namespace Game.Entities
         }
         public override void Start()
         {
+
+            
+
             base.Start();
             physicBody = Physics.CreateBox(position.X, position.Y, 50, 50, this);
             //physicBody.FreezeRotation();
@@ -39,6 +42,7 @@ namespace Game.Entities
         {
             base.Update();
             DebugDraw.AddRectangle(position, new Vector2f(50, 50),physicBody.GetRotation(), SFML.Graphics.Color.Green);
+            
         }
 
         public override void UpdateCollision()

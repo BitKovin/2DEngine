@@ -163,7 +163,7 @@ namespace Box2DX.Collision
 	{
 		#region Fields and Properties
 
-		protected ShapeType _type;
+		public ShapeType _type;
 		/// <summary>
 		/// Get the type of this shape. You can use this to down cast to the concrete shape.
 		/// </summary>
@@ -201,13 +201,13 @@ namespace Box2DX.Collision
 
 		protected ushort _proxyId;
 
-		protected bool _isSensor;
+		public bool _isSensor;
 		/// <summary>
 		/// Is this shape a sensor (non-solid)?
 		/// </summary>
 		public bool IsSensor { get { return _isSensor; } }
 
-		protected FilterData _filter;
+		public FilterData _filter;
 		/// <summary>
 		/// Get\Set the contact filtering data. You must call World.Refilter to correct
 		/// existing contacts/non-contacts.

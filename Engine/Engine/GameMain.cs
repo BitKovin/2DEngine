@@ -35,7 +35,7 @@ namespace Engine
 
             Game.EntitiesList.Load();
 
-            Renderer.window.SetFramerateLimit(150);
+            Renderer.window.SetFramerateLimit(300);
             Renderer.window.SetVerticalSyncEnabled(true);
             Time.Init();
 

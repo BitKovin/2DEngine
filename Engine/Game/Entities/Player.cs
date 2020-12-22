@@ -25,6 +25,8 @@ namespace Game.Entities
         Animation walk;
         Animation inAir;
 
+        Entity bullet;
+
         public Player():base()
         {
             SetTexture("playerIdle");
@@ -45,8 +47,6 @@ namespace Game.Entities
 
 
         }
-
-
 
         public override void Start()
         {
@@ -144,6 +144,38 @@ namespace Game.Entities
 
             physicBody.SetLinearVelocity(new Box2DX.Common.Vec2(move.X,physicBody.GetLinearVelocity().Y));
 
+            if(Keyboard.IsKeyPressed(Keyboard.Key.LControl))
+            {
+                Box2DX.Collision.Segment line;
+                if (!flipH)
+                {
+                    line = new Box2DX.Collision.Segment();
+                    line.P1 = new Box2DX.Common.Vec2(position.X + 8, position.Y);
+                    line.P2 = new Box2DX.Common.Vec2(position.X + 100f, position.Y);
+                    Box2DX.Collision.Shape shape = Physics.world.RaycastOne(line, out l, out normal, false, null);
+                    if (shape != null)
+                    {
+                        Console.WriteLine("hit");
+                        Box2DX.Dynamics.Body body = shape.GetBody();
+                        body.ApplyImpulse(new Box2DX.Common.Vec2(-160000, 0), body.GetWorldCenter());
+                    }
+                }
+                else
+                {
+
+                    line = new Box2DX.Collision.Segment();
+                    line.P1 = new Box2DX.Common.Vec2(position.X - 8, position.Y);
+                    line.P2 = new Box2DX.Common.Vec2(position.X - 100f, position.Y);
+                    Box2DX.Collision.Shape shape = Physics.world.RaycastOne(line, out l, out normal, false, null);
+                    if (shape != null)
+                    {
+                        Console.WriteLine("hit");
+                        Box2DX.Dynamics.Body body = shape.GetBody();
+                        body.ApplyImpulse(new Box2DX.Common.Vec2(160000, 0), body.GetWorldCenter());
+                    }
+                }
+            }
+
             if (move.X != 0)
             {
                 stateMachine.SetState("walk");
@@ -179,8 +211,22 @@ namespace Game.Entities
 
         private void Window_KeyPressed(object sender, KeyEventArgs e)
         {
+            if (lvlID != GameMain.curentLevel.GetHashCode()) { Renderer.window.KeyPressed -= Window_KeyPressed; return; }
+            if(e.Code == Keyboard.Key.S)
+            {
+                if(!flipH)
+                {
+                    bullet = new Bullet(position+new Vector2f(10,0), new Vector2f(300,0));
+                }else
+                {
+                    bullet = new Bullet(position + new Vector2f(-10, 0), new Vector2f(-300, 0));
+                }
+                GameMain.curentLevel.entities.Add(bullet);
+                bullet.Start();
+            }
+
             if (e.Code == Keyboard.Key.Space&&OnGround)
-                physicBody.ApplyImpulse(new Box2DX.Common.Vec2(0,160000),physicBody.GetWorldCenter());
+                physicBody.ApplyImpulse(new Box2DX.Common.Vec2(0,220000),physicBody.GetWorldCenter());
         }
 
     }

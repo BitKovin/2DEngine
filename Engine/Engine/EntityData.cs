@@ -31,7 +31,7 @@ namespace Engine
             {
                 entityParams[i] = entity.entityParams[i].value;
             }
-            type = entity.type;
+            type = entity.GetType().Name;
             posX = entity.position.X;
             posY = entity.position.Y;
             rot = entity.rotation;

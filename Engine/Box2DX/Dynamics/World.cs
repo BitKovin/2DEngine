@@ -229,7 +229,7 @@ namespace Box2DX.Dynamics
 		public void DestroyBody(Body b)
 		{
 			Box2DXDebug.Assert(_bodyCount > 0);
-			Box2DXDebug.Assert(_lock == false);
+			//Box2DXDebug.Assert(_lock == false);
 			if (_lock == true)
 			{
 				return;

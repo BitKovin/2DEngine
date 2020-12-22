@@ -9,7 +9,7 @@ namespace Engine.Physics
 {
     public class Solver : ContactListener
     {
-        public delegate void EventSolver(Entity body1, Entity body2);
+        public delegate void EventSolver(Entity body1, Entity body2,ContactPoint point);
         public event EventSolver OnAdd;
         public event EventSolver OnPersist;
         public event EventSolver OnResult;
@@ -19,28 +19,28 @@ namespace Engine.Physics
         {
             base.Add(point);
 
-            OnAdd?.Invoke((Entity)point.Shape1.GetBody().GetUserData(), (Entity)point.Shape2.GetBody().GetUserData());
+            OnAdd?.Invoke((Entity)point.Shape1.GetBody().GetUserData(), (Entity)point.Shape2.GetBody().GetUserData(), point);
         }
 
         public override void Persist(ContactPoint point)
         {
             base.Persist(point);
 
-            OnPersist?.Invoke((Entity)point.Shape1.GetBody().GetUserData(), (Entity)point.Shape2.GetBody().GetUserData());
+            OnPersist?.Invoke((Entity)point.Shape1.GetBody().GetUserData(), (Entity)point.Shape2.GetBody().GetUserData(),point);
         }
 
         public override void Result(ContactResult point)
         {
             base.Result(point);
 
-            OnResult?.Invoke((Entity)point.Shape1.GetBody().GetUserData(), (Entity)point.Shape2.GetBody().GetUserData());
+            OnResult?.Invoke((Entity)point.Shape1.GetBody().GetUserData(), (Entity)point.Shape2.GetBody().GetUserData(), null);
         }
 
         public override void Remove(ContactPoint point)
         {
             base.Remove(point);
 
-            OnRemove?.Invoke((Entity)point.Shape1.GetBody().GetUserData(), (Entity)point.Shape2.GetBody().GetUserData());
+            OnRemove?.Invoke((Entity)point.Shape1.GetBody().GetUserData(), (Entity)point.Shape2.GetBody().GetUserData(), point);
         }
     }
 

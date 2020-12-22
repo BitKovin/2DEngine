@@ -14,11 +14,13 @@ namespace Game
         {
             Program.isEditor = true;
             DebugDraw.enabled = true;
+
+            TexturesData.Add("bullet", "bullet.png");
+
         }
 
         public static void Start()
         {
-
         }
 
         public static void Update()

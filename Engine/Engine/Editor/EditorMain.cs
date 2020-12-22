@@ -86,15 +86,17 @@ namespace Engine.Editor
 
         public static void StartLevel()
         {
+            Physics.Physics.Init();
             selectedBrush = null;
             selectedEntity = null;
             GameMain.curentLevel = baselevel.Clone();
             GameMain.curentLevel.Start();
             GamePaused = false;
+            
         }
         public static void StopLevel()
         {
-            Physics.Physics.Clear();
+            //Physics.Physics.Clear();
             GameMain.curentLevel = baselevel;
             GamePaused = true;
             foreach (Entity entity in baselevel.entities)

@@ -13,6 +13,8 @@ namespace Engine
     {
         public bool HideInGame;
 
+        public bool active = true;
+
         public bool Trigger;
 
         public Body physicBody;
@@ -38,6 +40,10 @@ namespace Engine
 
         public Collision[] collisions;
 
+        ContactPoint p;
+
+        public int lvlID;
+
         public Entity()
         {
             entityParams.Add(new EntityParam("name", ""));
@@ -45,15 +51,31 @@ namespace Engine
 
         public virtual void Start()
         {
-         
+            lvlID = GameMain.curentLevel.GetHashCode();
+            
             foreach (Entity ent in child)
                 ent.Start();
 
+            //Physics.Physics.solver.OnAdd += Solver_OnAdd;
+
+        }
+
+        public virtual void OnHit(Entity ent)
+        {
+            
+        }
+
+        public void Destroy()
+        {
+            physicBody._shapeList._isSensor = true;
+            Physics.Physics.world.DestroyBody(physicBody);
+            GameMain.curentLevel.entities.Remove(this);
+            active = false;
         }
 
         public virtual void Update()
         {
-
+            
             foreach (Entity ent in child)
                 ent.Update();
 
@@ -110,6 +132,15 @@ namespace Engine
         public object Clone()
         {
             return this.MemberwiseClone();
+        }
+
+        public EntityParam GetParam(string name)
+        {
+
+            foreach (EntityParam param in entityParams)
+                if (param.name == name) return param;
+
+            return null;
         }
 
     }

@@ -15,6 +15,7 @@ namespace Engine.Physics
     public static class Physics
     {
         public static World world;
+        public static Solver solver;
 
         public static Vector2 gravity { set { world.Gravity = new Vec2(value.X, value.Y); } }
 
@@ -24,6 +25,19 @@ namespace Engine.Physics
             aabb.LowerBound.Set(-100000, -10000);
             aabb.UpperBound.Set(100000,100000);
             world = new World(aabb, new Vec2(0,-9.8f*45f), false);
+            solver = new Solver();
+            world.SetContactListener(solver);
+            solver.OnAdd += Solver_OnAdd;
+        }
+
+        private static void Solver_OnAdd(Entity body1, Entity body2, ContactPoint point)
+        {
+            if(body1!=null)
+                if(body1.active)
+                    body1.OnHit(body2);
+            if(body2!=null)
+                if (body2.active)
+                    body2.OnHit(body1);
         }
 
         public static void Test(Entity entity)
@@ -46,7 +60,7 @@ namespace Engine.Physics
 
         public static void Update()
         {
-            world.Step(Time.DeltaTime, 500,1000);
+            world.Step(Time.DeltaTime, 100,300);
 
             for (Body list = world.GetBodyList(); list != null; list = list.GetNext())
             {

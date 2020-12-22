@@ -61,9 +61,9 @@ F:\GitHub\2DEngine\Engine\Engine\bin\Debug\System.Buffers.xml
 F:\GitHub\2DEngine\Engine\Engine\bin\Debug\System.Numerics.Vectors.xml
 F:\GitHub\2DEngine\Engine\Engine\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 F:\GitHub\2DEngine\Engine\Engine\bin\Debug\Box2DX.dll
-F:\GitHub\2DEngine\Engine\Engine\bin\Debug\Box2DX.pdb
 F:\GitHub\2DEngine\Engine\Engine\bin\Debug\System.Drawing.Common.dll
 F:\GitHub\2DEngine\Engine\Engine\obj\Debug\Engine.EditorForm.resources
 F:\GitHub\2DEngine\Engine\Engine\obj\Debug\Engine.csproj.GenerateResource.cache
 F:\GitHub\2DEngine\Engine\Engine\obj\Debug\Engine.Properties.Resources.resources
 F:\GitHub\2DEngine\Engine\Engine\obj\Debug\Engine.EntityMenu.resources
+F:\GitHub\2DEngine\Engine\Engine\bin\Debug\Box2DX.pdb
