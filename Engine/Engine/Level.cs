@@ -62,5 +62,15 @@ namespace Engine
                                });
         }
 
+
+        public void Destroy()
+        {
+            foreach(Entity entity in entities)
+            {
+                entity.UnbindKeys();
+                
+            }
+        }
+
     }
 }

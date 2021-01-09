@@ -45,9 +45,12 @@ namespace Game.Entities
 
         public override void OnHit(Entity ent)
         {
+            if (ent == Owner) return;
             Destroy();
             if (ent == null) return;
+
             ent.physicBody.ApplyImpulse(new Box2DX.Common.Vec2(velocity.X, velocity.Y) * 10000, new Box2DX.Common.Vec2(position.X, position.Y));
+            ent.Destroy();
         }
 
     }

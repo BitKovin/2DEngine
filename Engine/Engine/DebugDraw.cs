@@ -39,7 +39,7 @@ namespace Engine
             rectangleShape.Position = new Vector2f(pos.X, -pos.Y);
             rectangleShape.Size = size;
             rectangleShape.FillColor = Color.Transparent;
-            rectangleShape.OutlineThickness = 1;
+            rectangleShape.OutlineThickness = -1;
             rectangleShape.OutlineColor = new Color(color.R, color.G, color.B, 200);
             rectangleShape.Origin = new Vector2f(size.X / 2f, size.Y / 2f);
             rectangleShape.Rotation = angle;

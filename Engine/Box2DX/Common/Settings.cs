@@ -84,7 +84,7 @@ namespace Box2DX.Common
 		/// A velocity threshold for elastic collisions. Any collision with a relative linear
 		/// velocity below this threshold will be treated as inelastic.
 		/// </summary>
-		public static readonly float VelocityThreshold = 1.0f; // 1 m/s
+		public static readonly float VelocityThreshold = 10.0f; // 1 m/s
 
 		/// <summary>
 		/// The maximum linear position correction used when solving constraints.
@@ -103,9 +103,9 @@ namespace Box2DX.Common
 		/// to prevent numerical problems. You shouldn't need to adjust this.
 		/// </summary>
 #if TARGET_FLOAT32_IS_FIXED
-		public static readonly float MaxLinearVelocity = 100.0f;
+		public static readonly float MaxLinearVelocity = 1000000000.0f;
 #else
-		public static readonly float MaxLinearVelocity = 200.0f;
+		public static readonly float MaxLinearVelocity = 2000000000.0f;
 		public static readonly float MaxLinearVelocitySquared = MaxLinearVelocity * MaxLinearVelocity;
 #endif
 		/// <summary>

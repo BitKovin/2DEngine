@@ -13,6 +13,8 @@ namespace Engine
     {
         public bool HideInGame;
 
+        public Entity Owner;
+
         public bool active = true;
 
         public bool Trigger;
@@ -58,6 +60,43 @@ namespace Engine
 
             //Physics.Physics.solver.OnAdd += Solver_OnAdd;
 
+            Renderer.window.KeyPressed += KeyPressed;
+            Renderer.window.KeyReleased += KeyReleased;
+            Renderer.window.MouseButtonPressed += MouseButtonPressed;
+            Renderer.window.MouseButtonReleased += MouseButtonReleased;
+            Renderer.window.JoystickButtonPressed += JoystickButtonPressed;
+            Renderer.window.JoystickButtonReleased += JoystickButtonReleased;
+
+        }
+
+        public virtual void JoystickButtonReleased(object sender, SFML.Window.JoystickButtonEventArgs e)
+        {
+            
+        }
+
+        public virtual void JoystickButtonPressed(object sender, SFML.Window.JoystickButtonEventArgs e)
+        {
+            
+        }
+
+        public virtual void MouseButtonReleased(object sender, SFML.Window.MouseButtonEventArgs e)
+        {
+            
+        }
+
+        public virtual void MouseButtonPressed(object sender, SFML.Window.MouseButtonEventArgs e)
+        {
+            
+        }
+
+        public virtual void KeyReleased(object sender, SFML.Window.KeyEventArgs e)
+        {
+            
+        }
+
+        public virtual void KeyPressed(object sender, SFML.Window.KeyEventArgs e)
+        {
+            
         }
 
         public virtual void OnHit(Entity ent)
@@ -67,10 +106,25 @@ namespace Engine
 
         public void Destroy()
         {
-            physicBody._shapeList._isSensor = true;
-            Physics.Physics.world.DestroyBody(physicBody);
+            try
+            {
+                physicBody._shapeList._isSensor = true;
+                Physics.Physics.world.DestroyBody(physicBody);
+            }
+            catch (SystemException) { };
             GameMain.curentLevel.entities.Remove(this);
             active = false;
+            UnbindKeys();
+        }
+
+        public void UnbindKeys()
+        {
+            Renderer.window.KeyPressed -= KeyPressed;
+            Renderer.window.KeyReleased -= KeyReleased;
+            Renderer.window.MouseButtonPressed -= MouseButtonPressed;
+            Renderer.window.MouseButtonReleased -= MouseButtonReleased;
+            Renderer.window.JoystickButtonPressed -= JoystickButtonPressed;
+            Renderer.window.JoystickButtonReleased -= JoystickButtonReleased;
         }
 
         public virtual void Update()

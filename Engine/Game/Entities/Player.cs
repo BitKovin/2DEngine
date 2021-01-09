@@ -15,7 +15,7 @@ namespace Game.Entities
     public class Player : Entity
     {
 
-        public float speed = 300f;
+        public float speed = 200f;
         public float stepHeight = 5f;
         float gravity;
         Collision collision;
@@ -51,7 +51,6 @@ namespace Game.Entities
         public override void Start()
         {
             base.Start();
-            Renderer.window.KeyPressed += Window_KeyPressed;
             //Camera.target = this;
             //collision = new Collision();
             //collision.size = new Vector2f(15,35);
@@ -151,7 +150,7 @@ namespace Game.Entities
                 {
                     line = new Box2DX.Collision.Segment();
                     line.P1 = new Box2DX.Common.Vec2(position.X + 8, position.Y);
-                    line.P2 = new Box2DX.Common.Vec2(position.X + 100f, position.Y);
+                    line.P2 = new Box2DX.Common.Vec2(position.X + 500f, position.Y);
                     Box2DX.Collision.Shape shape = Physics.world.RaycastOne(line, out l, out normal, false, null);
                     if (shape != null)
                     {
@@ -165,7 +164,7 @@ namespace Game.Entities
 
                     line = new Box2DX.Collision.Segment();
                     line.P1 = new Box2DX.Common.Vec2(position.X - 8, position.Y);
-                    line.P2 = new Box2DX.Common.Vec2(position.X - 100f, position.Y);
+                    line.P2 = new Box2DX.Common.Vec2(position.X - 500f, position.Y);
                     Box2DX.Collision.Shape shape = Physics.world.RaycastOne(line, out l, out normal, false, null);
                     if (shape != null)
                     {
@@ -209,18 +208,18 @@ namespace Game.Entities
             collision.position = position;
         }
 
-        private void Window_KeyPressed(object sender, KeyEventArgs e)
+        public override void KeyPressed(object sender, KeyEventArgs e)
         {
-            if (lvlID != GameMain.curentLevel.GetHashCode()) { Renderer.window.KeyPressed -= Window_KeyPressed; return; }
             if(e.Code == Keyboard.Key.S)
             {
                 if(!flipH)
                 {
-                    bullet = new Bullet(position+new Vector2f(10,0), new Vector2f(300,0));
+                    bullet = new Bullet(position+new Vector2f(9,0), new Vector2f(500,0));
                 }else
                 {
-                    bullet = new Bullet(position + new Vector2f(-10, 0), new Vector2f(-300, 0));
+                    bullet = new Bullet(position + new Vector2f(-9, 0), new Vector2f(-500, 0));
                 }
+                bullet.Owner = this;
                 GameMain.curentLevel.entities.Add(bullet);
                 bullet.Start();
             }

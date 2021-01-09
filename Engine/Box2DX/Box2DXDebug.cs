@@ -31,7 +31,7 @@ namespace Box2DX
 		[Conditional("DEBUG")]
 		public static void Assert(bool condition)
 		{
-			Debug.Assert(condition);
+			//Debug.Assert(condition);
 		}
 
 		[Conditional("DEBUG")]
